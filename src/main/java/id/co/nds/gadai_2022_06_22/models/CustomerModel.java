@@ -8,6 +8,7 @@ public class CustomerModel extends RecordModel {
     private String custJk;
     private String custJenisUsahaId;
     private Double custLimitTxn;
+    private String custStatus;
 
     public String getCustId() {
         return custId;
@@ -50,5 +51,12 @@ public class CustomerModel extends RecordModel {
     }
     public void setCustLimitTxn(Double custLimitTxn) {
         this.custLimitTxn = custLimitTxn;
+    }
+
+    public String getCustStatus() {
+        return custStatus;
+    }
+    public void setCustStatus(String custStatus) {
+        this.custStatus = custStatus;
     }
 }

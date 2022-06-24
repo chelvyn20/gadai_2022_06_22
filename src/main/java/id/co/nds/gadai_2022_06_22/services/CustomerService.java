@@ -15,7 +15,6 @@ import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 import id.co.nds.gadai_2022_06_22.models.CustomerModel;
 import id.co.nds.gadai_2022_06_22.repos.CustomerRepo;
 import id.co.nds.gadai_2022_06_22.repos.specs.CustomerSpec;
-import id.co.nds.gadai_2022_06_22.repos.specs.CustomersSpec;
 import id.co.nds.gadai_2022_06_22.validators.CustomerValidator;
 
 

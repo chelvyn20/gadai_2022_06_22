@@ -1,7 +1,6 @@
 package id.co.nds.gadai_2022_06_22.validators;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.annotations.Check;
 
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
