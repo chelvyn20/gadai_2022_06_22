@@ -1,0 +1,125 @@
+package id.co.nds.gadai_2022_06_22.models;
+
+public class ProductModel {
+    private Integer id;
+    private String productId;
+    private String productType;
+    private String productName;
+    private String productDesc;
+    private Integer productJangkaWaktu;
+    private Double productLtv;
+    private String productAdminOpeningFeeType;
+    private String productAdminClosingFeeType;
+    private Double productAdminOpeningFee;
+    private Double productAdminClosingFee;
+    private Double productBiayaJasaPeny;
+    private Integer productBiayaJasaPenyPeriode;
+    private Double productBiayaDenda;
+    private Integer productBiayaDendaPeriode;
+    private Integer actorId;
+    private String recStatus;
+    
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getProductId() {
+        return productId;
+    }
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    public String getProductType() {
+        return productType;
+    }
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+    public String getProductDesc() {
+        return productDesc;
+    }
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
+    }
+    public Integer getProductJangkaWaktu() {
+        return productJangkaWaktu;
+    }
+    public void setProductJangkaWaktu(Integer productJangkaWaktu) {
+        this.productJangkaWaktu = productJangkaWaktu;
+    }
+    public Double getProductLtv() {
+        return productLtv;
+    }
+    public void setProductLtv(Double productLtv) {
+        this.productLtv = productLtv;
+    }
+    public String getProductAdminOpeningFeeType() {
+        return productAdminOpeningFeeType;
+    }
+    public void setProductAdminOpeningFeeType(String productAdminOpeningFeeType) {
+        this.productAdminOpeningFeeType = productAdminOpeningFeeType;
+    }
+    public String getProductAdminClosingFeeType() {
+        return productAdminClosingFeeType;
+    }
+    public void setProductAdminClosingFeeType(String productAdminClosingFeeType) {
+        this.productAdminClosingFeeType = productAdminClosingFeeType;
+    }
+    public Double getProductAdminOpeningFee() {
+        return productAdminOpeningFee;
+    }
+    public void setProductAdminOpeningFee(Double productAdminOpeningFee) {
+        this.productAdminOpeningFee = productAdminOpeningFee;
+    }
+    public Double getProductAdminClosingFee() {
+        return productAdminClosingFee;
+    }
+    public void setProductAdminClosingFee(Double productAdminClosingFee) {
+        this.productAdminClosingFee = productAdminClosingFee;
+    }
+    public Double getProductBiayaJasaPeny() {
+        return productBiayaJasaPeny;
+    }
+    public void setProductBiayaJasaPeny(Double productBiayaJasaPeny) {
+        this.productBiayaJasaPeny = productBiayaJasaPeny;
+    }
+    public Integer getProductBiayaJasaPenyPeriode() {
+        return productBiayaJasaPenyPeriode;
+    }
+    public void setProductBiayaJasaPenyPeriode(Integer productBiayaJasaPenyPeriode) {
+        this.productBiayaJasaPenyPeriode = productBiayaJasaPenyPeriode;
+    }
+    public Double getProductBiayaDenda() {
+        return productBiayaDenda;
+    }
+    public void setProductBiayaDenda(Double productBiayaDenda) {
+        this.productBiayaDenda = productBiayaDenda;
+    }
+    public Integer getProductBiayaDendaPeriode() {
+        return productBiayaDendaPeriode;
+    }
+    public void setProductBiayaDendaPeriode(Integer productBiayaDendaPeriode) {
+        this.productBiayaDendaPeriode = productBiayaDendaPeriode;
+    }
+    public Integer getActorId() {
+        return actorId;
+    }
+    public void setActorId(Integer actorId) {
+        this.actorId = actorId;
+    }
+    public String getRecStatus() {
+        return recStatus;
+    }
+    public void setRecStatus(String recStatus) {
+        this.recStatus = recStatus;
+    }
+
+}
