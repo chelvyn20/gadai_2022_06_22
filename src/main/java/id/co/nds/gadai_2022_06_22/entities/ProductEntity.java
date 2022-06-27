@@ -18,9 +18,8 @@ import javax.persistence.Table;
 public class ProductEntity {
     @Column(name="product_tipe")
     private String productTipe;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     
     @Column(name="product_id")
     private String productId;

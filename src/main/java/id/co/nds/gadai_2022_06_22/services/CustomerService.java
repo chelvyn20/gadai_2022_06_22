@@ -99,55 +99,56 @@ public class CustomerService implements Serializable {
        customerValidator.nullChekcCustId(customerModel.getCustId());
        customerValidator.validateCustId(customerModel.getCustId());
        
-       if(!customerRepo.existsById((customerModel.getCustId()))){
+       if(!customerRepo.existsById(customerModel.getCustId())){
            throw new NotFoundException( "Id Pelanggan Tidak Ditemukan");
        }
 
        //proses
        CustomerEntity customer = new CustomerEntity();
        customer=findById(customerModel.getCustId());
+       customerValidator.validateCustStatus(customer.getCustId(), customer.getCustStatus());
 
        if(customerModel.getCustName() !=null){
-           customerValidator.validateName( (customerModel.getCustName()));
-           customer.setCustName((customerModel.getCustName()));
+           customerValidator.validateName( customerModel.getCustName());
+           customer.setCustName(customerModel.getCustName());
        }
 
        if(customerModel.getCustKtp() !=null){
-           customerValidator.validateCustKtp( (customerModel.getCustKtp()));
+           customerValidator.validateCustKtp( customerModel.getCustKtp());
 
-           Long count = customerRepo.countByKtp((customerModel.getCustKtp()));
+           Long count = customerRepo.countByKtp(customerModel.getCustKtp());
 
            if (count >0){
                throw new ClientException("Nomor KTP sudah digunakan");
 
            }
-           customer.setCustKtp((customerModel.getCustKtp()));
+           customer.setCustKtp(customerModel.getCustKtp());
        }
 
        if(customerModel.getCustHp() !=null){
-           customerValidator.validateCallNumber( (customerModel.getCustHp()));
+           customerValidator.validateCallNumber( customerModel.getCustHp());
 
-           Long count = customerRepo.countByCallNumber((customerModel.getCustHp()));
+           Long count = customerRepo.countByCallNumber(customerModel.getCustHp());
            if (count >0){
                throw new ClientException("Nomor HP sudah digunakan");
 
            }
-           customer.setCustHp((customerModel.getCustHp()));
+           customer.setCustHp(customerModel.getCustHp());
        }
 
        if(customerModel.getCustJk() !=null){
-           customerValidator.validateCustJk( (customerModel.getCustJk()));
-           customer.setCustJk((customerModel.getCustJk()));
+           customerValidator.validateCustJk( customerModel.getCustJk());
+           customer.setCustJk(customerModel.getCustJk());
        }
 
        if(customerModel.getCustJenisUsahaId() !=null){
-           customerValidator.validateJenisUsaha( (customerModel.getCustJenisUsahaId()));
-           customer.setCustJenisUsahaId((customerModel.getCustJenisUsahaId()));
+           customerValidator.validateJenisUsaha( customerModel.getCustJenisUsahaId());
+           customer.setCustJenisUsahaId(customerModel.getCustJenisUsahaId());
        }
 
        if(customerModel.getCustLimitTxn() !=null){
-           customerValidator.validatetLimitTxn((customerModel.getCustLimitTxn()));
-           customer.setCustLimitTxn((customerModel.getCustLimitTxn()));
+           customerValidator.validatetLimitTxn(customerModel.getCustLimitTxn());
+           customer.setCustLimitTxn(customerModel.getCustLimitTxn());
        }
 
 
@@ -168,6 +169,7 @@ public class CustomerService implements Serializable {
         //proses
         CustomerEntity customer = new CustomerEntity();
         customer=findById(customerModel.getCustId());
+        customerValidator.validateCustStatus(customer.getCustId(), customer.getCustStatus());
 
         if(customer.getCustStatus().equalsIgnoreCase(GlobalConstant.REC_STATUS_NONACTIVE)){
             throw new ClientException("Sukses hapus data pelanggan (" + customerModel.getCustId() );

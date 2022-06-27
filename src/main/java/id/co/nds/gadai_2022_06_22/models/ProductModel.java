@@ -17,7 +17,11 @@ public class ProductModel extends RecordModel {
     private Double productBiayaDenda;
     private Integer productBiayaDendaPeriode;
     private String productStatus;
-
+    private Double productLtvBefore;
+    private Double productBiayaJasaPenyBefore;
+    private Double productLtvAfter;
+    private Double productBiayaJasaPenyAfter;
+    
     public String getProductTipe() {
         return productTipe;
     }
@@ -102,12 +106,37 @@ public class ProductModel extends RecordModel {
     public void setProductBiayaDendaPeriode(Integer productBiayaDendaPeriode) {
         this.productBiayaDendaPeriode = productBiayaDendaPeriode;
     }
-
     public String getProductStatus() {
         return productStatus;
     }
     public void setProductStatus(String productStatus) {
         this.productStatus = productStatus;
     }
+    public Double getProductLtvBefore() {
+        return productLtvBefore;
+    }
+    public void setProductLtvBefore(Double productLtvBefore) {
+        this.productLtvBefore = productLtvBefore;
+    }
+    public Double getProductBiayaJasaPenyBefore() {
+        return productBiayaJasaPenyBefore;
+    }
+    public void setProductBiayaJasaPenyBefore(Double productBiayaJasaPenyBefore) {
+        this.productBiayaJasaPenyBefore = productBiayaJasaPenyBefore;
+    }
+    public Double getProductLtvAfter() {
+        return productLtvAfter;
+    }
+    public void setProductLtvAfter(Double productLtvAfter) {
+        this.productLtvAfter = productLtvAfter;
+    }
+    public Double getProductBiayaJasaPenyAfter() {
+        return productBiayaJasaPenyAfter;
+    }
+    public void setProductBiayaJasaPenyAfter(Double productBiayaJasaPenyAfter) {
+        this.productBiayaJasaPenyAfter = productBiayaJasaPenyAfter;
+    }
+
+    
 
 }

@@ -36,20 +36,15 @@ public class ProductSpec implements Specification<ProductEntity>{
             "%" +    productModel.getProductName().toLowerCase()+ "%"));
         }
 
-        // if (productModel.getProductKtp()!=null && productModel.getProductKtp().length() > 0 ){
-        //     p.getExpressions().add(cb.like(root.get("productKtp"),
-        //     "%" +    productModel.getProductKtp()+ "%"));
-        // }
-        // if(productModel.getProductHp()!=null && productModel.getProductHp().length() > 0){
-        //     p.getExpressions().add(cb.equal(root.get("productId"), productModel.getProductHp()));
-        // }
+        if(productModel.getProductLtv() != null && productModel.getProductLtvBefore() > 0 && productModel.getProductLtvAfter() > 0) {
+            p.getExpressions().add(cb.equal(root.get("productLtv"), productModel.getProductLtvBefore() 
+            + productModel.getProductLtvAfter()));
+        }
 
-        // if(productModel.getProductJenisUsahaId()!=null && productModel.getProductJenisUsahaId().length() > 0){
-        //     p.getExpressions().add(cb.equal(root.get("productId"), productModel.getProductJenisUsahaId()));
-        // }
-        // if(productModel.getActorId()!=null && productModel.getActorId() != 0){
-        //     p.getExpressions().add(cb.equal(root.get("productId"), productModel.getActorId()));
-        // }
+        if(productModel.getProductBiayaPeny() != null && productModel.getProductBiayaJasaPenyBefore() > 0 && productModel.getProductBiayaJasaPenyAfter() > 0) {
+            p.getExpressions().add(cb.equal(root.get("productBiayaJasaPeny"), productModel.getProductBiayaJasaPenyBefore()
+            + productModel.getProductBiayaJasaPenyAfter()));
+        }
 
         if (productModel.getProductStatus() != null
         && (productModel.getProductStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_ACTIVE)
