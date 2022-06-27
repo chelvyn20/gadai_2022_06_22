@@ -16,8 +16,4 @@ public class ResponseModel {
     public void setData(Object data) {
         this.data = data;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6118d85fd07953f4f757494d7cc1535e05d3f871
