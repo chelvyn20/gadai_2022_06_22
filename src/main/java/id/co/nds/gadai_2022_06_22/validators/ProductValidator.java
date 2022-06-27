@@ -119,7 +119,7 @@ public class ProductValidator {
     }
 
     public void validateProductType(String productType) throws ClientException {
-        if(productType.equalsIgnoreCase("Konsinyasi Cicilan Tetap") || productType != "Konsinyasi Cicilan Fleksibel") {
+        if(!productType.equalsIgnoreCase("konsinyasi cicilan tetap") && !productType.equalsIgnoreCase("konsinyasi cicilan fleksibel")) {
             throw new ClientException("Tipe produk harus berisikan 'Konsinyasi Cicilan Tetap' atau 'Konsinyasi Cicilan Fleksibel'");
         }
     }
@@ -151,14 +151,14 @@ public class ProductValidator {
     }
 
     public void validateProductAdminOpeningFeeType(String openingType) throws ClientException {
-        if(!openingType.equalsIgnoreCase("PERSEN") || !openingType.equalsIgnoreCase("NOMINAL")) {
-            throw new ClientException("Tipe biaya admin buka tidak valid");
+        if(!openingType.equalsIgnoreCase("persen") && !openingType.equalsIgnoreCase("nominal")) {
+            throw new ClientException("Tipe biaya admin buka harus berisikan 'Persen' atau 'Nominal'");
         }
     }
 
     public void validateProductAdminClosingFeeType(String openingType) throws ClientException {
-        if(!openingType.equalsIgnoreCase("PERSEN") || !openingType.equalsIgnoreCase("NOMINAL")) {
-            throw new ClientException("Tipe biaya admin tutup tidak valid");
+        if(!openingType.equalsIgnoreCase("PERSEN") && !openingType.equalsIgnoreCase("NOMINAL")) {
+            throw new ClientException("Tipe biaya admin tutup harus berisikan 'Persen' atau 'Nominal'");
         }
     }
 
@@ -185,7 +185,13 @@ public class ProductValidator {
             throw new ClientException("Periode jasa penyimpanan tidak valid");
         }
 
-        validateJangkaWaktu(jangkaWaktu, productType);
+        if(periodePeny > jangkaWaktu) {
+            throw new ClientException("Periode biaya jasa penyimpanan tidak boleh lebih besar daripada jangka waktu");
+        }
+
+        if(jangkaWaktu % periodePeny > 0) {
+            throw new ClientException("Periode biaya jasa penyimpanan harus merupakan suatu kelipatan dari jangka waktu");
+        }
     }
 
     public void validateProductBiayaDenda(Double productBiayaDenda) throws ClientException {

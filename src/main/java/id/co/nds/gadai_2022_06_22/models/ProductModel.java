@@ -18,6 +18,10 @@ public class ProductModel {
     private Integer productBiayaDendaPeriode;
     private Integer actorId;
     private String recStatus;
+    private Double productLtvBefore;
+    private Double productBiayaJasaPenyBefore;
+    private Double productLtvAfter;
+    private Double productBiayaJasaPenyAfter;
     
     public Integer getId() {
         return id;
@@ -120,6 +124,30 @@ public class ProductModel {
     }
     public void setRecStatus(String recStatus) {
         this.recStatus = recStatus;
+    }
+    public Double getProductLtvBefore() {
+        return productLtvBefore;
+    }
+    public void setProductLtvBefore(Double productLtvBefore) {
+        this.productLtvBefore = productLtvBefore;
+    }
+    public Double getProductBiayaJasaPenyBefore() {
+        return productBiayaJasaPenyBefore;
+    }
+    public void setProductBiayaJasaPenyBefore(Double productBiayaJasaPenyBefore) {
+        this.productBiayaJasaPenyBefore = productBiayaJasaPenyBefore;
+    }
+    public Double getProductLtvAfter() {
+        return productLtvAfter;
+    }
+    public void setProductLtvAfter(Double productLtvAfter) {
+        this.productLtvAfter = productLtvAfter;
+    }
+    public Double getProductBiayaJasaPenyAfter() {
+        return productBiayaJasaPenyAfter;
+    }
+    public void setProductBiayaJasaPenyAfter(Double productBiayaJasaPenyAfter) {
+        this.productBiayaJasaPenyAfter = productBiayaJasaPenyAfter;
     }
 
 }
