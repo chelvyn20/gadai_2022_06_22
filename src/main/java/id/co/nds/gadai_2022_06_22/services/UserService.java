@@ -20,20 +20,20 @@ import id.co.nds.gadai_2022_06_22.repos.specs.UserSpec;
 import id.co.nds.gadai_2022_06_22.validators.UserValidator;
 
 @Service
-public class UserService implements Serializable{
+public class UserService implements Serializable {
     @Autowired
     private UserRepo userRepo;
 
     UserValidator userValidator = new UserValidator();
 
-    public UserEntity doInsert(UserModel userModel) throws ClientException, Exception{
+    public UserEntity doInsert(UserModel userModel) throws ClientException, Exception {
         userValidator.notNullCheckId(userModel.getId());
         userValidator.nullCheckUserId(userModel.getUserId());
         userValidator.validateUserId(userModel.getUserId());
 
         Long countUserId = userRepo.countByUserId(userModel.getUserId());
 
-        if(countUserId > 0) {
+        if (countUserId > 0) {
             throw new ClientException("User id telah terdaftar");
         }
 
@@ -44,14 +44,14 @@ public class UserService implements Serializable{
 
         Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserNoHp());
 
-        if(countPhoneNumber > 0) {
+        if (countPhoneNumber > 0) {
             throw new ClientException("Nomor Hp telah terdaftar");
         }
 
         userValidator.nullCheckUserMaxTransaction(userModel.getUserTxnLimit());
         userValidator.validateUserTransactionLimit(userModel.getUserTxnLimit());
-        userValidator.nullCheckUserEntryDate(userModel.getEntryDate());    
-        userValidator.validateEntryDate(userModel.getEntryDate());  
+        userValidator.nullCheckUserEntryDate(userModel.getEntryDate());
+        userValidator.validateEntryDate(userModel.getEntryDate());
 
         UserEntity user = new UserEntity();
         user.setUserId(userModel.getUserId());
@@ -64,58 +64,60 @@ public class UserService implements Serializable{
         DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
         user.setEntryDate(entryDate);
-        user.setCreatedInputDetail(userModel.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
+        user.setCreatedInputDetail(userModel.getUserId() + "-" + userModel.getUserName() + "/"
+                + new Timestamp(System.currentTimeMillis()));
         user.setRecStatus(GlobalConstant.REC_STATUS_ACTIVE);
-        
+
         return userRepo.save(user);
     }
 
     public UserEntity doUpdate(UserModel userModel) throws ClientException, NotFoundException {
         userValidator.nullCheckId(userModel.getId());
 
-        if(!userRepo.existsById(userModel.getId())) {
+        if (!userRepo.existsById(userModel.getId())) {
             throw new NotFoundException("Tidak dapat menemukan user dengan id: " + userModel.getId());
         }
 
         UserEntity user = new UserEntity();
         user = doGetDetailUser(userModel.getId());
 
-        if(userModel.getUserName() != null) {
+        if (userModel.getUserName() != null) {
             userValidator.validateUserName(userModel.getUserName());
             user.setUserName(userModel.getUserName());
         }
 
-        if(userModel.getUserNoHp() != null) {
+        if (userModel.getUserNoHp() != null) {
             userValidator.validatePhoneNumber(userModel.getUserNoHp());
             Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserNoHp());
 
-            if(countPhoneNumber > 0) {
+            if (countPhoneNumber > 0) {
                 throw new ClientException("Nomor Hp telah terdaftar");
             }
 
             user.setUserNoHp(userModel.getUserNoHp());
         }
 
-        if(userModel.getUserDesc() != null) {
+        if (userModel.getUserDesc() != null) {
             userValidator.validateUserDesc(userModel.getUserDesc());
             user.setUserDesc(userModel.getUserDesc());
         }
 
-        if(userModel.getUserTxnLimit() != null) {
+        if (userModel.getUserTxnLimit() != null) {
             userValidator.validateUserTransactionLimit(userModel.getUserTxnLimit());
             user.setUserTxnLimit(userModel.getUserTxnLimit());
         }
 
-        if(userModel.getEntryDate() != null) {
+        if (userModel.getEntryDate() != null) {
             DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
             LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
             userValidator.validateEntryDate(userModel.getEntryDate());
             user.setEntryDate(entryDate);
-        }      
+        }
 
         user.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
         user.setUpdatedBy(userModel.getActorId() == null ? 0 : userModel.getActorId());
-        user.setUpdatedInputDetail(user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
+        user.setUpdatedInputDetail(
+                user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
 
         return userRepo.save(user);
     }
@@ -124,14 +126,14 @@ public class UserService implements Serializable{
         userValidator.nullCheckId(userModel.getId());
         userValidator.validateId(userModel.getId());
 
-        if(!userRepo.existsById(userModel.getId())) {
+        if (!userRepo.existsById(userModel.getId())) {
             throw new NotFoundException("Cannot find user with id: " + userModel.getId());
         }
 
         UserEntity user = new UserEntity();
         user = doGetDetailUser(userModel.getId());
 
-        if(user.getRecStatus().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE)) {
+        if (user.getRecStatus().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE)) {
             throw new ClientException("User id (" + userModel.getId() + ") is already been deleted.");
         }
 
@@ -153,7 +155,6 @@ public class UserService implements Serializable{
     public UserEntity doGetDetailUser(Integer id) throws ClientException, NotFoundException {
         userValidator.nullCheckId(id);
         userValidator.validateId(id);
-
 
         UserEntity user = userRepo.findById(id).orElse(null);
         userValidator.nullCheckObject(user);
