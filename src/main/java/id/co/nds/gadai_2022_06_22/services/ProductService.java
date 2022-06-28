@@ -28,9 +28,7 @@ public class ProductService implements Serializable {
     public ProductEntity add(ProductModel productModel) throws ClientException{
         productValidator.nullChekcProductTipe(productModel.getProductTipe());
         productValidator.validateProductTipe(productModel.getProductTipe());
-
-        productValidator.nullChekcProductId(productModel.getProductId());
-        productValidator.validateProductId(productModel.getProductId());
+        productValidator.notnullChekcProductId(productModel.getProductId());
         productValidator.nullChekcProductName(productModel.getProductName());
         productValidator.validateName(productModel.getProductName());
         productValidator.nullChekcProductJangkaWaktu(productModel.getProductJangkaWaktu());

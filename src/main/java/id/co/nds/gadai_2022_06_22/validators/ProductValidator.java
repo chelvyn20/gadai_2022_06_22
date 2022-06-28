@@ -117,8 +117,8 @@ public class ProductValidator {
     }
 
     public void validateProductId (String id) throws ClientException{
-        if (id.trim().equalsIgnoreCase(" ") || id.length() > 20){
-            throw new ClientException("Id produk tidak boleh kosong dan tidak boleh melebihi 20 karakter");
+        if (id.length()!=6 || !id.startsWith("PRD")  ){
+            throw new ClientException("Id Cicilan harus 6 digit dan dimulai dengan format 'PRD'");
         }
     }
     

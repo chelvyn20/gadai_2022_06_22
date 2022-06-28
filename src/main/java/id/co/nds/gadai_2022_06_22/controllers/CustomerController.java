@@ -54,7 +54,7 @@ public class CustomerController {
     } 
  
     @GetMapping(value = "/get")
-    public ResponseEntity<ResponseModel>doDisplayAllPelanggan(){
+    public ResponseEntity<ResponseModel>doGetListPelanggan(){
         try {
             //request
             List<CustomerEntity> customers = customerService.findAll();

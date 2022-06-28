@@ -24,10 +24,7 @@ public class CustomerService implements Serializable {
     @Autowired
     private CustomerRepo customerRepo;
 
-  
-
-    CustomerValidator customerValidator = new CustomerValidator();
-    
+    CustomerValidator customerValidator = new CustomerValidator(); 
 
     public CustomerEntity add(CustomerModel customerModel) throws ClientException{
         customerValidator.notnullChekcCustId(customerModel.getCustId());
@@ -180,13 +177,5 @@ public class CustomerService implements Serializable {
 
         return customerRepo.save(customer);
     }
-
-    
-   
-
-
-
-    
-   
 
 }

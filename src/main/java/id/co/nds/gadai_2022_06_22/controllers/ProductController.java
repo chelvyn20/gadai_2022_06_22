@@ -55,7 +55,7 @@ public class ProductController {
     } 
  
     @GetMapping(value = "/get")
-    public ResponseEntity<ResponseModel>doDisplayAllProduk(){
+    public ResponseEntity<ResponseModel>doGetListProduk(){
         try {
             //request
             List<ProductEntity> products = productService.findAll();

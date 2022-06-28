@@ -7,9 +7,10 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 
@@ -18,9 +19,12 @@ import javax.persistence.Table;
 public class ProductEntity {
     @Column(name="product_tipe")
     private String productTipe;
-     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+
+    @Id
+    @GenericGenerator(name = "product_id_seq",
+    strategy = "id.co.nds.gadai_2022_06_22.generators.ProductIdGenerator")
+    @GeneratedValue(generator = "product_id_seq")
+         
     @Column(name="product_id")
     private String productId;
 
