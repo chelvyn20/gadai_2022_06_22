@@ -14,30 +14,28 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "ms_customer")
 public class CustomerEntity {
     @Id
-
     @GenericGenerator(name = "customer_id_seq",
     strategy = "id.co.nds.gadai_2022_06_22.generators.CustomerIdGenerator")
-    
     @GeneratedValue(generator = "customer_id_seq")
-    @Column(name="cust_id")
+    @Column(name="customer_id")
     private String custId;
 
-    @Column(name="cust_name")
+    @Column(name="customer_name")
     private String custName;
 
-    @Column(name="cust_ktp")
+    @Column(name="customer_identity_no")
     private String custKtp;
 
-    @Column(name="cust_hp")
+    @Column(name="customer_phone")
     private String custHp;
 
-    @Column(name="cust_jk")
+    @Column(name="customer_gender")
     private String custJk;
 
-    @Column(name="cust_jenis_usaha_id")
+    @Column(name="customer_jenis_usaha")
     private String custJenisUsahaId;
 
-    @Column(name="cust_limit_txn")
+    @Column(name="customer_max_limit")
     private Double custLimitTxn;
 
     @Column(name="created_date")
@@ -58,7 +56,7 @@ public class CustomerEntity {
     @Column(name="deleter_id")
     private Integer deleterId;
 
-    @Column(name="cust_status")
+    @Column(name="rec_status")
     private String custStatus;
 
     public String getCustId() {

@@ -14,14 +14,11 @@ import javax.persistence.Table;
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "product_id")
+    private String productId;
 
     @Column(name = "product_type")
     private String productType;
-
-    @Column(name = "product_id")
-    private String productId;
 
     @Column(name = "product_name")
     private String productName;
@@ -29,39 +26,39 @@ public class ProductEntity {
     @Column(name = "product_desc")
     private String productDesc;
 
-    @Column(name = "product_jangka_waktu")
-    private Integer productJangkaWaktu;
-
     @Column(name = "product_ltv")
     private Double productLtv;
-    
-    @Column(name = "product_biaya_admin_buka_tipe")
+
+    @Column(name = "product_tenor")
+    private Integer productJangkaWaktu;
+
+    @Column(name = "biaya_adm_buka_type")
     private String productAdminOpeningFeeType;
 
-    @Column(name = "product_biaya_admin_tutup_tipe")
-    private String productAdminClosingFeeType;
-
-    @Column(name = "product_biaya_admin_buka")
+    @Column(name = "biaya_adm_buka_val")
     private Double productAdminOpeningFee;
 
-    @Column(name = "product_biaya_admin_tutup")
+    @Column(name = "biaya_adm_tutup_type")
+    private String productAdminClosingFeeType;
+
+    @Column(name = "biaya_adm_tutup_val")
     private Double productAdminClosingFee;
 
-    @Column(name = "product_biaya_jasa_peny")
+    @Column(name = "biaya_js_peny_rate")
     private Double productBiayaJasaPeny;
 
-    @Column(name = "product_biaya_jasa_peny_periode")
+    @Column(name = "biaya_js_peny_per")
     private Integer productBiayaJasaPenyPeriode;
 
-    @Column(name = "product_biaya_denda")
+    @Column(name = "biaya_denda_keterlambatan_rate")
     private Double productBiayaDenda;
 
-    @Column(name = "product_biaya_denda_periode")
+    @Column(name = "biaya_denda_keterlambatan_per")
     private Integer productBiayaDendaPeriode;
-  
+
     @Column(name = "rec_status")
     private String recStatus;
-    
+
     @Column(name = "created_date")
     private Timestamp createdDate;
 
@@ -79,14 +76,6 @@ public class ProductEntity {
 
     @Column(name = "deleted_by")
     private Integer deletedBy;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getProductType() {
         return productType;

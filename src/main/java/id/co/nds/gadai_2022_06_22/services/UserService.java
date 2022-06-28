@@ -64,7 +64,7 @@ public class UserService implements Serializable{
         DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
         user.setEntryDate(entryDate);
-        user.setCreatedInputDetail(userModel.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
+        // user.setCreatedInputDetail(userModel.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
         user.setRecStatus(GlobalConstant.REC_STATUS_ACTIVE);
         
         return userRepo.save(user);
@@ -115,7 +115,7 @@ public class UserService implements Serializable{
 
         user.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
         user.setUpdatedBy(userModel.getActorId() == null ? 0 : userModel.getActorId());
-        user.setUpdatedInputDetail(user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
+        // user.setUpdatedInputDetail(user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
 
         return userRepo.save(user);
     }

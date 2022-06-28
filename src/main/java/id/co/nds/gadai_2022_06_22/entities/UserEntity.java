@@ -15,32 +15,29 @@ import javax.persistence.Table;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
     @Column(name = "user_id")
     private String userId;
 
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "user_no_hp")
+    @Column(name = "user_phone")
     private String userNoHp;
 
-    @Column(name = "user_desc")
+    @Column(name = "user_notes")
     private String userDesc;
 
-    @Column(name = "user_txn_limit")
+    @Column(name = "max_limit")
     private Double userTxnLimit;
 
-    @Column(name = "entry_date")
+    @Column(name = "register_date")
     private LocalDate entryDate;
     
-    @Column(name = "created_input_detail")
-    private String createdInputDetail;
+    // @Column(name = "created_input_detail")
+    // private String createdInputDetail;
 
-    @Column(name = "updated_input_detail")
-    private String updatedInputDetail;
+    // @Column(name = "updated_input_detail")
+    // private String updatedInputDetail;
 
     @Column(name = "created_date")
     private Timestamp createdDate;
@@ -62,14 +59,6 @@ public class UserEntity {
 
     @Column(name = "rec_status")
     private String recStatus;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUserId() {
         return userId;
@@ -119,21 +108,21 @@ public class UserEntity {
         this.entryDate = entryDate;
     }
 
-    public String getCreatedInputDetail() {
-        return createdInputDetail;
-    }
+    // public String getCreatedInputDetail() {
+    //     return createdInputDetail;
+    // }
 
-    public void setCreatedInputDetail(String createdInputDetail) {
-        this.createdInputDetail = createdInputDetail;
-    }
+    // public void setCreatedInputDetail(String createdInputDetail) {
+    //     this.createdInputDetail = createdInputDetail;
+    // }
 
-    public String getUpdatedInputDetail() {
-        return updatedInputDetail;
-    }
+    // public String getUpdatedInputDetail() {
+    //     return updatedInputDetail;
+    // }
 
-    public void setUpdatedInputDetail(String updatedInputDetail) {
-        this.updatedInputDetail = updatedInputDetail;
-    }
+    // public void setUpdatedInputDetail(String updatedInputDetail) {
+    //     this.updatedInputDetail = updatedInputDetail;
+    // }
 
     public Timestamp getCreatedDate() {
         return createdDate;

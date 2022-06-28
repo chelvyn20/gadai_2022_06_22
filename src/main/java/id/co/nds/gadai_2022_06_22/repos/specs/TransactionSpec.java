@@ -7,22 +7,22 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import id.co.nds.gadai_2022_06_22.entities.TransactionEntity;
-import id.co.nds.gadai_2022_06_22.models.TransactionModel;
+import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
+import id.co.nds.gadai_2022_06_22.models.CicilanTetapModel;
 
-public class TransactionSpec implements Specification<TransactionEntity> {
-    private TransactionModel transactionModel;
+public class TransactionSpec implements Specification<CicilanTetapEntity> {
+    private CicilanTetapModel cicilanTetapModel;
 
-    public TransactionSpec(TransactionModel transactionModel){
+    public TransactionSpec(CicilanTetapModel cicilanTetapModel){
         super();
-        this.transactionModel=transactionModel;
+        this.cicilanTetapModel=cicilanTetapModel;
     }
 
     @Override
-    public Predicate toPredicate(Root<TransactionEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+    public Predicate toPredicate(Root<CicilanTetapEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         Predicate p = criteriaBuilder.and();
 
-        query.orderBy(criteriaBuilder.asc(root.get("id")));
+        query.orderBy(criteriaBuilder.asc(root.get("no_transaksi")));
         return p;    
     }
     
