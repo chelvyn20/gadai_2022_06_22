@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,7 +19,6 @@ public class CustomerEntity {
     strategy = "id.co.nds.gadai_2022_06_22.generators.CustomerIdGenerator")
     
     @GeneratedValue(generator = "customer_id_seq")
-    // @JoinColumn(name = "cust_id", referencedColumnName = "id")
     @Column(name="cust_id")
     private String custId;
 
