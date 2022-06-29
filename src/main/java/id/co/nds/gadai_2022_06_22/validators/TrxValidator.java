@@ -1,10 +1,12 @@
 package id.co.nds.gadai_2022_06_22.validators;
 
+import org.apache.commons.lang3.StringUtils;
+
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 
-public class CicilanValidator {
+public class TrxValidator {
     public void nullChekcNoTrans(String noTrx) throws ClientException{
         if(noTrx==null){
             throw new ClientException( "Nomor Transaksi tidak boleh kosong");
@@ -18,6 +20,7 @@ public class CicilanValidator {
 
         }
     }
+
     
     public void nullChekcProductId(String id ) throws ClientException {
         if(id==null){
@@ -26,9 +29,24 @@ public class CicilanValidator {
         }
     }
 
-    public void nullChekcCustId(String ktp ) throws ClientException {
-        if(ktp==null){
-            throw new ClientException( "Nomor KTP Cicilan tidak boleh kosong");
+
+    public void nullChekcCustId(String id ) throws ClientException {
+        if(id==null){
+            throw new ClientException( "Customer id tidak boleh kosong");
+
+        }
+    }
+
+    public void nullChekcTotalNilaiTaksiran(Double nilai) throws ClientException{
+        if(nilai==null){
+            throw new ClientException( "Total Nilai taksiran tidak boleh kosong");
+
+        }
+    }
+
+    public void nullChekcNilaicairanPelanggan(Double dana) throws ClientException{
+        if(dana==null){
+            throw new ClientException( "Nilai Pencairan pelanggan tidak boleh kosong");
 
         }
     }
@@ -41,11 +59,13 @@ public class CicilanValidator {
         }
     }
     
-    public void validateNoTrans (String id) throws ClientException{
-        if (id.length()!=11 || !id.startsWith("YYMM")  ){
+    public void validateNoTrans (String noTrans) throws ClientException{
+        if (noTrans.length()!=11 || !noTrans.startsWith("YYMM")  ){
             throw new ClientException("Id Cicilan harus 11 digit dan dimulai dengan format 'YYMM'");
         }
     }
+
+    
     
     public void validateProductId (String id) throws ClientException{
         
@@ -54,12 +74,32 @@ public class CicilanValidator {
         }
     }
 
+
     public void validateCustId (String id) throws ClientException{
         if (id.length()!=10 || !id.startsWith("YYMM")  ){
             throw new ClientException("Id Cicilan harus 10 digit dan dimulai dengan format 'YYMM'");
         }
 
     }    
+
+    public void validateTotalNilaiTaksiran(Double dana) throws ClientException{
+        if(dana<=0){
+            throw new ClientException( "Nilai Pencairan pelanggan tidak valid");
+        }
+    }
+
+    public void validateNilaicairanPelanggan(Double dana) throws ClientException{
+        if(dana<=0){
+            throw new ClientException( "Nilai Pencairan pelanggan tidak valid");
+        }
+    }
+
+    public void validateDiskonAdminBuka(Double dana) throws ClientException{
+        if(dana<0){
+            throw new ClientException( "Nilai Pencairan pelanggan tidak valid");
+        }
+    }
+
     
     public void validateTransStatus (String id, String status) throws ClientException{
         if (status.equalsIgnoreCase(GlobalConstant.REC_STATUS_NONACTIVE)){

@@ -41,16 +41,13 @@ public class CustomerSpec implements Specification<CustomerEntity>{
             "%" +    customerModel.getCustKtp()+ "%"));
         }
         if(customerModel.getCustHp()!=null && customerModel.getCustHp().length() > 0){
-            p.getExpressions().add(cb.equal(root.get("custId"), customerModel.getCustHp()));
+            p.getExpressions().add(cb.equal(root.get("custHp"), customerModel.getCustHp()));
         }
 
         if(customerModel.getCustJenisUsahaId()!=null && customerModel.getCustJenisUsahaId().length() > 0){
-            p.getExpressions().add(cb.equal(root.get("custId"), customerModel.getCustJenisUsahaId()));
+            p.getExpressions().add(cb.equal(root.get("custJenisUsahaId"), customerModel.getCustJenisUsahaId()));
         }
-        if(customerModel.getActorId()!=null && customerModel.getActorId() != 0){
-            p.getExpressions().add(cb.equal(root.get("custId"), customerModel.getActorId()));
-        }
-
+       
         if (customerModel.getCustStatus() != null
         && (customerModel.getCustStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_ACTIVE)
                 || customerModel.getCustStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_NONACTIVE))) {

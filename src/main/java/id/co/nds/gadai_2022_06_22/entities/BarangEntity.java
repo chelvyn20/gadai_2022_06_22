@@ -1,5 +1,6 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -7,16 +8,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeBarangId;
 
 @Entity
 @Table(name = "tx_transaksi_barang;")
-public class BarangEntity {
-
+@IdClass(CompositeBarangId.class)
+public class BarangEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="no_barang")
-    private Integer noBarang;
+    
+    @Column(name="no_urut")
+    private Integer noUrut;
+    
+    @Id
+    @GenericGenerator(name = "no_transaksi_seq",
+    strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
+    @GeneratedValue(generator = "no_transaksi_seq")
+    @JoinColumn(name="no_transaksi", referencedColumnName =  "no_transaksi")
+    @Column(name="no_transaksi")
+    private String noTransaksi;
 
     @Column(name="nama_barang")
     private String namaBarang;
@@ -54,12 +70,20 @@ public class BarangEntity {
     @Column(name="status_barang")
     private String statusBarang;
 
-    public Integer getNoBarang() {
-        return noBarang;
+    public Integer getNoUrut() {
+        return noUrut;
     }
 
-    public void setNoBarang(Integer noBarang) {
-        this.noBarang = noBarang;
+    public void setNoUrut(Integer noUrut) {
+        this.noUrut = noUrut;
+    }
+
+    public String getNoTransaksi() {
+        return noTransaksi;
+    }
+
+    public void setNoTransaksi(String noTransaksi) {
+        this.noTransaksi = noTransaksi;
     }
 
     public String getNamaBarang() {
@@ -157,5 +181,7 @@ public class BarangEntity {
     public void setStatusBarang(String statusBarang) {
         this.statusBarang = statusBarang;
     }
- 
+
+    
+   
 }

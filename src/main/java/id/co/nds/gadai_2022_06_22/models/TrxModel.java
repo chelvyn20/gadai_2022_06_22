@@ -1,34 +1,36 @@
 package id.co.nds.gadai_2022_06_22.models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
-public class CicilanModel extends CustomerModel{
+public class TrxModel extends CustomerModel{
     
     private String noTransaksi;
-    private String produtId;
+    private String productId;
     private String productName;
     private Double totalNilaiTaksiran;
     private Double nilaiPencairanPelanggan;
     private Double diskonAdmBuka;
     private Integer actorId;
     private String statusTrans;
-    private Timestamp trxDateBegin;
-    private Timestamp trxDateEnd;
-
-
+    private Date trxDateBegin;
+    private Date trxDateEnd;
+    private List<daftarBarangGadai> barang = new ArrayList<>();
     public String getNoTransaksi() {
         return noTransaksi;
     }
     public void setNoTransaksi(String noTransaksi) {
         this.noTransaksi = noTransaksi;
     }
-    public String getProdutId() {
-        return produtId;
+    public String getProductId() {
+        return productId;
     }
-    public void setProdutId(String produtId) {
-        this.produtId = produtId;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
     public String getProductName() {
         return productName;
@@ -66,17 +68,25 @@ public class CicilanModel extends CustomerModel{
     public void setStatusTrans(String statusTrans) {
         this.statusTrans = statusTrans;
     }
-    public Timestamp getTrxDateBegin() {
+    public Date getTrxDateBegin() {
         return trxDateBegin;
     }
-    public void setTrxDateBegin(Timestamp trxDateBegin) {
+    public void setTrxDateBegin(Date trxDateBegin) {
         this.trxDateBegin = trxDateBegin;
     }
-    public Timestamp getTrxDateEnd() {
+    public Date getTrxDateEnd() {
         return trxDateEnd;
     }
-    public void setTrxDateEnd(Timestamp trxDateEnd) {
+    public void setTrxDateEnd(Date trxDateEnd) {
         this.trxDateEnd = trxDateEnd;
     }
+    public List<daftarBarangGadai> getBarang() {
+        return barang;
+    }
+    public void setBarang(List<daftarBarangGadai> barang) {
+        this.barang = barang;
+    }
+    
+   
     
 }

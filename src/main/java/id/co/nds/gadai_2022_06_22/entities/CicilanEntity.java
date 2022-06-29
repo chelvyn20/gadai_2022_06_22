@@ -1,11 +1,13 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -13,46 +15,41 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "tx_cicilan")
 public class CicilanEntity {
+    
     @Id
-    @GenericGenerator(name = "cicilan_id_seq",
+    @GenericGenerator(name = "no_transaksi_seq",
     strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
-    @GeneratedValue(generator = "cicilan_id_seq")
+    @GeneratedValue(generator = "no_transaksi_seq")
 
     @Column(name="no_transaksi")
     private String noTransaksi;
 
-    @Column(name="product_id")
-    private String productId;
-
-    @Column(name="cust_id")
-    private String custId;
+    @Column(name="cicilan_ke")
+    private String cicilanKe;
 
     @Column(name="total_pinjaman")
     private Double totalPinjaman;
 
-    @Column(name="pokok")
-    private Double pokok;
+    @Column(name="tx_pokok")
+    private Double txPokok;
 
-    @Column(name="bunga")
-    private Double bunga;
-
-    @Column(name="no_barang")
-    private Integer noBarang;
+    @Column(name="tx_bunga")
+    private Double txBunga;
 
     @Column(name="trx_date")
     private Timestamp txrDate;
 
-    @Column(name="tanggal_aktif")
-    private Timestamp tglAktif;
-
-    @Column(name="tanggal_jatuh_tempo")
-    private Timestamp tglJatuhTempo;
-
-    @Column(name="tanggal_bayar")
-    private Timestamp tglBayar;
-
     @Column(name="actor_id")
     private Integer actorId;
+
+    @Column(name="tanggal_aktif")
+    private Date tglAktif;
+
+    @Column(name="tanggal_jatuh_tempo")
+    private Date tglJatuhTempo;
+
+    @Column(name="tanggal_bayar")
+    private Date tglBayar;
 
     @Column(name="status_trans")
     private String statusTrans;
@@ -65,20 +62,12 @@ public class CicilanEntity {
         this.noTransaksi = noTransaksi;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getCicilanKe() {
+        return cicilanKe;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getCustId() {
-        return custId;
-    }
-
-    public void setCustId(String custId) {
-        this.custId = custId;
+    public void setCicilanKe(String cicilanKe) {
+        this.cicilanKe = cicilanKe;
     }
 
     public Double getTotalPinjaman() {
@@ -89,28 +78,20 @@ public class CicilanEntity {
         this.totalPinjaman = totalPinjaman;
     }
 
-    public Double getPokok() {
-        return pokok;
+    public Double getTxPokok() {
+        return txPokok;
     }
 
-    public void setPokok(Double pokok) {
-        this.pokok = pokok;
+    public void setTxPokok(Double txPokok) {
+        this.txPokok = txPokok;
     }
 
-    public Double getBunga() {
-        return bunga;
+    public Double getTxBunga() {
+        return txBunga;
     }
 
-    public void setBunga(Double bunga) {
-        this.bunga = bunga;
-    }
-
-    public Integer getNoBarang() {
-        return noBarang;
-    }
-
-    public void setNoBarang(Integer noBarang) {
-        this.noBarang = noBarang;
+    public void setTxBunga(Double txBunga) {
+        this.txBunga = txBunga;
     }
 
     public Timestamp getTxrDate() {
@@ -121,36 +102,36 @@ public class CicilanEntity {
         this.txrDate = txrDate;
     }
 
-    public Timestamp getTglAktif() {
-        return tglAktif;
-    }
-
-    public void setTglAktif(Timestamp tglAktif) {
-        this.tglAktif = tglAktif;
-    }
-
-    public Timestamp getTglJatuhTempo() {
-        return tglJatuhTempo;
-    }
-
-    public void setTglJatuhTempo(Timestamp tglJatuhTempo) {
-        this.tglJatuhTempo = tglJatuhTempo;
-    }
-
-    public Timestamp getTglBayar() {
-        return tglBayar;
-    }
-
-    public void setTglBayar(Timestamp tglBayar) {
-        this.tglBayar = tglBayar;
-    }
-
     public Integer getActorId() {
         return actorId;
     }
 
     public void setActorId(Integer actorId) {
         this.actorId = actorId;
+    }
+
+    public Date getTglAktif() {
+        return tglAktif;
+    }
+
+    public void setTglAktif(Date tglAktif) {
+        this.tglAktif = tglAktif;
+    }
+
+    public Date getTglJatuhTempo() {
+        return tglJatuhTempo;
+    }
+
+    public void setTglJatuhTempo(Date tglJatuhTempo) {
+        this.tglJatuhTempo = tglJatuhTempo;
+    }
+
+    public Date getTglBayar() {
+        return tglBayar;
+    }
+
+    public void setTglBayar(Date tglBayar) {
+        this.tglBayar = tglBayar;
     }
 
     public String getStatusTrans() {
@@ -161,5 +142,6 @@ public class CicilanEntity {
         this.statusTrans = statusTrans;
     }
 
+   
    
 }
