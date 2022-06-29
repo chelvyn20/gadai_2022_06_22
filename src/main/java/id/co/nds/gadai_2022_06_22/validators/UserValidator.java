@@ -7,20 +7,14 @@ import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 
 public class UserValidator {
-    public void nullCheckId(Integer id) throws ClientException{
-        if(id == null) {
-            throw new ClientException("Id perlu diisi");
-        }
-    }
-
-    public void notNullCheckId(Integer id) throws ClientException{
-        if(id != null) {
+    public void notNullCheckUserId(String userId) throws ClientException{
+        if(userId != null) {
             throw new ClientException("Id dibuat secara otomatis, jangan masukan id");
         }
     }
 
-    public void nullCheckUserId(String id) throws ClientException {
-        if(id == null) {
+    public void nullCheckUserId(String userId) throws ClientException {
+        if(userId == null) {
             throw new ClientException("User id perlu diisi");
         }
     }

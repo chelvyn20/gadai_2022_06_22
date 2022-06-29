@@ -1,9 +1,13 @@
 package id.co.nds.gadai_2022_06_22.models;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-public class CicilanTetapModel {
+import id.co.nds.gadai_2022_06_22.entities.BarangEntity;
+
+public class CicilanTetapModel extends BarangModel {
     private String noTransaksi;
+    private List<BarangEntity> daftarBarangGadai;
     private Double totalNilaiTak;
     private Double nilaiPencairanPelanggan;
     private Double diskonAdmBuka;
@@ -28,6 +32,12 @@ public class CicilanTetapModel {
     }
     public void setNoTransaksi(String noTransaksi) {
         this.noTransaksi = noTransaksi;
+    }
+    public List<BarangEntity> getDaftarBarangGadai() {
+        return daftarBarangGadai;
+    }
+    public void setListBarangEntity(List<BarangEntity> daftarBarangGadai) {
+        this.daftarBarangGadai = daftarBarangGadai;
     }
     public Double getTotalNilaiTak() {
         return totalNilaiTak;
@@ -137,4 +147,5 @@ public class CicilanTetapModel {
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
     }
+
 }

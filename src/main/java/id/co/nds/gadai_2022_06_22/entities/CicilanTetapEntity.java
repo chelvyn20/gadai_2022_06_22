@@ -1,12 +1,14 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -19,6 +21,9 @@ public class CicilanTetapEntity {
     @GeneratedValue(generator = "transaksi_no_seq")
     @Column(name = "no_transaksi")
     private String noTransaksi;
+
+    @OneToMany(targetEntity = BarangEntity.class, mappedBy = "noTransaksi")
+    private List<BarangEntity> daftarBarang;
 
     @Column(name = "total_nilai_tak")
     private Double totalNilaiTak;
@@ -45,10 +50,10 @@ public class CicilanTetapEntity {
     private Double totalNilaiPinj;
 
     @Column(name = "tanggal_tx")
-    private Timestamp tanggalTx;
+    private Timestamp tglTx;
 
     @Column(name = "tanggal_jatuh_tempo")
-    private Timestamp tanggalJatuhTempo;
+    private Timestamp tglJatuhTempo;
 
     @Column(name = "tx_biaya_jasa_peny")
     private Double txBiayaJasaPeny;
@@ -82,6 +87,14 @@ public class CicilanTetapEntity {
 
     public void setNoTransaksi(String noTransaksi) {
         this.noTransaksi = noTransaksi;
+    }
+
+    public List<BarangEntity> getDaftarBarang() {
+        return daftarBarang;
+    }
+
+    public void setDaftarBarang(List<BarangEntity> daftarBarang) {
+        this.daftarBarang = daftarBarang;
     }
 
     public Double getTotalNilaiTak() {
@@ -148,20 +161,20 @@ public class CicilanTetapEntity {
         this.totalNilaiPinj = totalNilaiPinj;
     }
 
-    public Timestamp getTanggalTx() {
-        return tanggalTx;
+    public Timestamp getTglTx() {
+        return tglTx;
     }
 
-    public void setTanggalTx(Timestamp tanggalTx) {
-        this.tanggalTx = tanggalTx;
+    public void setTglTx(Timestamp tglTx) {
+        this.tglTx = tglTx;
     }
 
-    public Timestamp getTanggalJatuhTempo() {
-        return tanggalJatuhTempo;
+    public Timestamp getTglJatuhTempo() {
+        return tglJatuhTempo;
     }
 
-    public void setTanggalJatuhTempo(Timestamp tanggalJatuhTempo) {
-        this.tanggalJatuhTempo = tanggalJatuhTempo;
+    public void setTglJatuhTempo(Timestamp tglJatuhTempo) {
+        this.tglJatuhTempo = tglJatuhTempo;
     }
 
     public Double getTxBiayaJasaPeny() {

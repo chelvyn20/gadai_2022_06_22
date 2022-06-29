@@ -5,16 +5,19 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "ms_product")
 public class ProductEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @GenericGenerator(name = "product_id_seq",
+    strategy = "id.co.nds.gadai_2022_06_22.generators.ProductIdGenerator")
+    @GeneratedValue(generator = "product_id_seq")
+    @Column(name="product_id")
     private String productId;
 
     @Column(name = "product_type")

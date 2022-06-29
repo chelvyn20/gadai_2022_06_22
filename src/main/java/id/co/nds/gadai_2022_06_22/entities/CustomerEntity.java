@@ -47,13 +47,13 @@ public class CustomerEntity {
     @Column(name="deleted_date")
     private Timestamp deletedDate;
 
-    @Column(name="creator_id")
+    @Column(name="created_by")
     private Integer creatorId;
 
-    @Column(name="updater_id")
+    @Column(name="updated_by")
     private Integer updaterId;
 
-    @Column(name="deleter_id")
+    @Column(name="deleted_by")
     private Integer deleterId;
 
     @Column(name="rec_status")

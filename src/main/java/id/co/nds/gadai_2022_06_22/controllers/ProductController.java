@@ -114,7 +114,7 @@ public class ProductController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<ResponseModel> doGetDetailproduct(@RequestParam Integer id) throws ClientException, NotFoundException{
+    public ResponseEntity<ResponseModel> doGetDetailproduct(@RequestParam String id) throws ClientException, NotFoundException{
         try {
             ProductEntity product = productService.doGetDetailProduct(id);
 

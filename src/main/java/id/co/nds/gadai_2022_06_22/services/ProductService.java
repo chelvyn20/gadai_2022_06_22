@@ -25,9 +25,7 @@ public class ProductService implements Serializable{
     ProductValidator productValidator = new ProductValidator();
 
     public ProductEntity doInsertProduk(ProductModel productModel) throws ClientException, Exception{
-        productValidator.notNullCheckId(productModel.getId());
-        productValidator.nullCheckProductId(productModel.getProductId());
-        productValidator.validateProductId(productModel.getProductId());
+        productValidator.notNullCheckProductId(productModel.getProductId());
 
         Long countProductId = productRepo.countByProductId(productModel.getProductId());
 
@@ -70,7 +68,6 @@ public class ProductService implements Serializable{
         productValidator.validateProductBiayaDendaPeriode(productModel.getProductBiayaDendaPeriode());
 
         ProductEntity product = new ProductEntity();
-        product.setProductId(productModel.getProductId());
         product.setProductType(productModel.getProductType());
         product.setProductName(productModel.getProductName());
         product.setProductDesc(productModel.getProductDesc());
@@ -110,15 +107,15 @@ public class ProductService implements Serializable{
     }
 
     public ProductEntity doUpdateProduk(ProductModel productModel) throws ClientException, Exception{
-        productValidator.nullCheckId(productModel.getId());
-        productValidator.validateId(productModel.getId());
+        productValidator.nullCheckProductId(productModel.getProductId());
+        productValidator.validateProductId(productModel.getProductId());
 
-        if(!productRepo.existsById(productModel.getId())) {
-            throw new NotFoundException("Tidak dapat menemukan produk dengan id: " + productModel.getId());
+        if(productRepo.getActiveProductByProductId(productModel.getProductId()) == null) {
+            throw new NotFoundException("Tidak dapat menemukan produk dengan id: " + productModel.getProductId());
         }
 
         ProductEntity product = new ProductEntity();
-        product = doGetDetailProduct(productModel.getId());
+        product = doGetDetailProduct(productModel.getProductId());
 
         if(productModel.getProductName() != null) {
             productValidator.validateProductName(productModel.getProductName());
@@ -204,18 +201,18 @@ public class ProductService implements Serializable{
     }
 
     public ProductEntity doDeleteProduct(ProductModel productModel) throws ClientException, Exception {
-        productValidator.nullCheckId(productModel.getId());
-        productValidator.validateId(productModel.getId());
+        productValidator.nullCheckProductId(productModel.getProductId());
+        productValidator.validateProductId(productModel.getProductId());
 
-        if(!productRepo.existsById(productModel.getId())) {
-            throw new NotFoundException("Cannot find product with id: " + productModel.getId());
+        if(productRepo.getActiveProductByProductId(productModel.getProductId()) == null) {
+            throw new NotFoundException("Cannot find product with id: " + productModel.getProductId());
         }
 
         ProductEntity product = new ProductEntity();
-        product = doGetDetailProduct(productModel.getId());
+        product = doGetDetailProduct(productModel.getProductId());
 
         if(product.getRecStatus().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE)) {
-            throw new ClientException("Product id (" + productModel.getId() + ") is already been deleted.");
+            throw new ClientException("Product id (" + productModel.getProductId() + ") is already been deleted.");
         }
 
         product.setRecStatus(GlobalConstant.REC_STATUS_NON_ACTIVE);
@@ -233,12 +230,12 @@ public class ProductService implements Serializable{
         return products;
     }
 
-    public ProductEntity doGetDetailProduct(Integer id) throws ClientException, NotFoundException {
-        productValidator.nullCheckId(id);
-        productValidator.validateId(id);
+    public ProductEntity doGetDetailProduct(String productId) throws ClientException, NotFoundException {
+        productValidator.nullCheckProductId(productId);
+        productValidator.validateProductId(productId);
 
 
-        ProductEntity product = productRepo.findById(id).orElse(null);
+        ProductEntity product = productRepo.getActiveProductByProductId(productId);
         productValidator.nullCheckObject(product);
 
         return product;

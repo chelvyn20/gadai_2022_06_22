@@ -1,7 +1,5 @@
 package id.co.nds.gadai_2022_06_22.repos;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +17,5 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer>, JpaS
 
     @Query(value = "SELECT * FROM ms_product WHERE rec_status = '" + 
     GlobalConstant.REC_STATUS_ACTIVE + "' AND LOWER(product_id) = LOWER(:product_id)", nativeQuery = true)
-    List<ProductEntity> getActiveProductByProductId(@Param("product_id") String productId);
+    ProductEntity getActiveProductByProductId(@Param("product_id") String productId);
 }

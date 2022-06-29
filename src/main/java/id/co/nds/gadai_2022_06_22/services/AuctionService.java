@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 import id.co.nds.gadai_2022_06_22.entities.AuctionEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.models.AuctionModel;
-import id.co.nds.gadai_2022_06_22.models.ProductModel;
 import id.co.nds.gadai_2022_06_22.repos.AuctionRepo;
-import id.co.nds.gadai_2022_06_22.validators.AuctionValidator;
+import id.co.nds.gadai_2022_06_22.validators.BarangValidator;
 
 @Service
 public class AuctionService implements Serializable{
     @Autowired
     AuctionRepo auctionRepo;
 
-    AuctionValidator auctionValidator = new AuctionValidator();
+    BarangValidator auctionValidator = new BarangValidator();
 
     public AuctionEntity doInsertAuctionItem(AuctionModel auctionModel) throws ClientException {
         auctionValidator.notNullCheckId(auctionModel.getId());

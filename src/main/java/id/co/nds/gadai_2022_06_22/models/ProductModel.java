@@ -1,13 +1,12 @@
 package id.co.nds.gadai_2022_06_22.models;
 
 public class ProductModel {
-    private Integer id;
     private String productId;
     private String productType;
     private String productName;
     private String productDesc;
-    private Integer productJangkaWaktu;
     private Double productLtv;
+    private Integer productJangkaWaktu;
     private String productAdminOpeningFeeType;
     private String productAdminClosingFeeType;
     private Double productAdminOpeningFee;
@@ -23,12 +22,6 @@ public class ProductModel {
     private Double productLtvAfter;
     private Double productBiayaJasaPenyAfter;
     
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getProductId() {
         return productId;
     }
@@ -53,17 +46,17 @@ public class ProductModel {
     public void setProductDesc(String productDesc) {
         this.productDesc = productDesc;
     }
-    public Integer getProductJangkaWaktu() {
-        return productJangkaWaktu;
-    }
-    public void setProductJangkaWaktu(Integer productJangkaWaktu) {
-        this.productJangkaWaktu = productJangkaWaktu;
-    }
     public Double getProductLtv() {
         return productLtv;
     }
     public void setProductLtv(Double productLtv) {
         this.productLtv = productLtv;
+    }
+    public Integer getProductJangkaWaktu() {
+        return productJangkaWaktu;
+    }
+    public void setProductJangkaWaktu(Integer productJangkaWaktu) {
+        this.productJangkaWaktu = productJangkaWaktu;
     }
     public String getProductAdminOpeningFeeType() {
         return productAdminOpeningFeeType;
@@ -149,5 +142,5 @@ public class ProductModel {
     public void setProductBiayaJasaPenyAfter(Double productBiayaJasaPenyAfter) {
         this.productBiayaJasaPenyAfter = productBiayaJasaPenyAfter;
     }
-
+  
 }

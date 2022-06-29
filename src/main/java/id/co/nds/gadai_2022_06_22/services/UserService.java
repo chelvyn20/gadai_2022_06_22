@@ -27,7 +27,7 @@ public class UserService implements Serializable{
     UserValidator userValidator = new UserValidator();
 
     public UserEntity doInsert(UserModel userModel) throws ClientException, Exception{
-        userValidator.notNullCheckId(userModel.getId());
+        userValidator.notNullCheckUserId(userModel.getUserId());
         userValidator.nullCheckUserId(userModel.getUserId());
         userValidator.validateUserId(userModel.getUserId());
 
@@ -60,7 +60,7 @@ public class UserService implements Serializable{
         user.setUserDesc(userModel.getUserDesc());
         user.setUserTxnLimit(userModel.getUserTxnLimit());
         user.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        user.setCreatedBy(userModel.getActorId() == null ? 0 : userModel.getActorId());
+        user.setCreatedBy(userModel.getCreatedBy() == null ? 0 : userModel.getCreatedBy());
         DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
         user.setEntryDate(entryDate);
@@ -71,14 +71,14 @@ public class UserService implements Serializable{
     }
 
     public UserEntity doUpdate(UserModel userModel) throws ClientException, NotFoundException {
-        userValidator.nullCheckId(userModel.getId());
+        userValidator.nullCheckUserId(userModel.getUserId());
 
-        if(!userRepo.existsById(userModel.getId())) {
-            throw new NotFoundException("Tidak dapat menemukan user dengan id: " + userModel.getId());
+        if(userRepo.getActiveUserByUserId(userModel.getUserId()) == null) {
+            throw new NotFoundException("Tidak dapat menemukan user dengan id: " + userModel.getUserId());
         }
 
         UserEntity user = new UserEntity();
-        user = doGetDetailUser(userModel.getId());
+        user = doGetDetailUser(userModel.getUserId());
 
         if(userModel.getUserName() != null) {
             userValidator.validateUserName(userModel.getUserName());
@@ -114,30 +114,30 @@ public class UserService implements Serializable{
         }      
 
         user.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
-        user.setUpdatedBy(userModel.getActorId() == null ? 0 : userModel.getActorId());
+        user.setUpdatedBy(userModel.getUpdatedBy() == null ? 0 : userModel.getUpdatedBy());
         // user.setUpdatedInputDetail(user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
 
         return userRepo.save(user);
     }
 
     public UserEntity doDelete(UserModel userModel) throws ClientException, NotFoundException {
-        userValidator.nullCheckId(userModel.getId());
-        userValidator.validateId(userModel.getId());
+        userValidator.nullCheckUserId(userModel.getUserId());
+        userValidator.validateUserId(userModel.getUserId());
 
-        if(!userRepo.existsById(userModel.getId())) {
-            throw new NotFoundException("Cannot find user with id: " + userModel.getId());
+        if(userRepo.getActiveUserByUserId(userModel.getUserId()) == null) {
+            throw new NotFoundException("Cannot find user with id: " + userModel.getUserId());
         }
 
         UserEntity user = new UserEntity();
-        user = doGetDetailUser(userModel.getId());
+        user = doGetDetailUser(userModel.getUserId());
 
         if(user.getRecStatus().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE)) {
-            throw new ClientException("User id (" + userModel.getId() + ") is already been deleted.");
+            throw new ClientException("User id (" + userModel.getUserId() + ") is already been deleted.");
         }
 
         user.setRecStatus(GlobalConstant.REC_STATUS_NON_ACTIVE);
         user.setDeletedDate(new Timestamp(System.currentTimeMillis()));
-        user.setDeletedBy(userModel.getActorId() == null ? 0 : userModel.getActorId());
+        user.setDeletedBy(userModel.getDeletedBy() == null ? 0 : userModel.getDeletedBy());
 
         return userRepo.save(user);
     }
@@ -150,12 +150,12 @@ public class UserService implements Serializable{
         return users;
     }
 
-    public UserEntity doGetDetailUser(Integer id) throws ClientException, NotFoundException {
-        userValidator.nullCheckId(id);
-        userValidator.validateId(id);
+    public UserEntity doGetDetailUser(String userId) throws ClientException, NotFoundException {
+        userValidator.nullCheckUserId(userId);
+        userValidator.validateUserId(userId);
 
 
-        UserEntity user = userRepo.findById(id).orElse(null);
+        UserEntity user = userRepo.getActiveUserByUserId(userId);
         userValidator.nullCheckObject(user);
 
         return user;

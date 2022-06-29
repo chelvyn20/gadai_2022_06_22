@@ -18,4 +18,8 @@ public interface UserRepo extends JpaRepository<UserEntity, Integer>, JpaSpecifi
     @Query(value = "SELECT COUNT(*) FROM ms_user WHERE rec_status = '" + 
     GlobalConstant.REC_STATUS_ACTIVE + "' AND user_no_hp = :user_no_hp", nativeQuery = true)
     long countByPhoneNumber(@Param("user_no_hp") String phoneNumber);
+
+    @Query(value = "SELECT * FROM ms_user WHERE rec_status = '" + 
+    GlobalConstant.REC_STATUS_ACTIVE + "' AND LOWER(user_id) = LOWER(:user_id)", nativeQuery = true)
+    UserEntity getActiveUserByUserId(@Param("user_id") String userId);
 }

@@ -114,9 +114,9 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<ResponseModel> doGetDetailUser(@RequestParam Integer id) throws ClientException, NotFoundException{
+    public ResponseEntity<ResponseModel> doGetDetailUser(@RequestParam String userId) throws ClientException, NotFoundException{
         try {
-            UserEntity user = userService.doGetDetailUser(id);
+            UserEntity user = userService.doGetDetailUser(userId);
 
             ResponseModel response = new ResponseModel();
             response.setMsg("User ditemukan");

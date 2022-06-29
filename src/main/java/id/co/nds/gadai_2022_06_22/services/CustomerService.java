@@ -30,18 +30,18 @@ public class CustomerService implements Serializable {
     
 
     public CustomerEntity add(CustomerModel customerModel) throws ClientException{
-        customerValidator.notnullChekcCustId(customerModel.getCustId());
-        customerValidator.nullChekcCustName(customerModel.getCustName());
+        customerValidator.notnullCheckCustId(customerModel.getCustId());
+        customerValidator.nullCheckCustName(customerModel.getCustName());
         customerValidator.validateName(customerModel.getCustName());
-        customerValidator.nullChekcCustKtp(customerModel.getCustKtp());
+        customerValidator.nullCheckCustKtp(customerModel.getCustKtp());
         customerValidator.validateCustKtp(customerModel.getCustKtp());
-        customerValidator.nullChekcCallNumber(customerModel.getCustHp());
+        customerValidator.nullCheckCallNumber(customerModel.getCustHp());
         customerValidator.validateCallNumber(customerModel.getCustHp());
-        customerValidator.nullChekcCustJk(customerModel.getCustJk());
+        customerValidator.nullCheckCustJk(customerModel.getCustJk());
         customerValidator.validateCustJk(customerModel.getCustJk());
-        customerValidator.nullChekcCustJenisUsaha(customerModel.getCustJenisUsahaId());
+        customerValidator.nullCheckCustJenisUsaha(customerModel.getCustJenisUsahaId());
         customerValidator.validateJenisUsaha(customerModel.getCustJenisUsahaId());
-        customerValidator.nullChekcCustLimitTxn(customerModel.getCustLimitTxn());
+        customerValidator.nullCheckCustLimitTxn(customerModel.getCustLimitTxn());
         customerValidator.validatetLimitTxn(customerModel.getCustLimitTxn());
         
         Long count = customerRepo.countByKtp((customerModel.getCustKtp()));
@@ -84,11 +84,11 @@ public class CustomerService implements Serializable {
     }
     
     public CustomerEntity findById(String id) throws ClientException, NotFoundException{
-        customerValidator.nullChekcCustId((id));
+        customerValidator.nullCheckCustId((id));
         customerValidator.validateCustId(id);
 
         CustomerEntity customer = customerRepo.findById(id).orElse( null);
-        customerValidator.nullChekcObject(customer);
+        customerValidator.nullCheckObject(customer);
         customerValidator.validateCustStatus(id, customer.getCustStatus());
         return customer;
     }
@@ -96,7 +96,7 @@ public class CustomerService implements Serializable {
     public CustomerEntity edit (CustomerModel customerModel)
     throws ClientException,NotFoundException{
        //validation
-       customerValidator.nullChekcCustId(customerModel.getCustId());
+       customerValidator.nullCheckCustId(customerModel.getCustId());
        customerValidator.validateCustId(customerModel.getCustId());
        
        if(!customerRepo.existsById((customerModel.getCustId()))){
@@ -159,7 +159,7 @@ public class CustomerService implements Serializable {
 
     public CustomerEntity delete (CustomerModel customerModel) throws ClientException, NotFoundException{
         //validation
-        customerValidator.nullChekcCustId(customerModel.getCustId());
+        customerValidator.nullCheckCustId(customerModel.getCustId());
         customerValidator.validateCustId(customerModel.getCustId());
         
         if(!customerRepo.existsById((customerModel.getCustId()))){

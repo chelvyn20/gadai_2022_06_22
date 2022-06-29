@@ -7,63 +7,63 @@ import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 
 public class CustomerValidator {
-    public void nullChekcCustId(String id) throws ClientException {
+    public void nullCheckCustId(String id) throws ClientException {
         if (id == null) {
             throw new ClientException("Id pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void notnullChekcCustId(String id) throws ClientException {
+    public void notnullCheckCustId(String id) throws ClientException {
         if (id != null) {
             throw new ClientException("Id pelanggan dibuat secara otomatis, jangan masukkan id!");
 
         }
     }
 
-    public void nullChekcCustName(String name) throws ClientException {
+    public void nullCheckCustName(String name) throws ClientException {
         if (name == null) {
             throw new ClientException("Nama pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcCustKtp(String ktp) throws ClientException {
+    public void nullCheckCustKtp(String ktp) throws ClientException {
         if (ktp == null) {
             throw new ClientException("Nomor KTP pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcCallNumber(String callNumber) throws ClientException {
+    public void nullCheckCallNumber(String callNumber) throws ClientException {
         if (callNumber == null) {
             throw new ClientException("Nomor HP pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcCustJk(String jk) throws ClientException {
+    public void nullCheckCustJk(String jk) throws ClientException {
         if (jk == null) {
             throw new ClientException("Jenis kelamin pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcCustJenisUsaha(String usaha) throws ClientException {
+    public void nullCheckCustJenisUsaha(String usaha) throws ClientException {
         if (usaha == null) {
             throw new ClientException("Jenis usaha pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcCustLimitTxn(Double limit) throws ClientException {
+    public void nullCheckCustLimitTxn(Double limit) throws ClientException {
         if (limit == null) {
             throw new ClientException("Batas transaksi pelanggan tidak boleh kosong");
 
         }
     }
 
-    public void nullChekcObject(Object o) throws NotFoundException {
+    public void nullCheckObject(Object o) throws NotFoundException {
         if (o == null) {
             throw new NotFoundException("Id pelanggan tidak ditemukan");
 

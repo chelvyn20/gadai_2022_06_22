@@ -4,14 +4,8 @@ import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 
 public class ProductValidator {
-    public void nullCheckId(Integer id) throws ClientException{
-        if(id == null) {
-            throw new ClientException("Id perlu diisi");
-        }
-    }
-
-    public void notNullCheckId(Integer id) throws ClientException{
-        if(id != null) {
+    public void notNullCheckProductId(String productId) throws ClientException{
+        if(productId != null) {
             throw new ClientException("Id dibuat secara otomatis, jangan masukan id");
         }
     }
@@ -100,14 +94,8 @@ public class ProductValidator {
         }
     }
 
-    public void validateId(Integer id) throws ClientException {
-        if(id <= 0) {
-            throw new ClientException("Input id tidak valid");
-        }
-    }
-
     public void validateProductId(String productId) throws ClientException {
-        if(productId.length() > 20) {
+        if(productId.length() > 15) {
             throw new ClientException("Produk id tidak boleh melebihi 15 huruf");
         }
     }

@@ -23,10 +23,6 @@ public class UserSpec implements Specification<UserEntity>{
     public Predicate toPredicate(Root<UserEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         Predicate p = criteriaBuilder.and();
 
-        if(userModel.getId() != null && userModel.getId() != 0) {
-            p.getExpressions().add(criteriaBuilder.equal(root.get("id"), userModel.getId()));
-        }
-
         if(userModel.getUserId() != null && userModel.getUserId().length() > 0 ) {
             p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("userId")), "%" 
             + userModel.getUserId().toLowerCase() + "%"));
@@ -47,8 +43,8 @@ public class UserSpec implements Specification<UserEntity>{
             + userModel.getUserNoHp().toLowerCase() + "%"));
         }
         
-        if(userModel.getActorId() != null) {
-            p.getExpressions().add(criteriaBuilder.equal(root.get("actorId"), userModel.getActorId()));
+        if(userModel.getCreatedBy() != null) {
+            p.getExpressions().add(criteriaBuilder.equal(root.get("createdBy"), userModel.getCreatedBy()));
         }
 
         if(userModel.getRecStatus() != null && 

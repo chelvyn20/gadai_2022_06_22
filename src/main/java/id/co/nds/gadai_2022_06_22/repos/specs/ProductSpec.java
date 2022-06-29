@@ -23,13 +23,8 @@ public class ProductSpec implements Specification<ProductEntity>{
     public Predicate toPredicate(Root<ProductEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         Predicate p = criteriaBuilder.and();
 
-        if(productModel.getId() != null && productModel.getId() > 0) {
-            p.getExpressions().add(criteriaBuilder.equal(root.get("id"), productModel.getId()));
-        }
-
         if(productModel.getProductId() != null && productModel.getProductId().length() > 0 ) {
-            p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("productId")), "%" 
-            + productModel.getProductId().toLowerCase() + "%"));
+            p.getExpressions().add(criteriaBuilder.equal(root.get("productId"), productModel.getProductId()));
         }
 
         if(productModel.getProductName() != null && productModel.getProductName().length() > 0) {
@@ -59,7 +54,7 @@ public class ProductSpec implements Specification<ProductEntity>{
             productModel.getRecStatus().toUpperCase()));
         }
 
-        query.orderBy(criteriaBuilder.asc(root.get("id")));
+        query.orderBy(criteriaBuilder.asc(root.get("productId")));
 
         return p;
     }

@@ -11,16 +11,16 @@ import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<CustomerEntity, String>, JpaSpecificationExecutor<CustomerEntity> {
-    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE cust_status = '" + GlobalConstant.REC_STATUS_ACTIVE
-            + "' AND LOWER(name) = LOWER (:name)", nativeQuery = true)
-    long countByName(@Param("name") String name);
+    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE rec_status = '" + GlobalConstant.REC_STATUS_ACTIVE
+            + "' AND LOWER(customer_name) = LOWER (:customer_name)", nativeQuery = true)
+    long countByName(@Param("customer_name") String name);
 
-    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE cust_status = '" + GlobalConstant.REC_STATUS_ACTIVE
-            + "' AND cust_ktp = (:cust_ktp)", nativeQuery = true)
-    long countByKtp(@Param("cust_ktp") String callNumber);
+    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE rec_status = '" + GlobalConstant.REC_STATUS_ACTIVE
+            + "' AND customer_identity_no = (:customer_identity_no)", nativeQuery = true)
+    long countByKtp(@Param("customer_identity_no") String callNumber);
 
-    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE cust_status = '" + GlobalConstant.REC_STATUS_ACTIVE
-            + "' AND cust_hp = :cust_hp", nativeQuery = true)
-    long countByCallNumber(@Param("cust_hp") String callNumber);
+    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE rec_status = '" + GlobalConstant.REC_STATUS_ACTIVE
+            + "' AND customer_phone = :customer_phone", nativeQuery = true)
+    long countByCallNumber(@Param("customer_phone") String callNumber);
 
 }

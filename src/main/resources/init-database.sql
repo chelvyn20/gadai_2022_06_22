@@ -174,7 +174,7 @@ ALTER TABLE public.ms_product
 
 -- DROP TABLE IF EXISTS public."TX_TRANSAKSI_CICILAN_TETAP";
 
-CREATE TABLE IF NOT EXISTS public."TX_TRANSAKSI_CICILAN_TETAP"
+CREATE TABLE IF NOT EXISTS public.TX_TRANSAKSI_CICILAN_TETAP
 (
     no_transaksi character varying COLLATE pg_catalog."default" NOT NULL,
     total_nilai_tak numeric,
@@ -195,12 +195,12 @@ CREATE TABLE IF NOT EXISTS public."TX_TRANSAKSI_CICILAN_TETAP"
     customer_id character varying COLLATE pg_catalog."default",
     product_id character varying COLLATE pg_catalog."default",
     created_date timestamp without time zone,
-    CONSTRAINT "TX_TRANSAKSI_CICILAN_TETAP_pkey" PRIMARY KEY (no_transaksi)
+    CONSTRAINT TX_TRANSAKSI_CICILAN_TETAP_pkey PRIMARY KEY (no_transaksi)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."TX_TRANSAKSI_CICILAN_TETAP"
+ALTER TABLE IF EXISTS public.TX_TRANSAKSI_CICILAN_TETAP
     OWNER to postgres;
 
 
@@ -208,21 +208,16 @@ ALTER TABLE IF EXISTS public."TX_TRANSAKSI_CICILAN_TETAP"
 
 -- DROP TABLE IF EXISTS public."TX_TRANSAKSI_BARANG";
 
-CREATE TABLE IF NOT EXISTS public."TX_TRANSAKSI_BARANG"
+CREATE TABLE IF NOT EXISTS public.TX_TRANSAKSI_BARANG
 (
+    no_urut numeric varying COLLATE pg_catalog."default" NOT NULL,
     no_transaksi character varying COLLATE pg_catalog."default" NOT NULL,
     nama_barang character varying(30) COLLATE pg_catalog."default",
     kondisi character varying(150) COLLATE pg_catalog."default",
     jumlah numeric(3,0),
     harga_per_satuan numeric(10,2),
-    CONSTRAINT "TX_TRANSAKSI_BARANG_pkey" PRIMARY KEY (no_transaksi)
+    CONSTRAINT TX_TRANSAKSI_BARANG_pkey PRIMARY KEY (no_urut, no_transaksi)
 )
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public."TX_TRANSAKSI_BARANG"
-    OWNER to postgres;
-
 
 
 -- Table: public.TX_CICILAN

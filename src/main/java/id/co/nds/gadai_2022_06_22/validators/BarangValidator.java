@@ -2,7 +2,7 @@ package id.co.nds.gadai_2022_06_22.validators;
 
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 
-public class AuctionValidator {
+public class BarangValidator {
     public void nullCheckId(Integer id) throws ClientException {
         if(id == null) {
             throw new ClientException("Id perlu diisi");
@@ -17,13 +17,13 @@ public class AuctionValidator {
 
     public void nullCheckProductName(String productName) throws ClientException {
         if(productName == null) {
-            throw new ClientException("Product Name perlu diisi");
+            throw new ClientException("Nama produk perlu diisi");
         }
     }
 
     public void nullCheckProductCondition(String productCondition) throws ClientException {
         if(productCondition == null) {
-            throw new ClientException("Product Condition perlu diisi");
+            throw new ClientException("Kondisi produk perlu diisi");
         }
     }
 
@@ -48,6 +48,12 @@ public class AuctionValidator {
     public void validateProductName(String productName) throws ClientException {
         if(productName.length() > 30) {
             throw new ClientException("Nama produk tidak boleh melebihi 30 huruf.");
+        }
+    }
+
+    public void validateProductCondition(String productCondition) throws ClientException {
+        if(productCondition.length() < 0) {
+            throw new ClientException("Kondisi produk tidak valid");
         }
     }
 
