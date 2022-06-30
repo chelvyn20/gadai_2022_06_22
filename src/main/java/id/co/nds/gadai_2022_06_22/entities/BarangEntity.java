@@ -19,13 +19,10 @@ import id.co.nds.gadai_2022_06_22.embedded.TransactionId;
 @IdClass(TransactionId.class)
 public class BarangEntity implements Serializable {
     @Id
-    @GenericGenerator(name = "transaksi_no_seq", strategy = "id.co.nds.gadai_2022_06_22.generators.TransactionNoGenerator")
-    @GeneratedValue(generator = "transaksi_no_seq")
     @Column(name = "no_transaksi")
     private String noTransaksi;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "no_urut")
     private Integer noUrut;
 
@@ -40,6 +37,14 @@ public class BarangEntity implements Serializable {
 
     @Column(name = "harga_per_satuan")
     private Double hargaPerSatuan;
+
+    public BarangEntity(String noTransaksi, Integer noUrut) {
+        this.noTransaksi = noTransaksi;
+        this.noUrut = noUrut;
+    }
+
+    public BarangEntity() {
+    }
 
     public String getNoTransaksi() {
         return noTransaksi;

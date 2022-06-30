@@ -50,9 +50,9 @@ public class TransactionController {
     }
 
     @GetMapping(value = "/get/detailcictetap")
-    public ResponseEntity<ResponseModel> doGetDetailCicTetap(@RequestBody String noTransaksi) throws ClientException, NotFoundException {
+    public ResponseEntity<ResponseModel> doGetDetailCicTetap(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException, NotFoundException {
         try {
-            CicilanTetapEntity transCicTetap = transactionService.doGetDetailCicTetap(noTransaksi);
+            CicilanTetapEntity transCicTetap = transactionService.doGetDetailCicTetap(cicilanTetapModel);
             ResponseModel response = new ResponseModel();
             response.setMsg("Detail Transaksi Cicilan Tetap:");
             response.setData(transCicTetap);
@@ -111,28 +111,28 @@ public class TransactionController {
         }
     }
 
-    // @PostMapping(value = "/calculate/transcictetap")
-    // public ResponseEntity<ResponseModel> doHitungTrxCicTetap(@RequestBody CicilanTetapEntity cicilanTetapEntity) throws ClientException, Exception {
-    //     try {
-    //         List<ProductEntity> product = transactionService.doHitungTrxCicTetap(cicilanTetapEntity);
+    @PostMapping(value = "/calculate/transcictetap")
+    public ResponseEntity<ResponseModel> doHitungTrxCicTetap(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException, Exception {
+        try {
+            CicilanTetapEntity cicilan = transactionService.doHitungTrxCicTetap(cicilanTetapModel);
 
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg("Sukses Simpan transaksi");
-    //         response.setData(product);
-    //         return ResponseEntity.ok(response);
-    //     } catch (ClientException e) {
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg(e.getMessage());
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Sukses Simpan cicilan");
+            response.setData(cicilan);
+            return ResponseEntity.ok(response);
+        } catch (ClientException e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
 
-    //         return ResponseEntity.badRequest().body(response);
-    //     } catch (Exception e) {
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg("Terjadi kesalahan pada server");
-    //         e.printStackTrace();
+            return ResponseEntity.badRequest().body(response);
+        } catch (Exception e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Terjadi kesalahan pada server");
+            e.printStackTrace();
 
-    //         return ResponseEntity.internalServerError().body(response);
-    //     }
-    // }
+            return ResponseEntity.internalServerError().body(response);
+        }
+    }
 
     @PostMapping(value = "/add")
     public ResponseEntity<ResponseModel> doSaveTrxCicTetap(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException{
@@ -140,7 +140,7 @@ public class TransactionController {
             CicilanTetapEntity trxCicTetap = transactionService.doSaveTrxCicTetap(cicilanTetapModel);
 
             ResponseModel response = new ResponseModel();
-            response.setMsg("Transaksi Ciciclan Tetap ditemukan");
+            response.setMsg("Transaksi Ciciclan Tetap telah dibuat");
             response.setData(trxCicTetap);
             return ResponseEntity.ok(response);
         } catch (ClientException e) {

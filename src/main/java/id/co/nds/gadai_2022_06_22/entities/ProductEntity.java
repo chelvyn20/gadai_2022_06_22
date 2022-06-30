@@ -36,28 +36,28 @@ public class ProductEntity {
     private Integer productJangkaWaktu;
 
     @Column(name = "biaya_adm_buka_type")
-    private String productAdminOpeningFeeType;
+    private String biayaAdmBukaType;
 
     @Column(name = "biaya_adm_buka_val")
-    private Double productAdminOpeningFee;
+    private Double biayaAdmBukaVal;
 
     @Column(name = "biaya_adm_tutup_type")
-    private String productAdminClosingFeeType;
+    private String biayaAdmTutupType;
 
     @Column(name = "biaya_adm_tutup_val")
-    private Double productAdminClosingFee;
+    private Double biayaAdmTutupVal;
 
     @Column(name = "biaya_js_peny_rate")
-    private Double productBiayaJasaPeny;
+    private Double biayaJasaPenyRate;
 
     @Column(name = "biaya_js_peny_per")
-    private Integer productBiayaJasaPenyPeriode;
+    private Integer biayaJasaPenyPer;
 
     @Column(name = "biaya_denda_keterlambatan_rate")
-    private Double productBiayaDenda;
+    private Double biayaDendaKeterlambatanRate;
 
     @Column(name = "biaya_denda_keterlambatan_per")
-    private Integer productBiayaDendaPeriode;
+    private Integer biayaDendaKeterlambatanPer;
 
     @Column(name = "rec_status")
     private String recStatus;
@@ -80,20 +80,20 @@ public class ProductEntity {
     @Column(name = "deleted_by")
     private Integer deletedBy;
 
-    public String getProductType() {
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
-    }
-
     public String getProductId() {
         return productId;
     }
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
     public String getProductName() {
@@ -112,14 +112,6 @@ public class ProductEntity {
         this.productDesc = productDesc;
     }
 
-    public Integer getProductJangkaWaktu() {
-        return productJangkaWaktu;
-    }
-
-    public void setProductJangkaWaktu(Integer productJangkaWaktu) {
-        this.productJangkaWaktu = productJangkaWaktu;
-    }
-
     public Double getProductLtv() {
         return productLtv;
     }
@@ -128,68 +120,76 @@ public class ProductEntity {
         this.productLtv = productLtv;
     }
 
-    public String getProductAdminOpeningFeeType() {
-        return productAdminOpeningFeeType;
+    public Integer getProductJangkaWaktu() {
+        return productJangkaWaktu;
     }
 
-    public void setProductAdminOpeningFeeType(String productAdminOpeningFeeType) {
-        this.productAdminOpeningFeeType = productAdminOpeningFeeType;
+    public void setProductJangkaWaktu(Integer productJangkaWaktu) {
+        this.productJangkaWaktu = productJangkaWaktu;
     }
 
-    public String getProductAdminClosingFeeType() {
-        return productAdminClosingFeeType;
+    public String getBiayaAdmBukaType() {
+        return biayaAdmBukaType;
     }
 
-    public void setProductAdminClosingFeeType(String productAdminClosingFeeType) {
-        this.productAdminClosingFeeType = productAdminClosingFeeType;
+    public void setBiayaAdmBukaType(String biayaAdmBukaType) {
+        this.biayaAdmBukaType = biayaAdmBukaType;
     }
 
-    public Double getProductAdminOpeningFee() {
-        return productAdminOpeningFee;
+    public Double getBiayaAdmBukaVal() {
+        return biayaAdmBukaVal;
     }
 
-    public void setProductAdminOpeningFee(Double productAdminOpeningFee) {
-        this.productAdminOpeningFee = productAdminOpeningFee;
+    public void setBiayaAdmBukaVal(Double biayaAdmBukaVal) {
+        this.biayaAdmBukaVal = biayaAdmBukaVal;
     }
 
-    public Double getProductAdminClosingFee() {
-        return productAdminClosingFee;
+    public String getBiayaAdmTutupType() {
+        return biayaAdmTutupType;
     }
 
-    public void setProductAdminClosingFee(Double productAdminClosingFee) {
-        this.productAdminClosingFee = productAdminClosingFee;
+    public void setBiayaAdmTutupType(String biayaAdmTutupType) {
+        this.biayaAdmTutupType = biayaAdmTutupType;
     }
 
-    public Double getProductBiayaJasaPeny() {
-        return productBiayaJasaPeny;
+    public Double getBiayaAdmTutupVal() {
+        return biayaAdmTutupVal;
     }
 
-    public void setProductBiayaJasaPeny(Double productBiayaJasaPeny) {
-        this.productBiayaJasaPeny = productBiayaJasaPeny;
+    public void setBiayaAdmTutupVal(Double biayaAdmTutupVal) {
+        this.biayaAdmTutupVal = biayaAdmTutupVal;
     }
 
-    public Integer getProductBiayaJasaPenyPeriode() {
-        return productBiayaJasaPenyPeriode;
+    public Double getBiayaJasaPenyRate() {
+        return biayaJasaPenyRate;
     }
 
-    public void setProductBiayaJasaPenyPeriode(Integer productBiayaJasaPenyPeriode) {
-        this.productBiayaJasaPenyPeriode = productBiayaJasaPenyPeriode;
+    public void setBiayaJasaPenyRate(Double biayaJasaPenyRate) {
+        this.biayaJasaPenyRate = biayaJasaPenyRate;
     }
 
-    public Double getProductBiayaDenda() {
-        return productBiayaDenda;
+    public Integer getBiayaJasaPenyPer() {
+        return biayaJasaPenyPer;
     }
 
-    public void setProductBiayaDenda(Double productBiayaDenda) {
-        this.productBiayaDenda = productBiayaDenda;
+    public void setBiayaJasaPenyPer(Integer biayaJasaPenyPer) {
+        this.biayaJasaPenyPer = biayaJasaPenyPer;
     }
 
-    public Integer getProductBiayaDendaPeriode() {
-        return productBiayaDendaPeriode;
+    public Double getBiayaDendaKeterlambatanRate() {
+        return biayaDendaKeterlambatanRate;
     }
 
-    public void setProductBiayaDendaPeriode(Integer productBiayaDendaPeriode) {
-        this.productBiayaDendaPeriode = productBiayaDendaPeriode;
+    public void setBiayaDendaKeterlambatanRate(Double biayaDendaKeterlambatanRate) {
+        this.biayaDendaKeterlambatanRate = biayaDendaKeterlambatanRate;
+    }
+
+    public Integer getBiayaDendaKeterlambatanPer() {
+        return biayaDendaKeterlambatanPer;
+    }
+
+    public void setBiayaDendaKeterlambatanPer(Integer biayaDendaKeterlambatanPer) {
+        this.biayaDendaKeterlambatanPer = biayaDendaKeterlambatanPer;
     }
 
     public String getRecStatus() {

@@ -74,30 +74,30 @@ public class ProductService implements Serializable{
 
         product.setProductJangkaWaktu(productModel.getProductJangkaWaktu());
         product.setProductLtv(productModel.getProductLtv() / 100);
-        product.setProductAdminOpeningFeeType(productModel.getProductAdminOpeningFeeType());
-        product.setProductAdminClosingFeeType(productModel.getProductAdminClosingFeeType());
+        product.setBiayaAdmBukaType(productModel.getProductAdminOpeningFeeType());
+        product.setBiayaAdmTutupType(productModel.getProductAdminClosingFeeType());
 
         if(productModel.getProductAdminOpeningFeeType().equalsIgnoreCase("Persen")) {
-            product.setProductAdminOpeningFee(productModel.getProductAdminOpeningFee() / 100);
+            product.setBiayaAdmBukaVal(productModel.getProductAdminOpeningFee() / 100);
         }
 
         if(productModel.getProductAdminClosingFeeType().equalsIgnoreCase("Persen")) {
-            product.setProductAdminClosingFee(productModel.getProductAdminClosingFee() / 100);
+            product.setBiayaAdmTutupVal(productModel.getProductAdminClosingFee() / 100);
         }
 
         if(productModel.getProductAdminOpeningFeeType().equalsIgnoreCase("Nominal")) {
-            product.setProductAdminOpeningFee(productModel.getProductAdminOpeningFee());
+            product.setBiayaAdmBukaVal(productModel.getProductAdminOpeningFee());
         }
 
         if(productModel.getProductAdminClosingFeeType().equalsIgnoreCase("Nominal")) {
-            product.setProductAdminClosingFee(productModel.getProductAdminClosingFee());
+            product.setBiayaAdmTutupVal(productModel.getProductAdminClosingFee());
         }
 
-        product.setProductBiayaJasaPeny(productModel.getProductBiayaJasaPeny());
-        product.setProductBiayaJasaPenyPeriode(productModel.getProductBiayaJasaPenyPeriode());
+        product.setBiayaJasaPenyRate(productModel.getProductBiayaJasaPeny());
+        product.setBiayaJasaPenyPer(productModel.getProductBiayaJasaPenyPeriode());
 
-        product.setProductBiayaDenda(productModel.getProductBiayaDenda());
-        product.setProductBiayaDendaPeriode(productModel.getProductBiayaDendaPeriode());
+        product.setBiayaDendaKeterlambatanRate(productModel.getProductBiayaDenda());
+        product.setBiayaDendaKeterlambatanPer(productModel.getProductBiayaDendaPeriode());
 
         product.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         product.setCreatedBy(productModel.getActorId() == null ? 0 : productModel.getActorId());
@@ -139,59 +139,59 @@ public class ProductService implements Serializable{
 
         if(productModel.getProductAdminOpeningFeeType() != null) {
             productValidator.validateProductAdminOpeningFeeType(productModel.getProductAdminOpeningFeeType());
-            product.setProductAdminOpeningFeeType(productModel.getProductAdminOpeningFeeType());
+            product.setBiayaAdmBukaType(productModel.getProductAdminOpeningFeeType());
         }
 
         if(productModel.getProductAdminClosingFeeType() != null) {
             productValidator.validateProductAdminClosingFeeType(productModel.getProductAdminClosingFeeType());
-            product.setProductAdminClosingFeeType(productModel.getProductAdminClosingFeeType());
+            product.setBiayaAdmTutupType(productModel.getProductAdminClosingFeeType());
         }
 
         if(productModel.getProductAdminOpeningFee() != null) {
             productValidator.validateProductAdminOpeningFee(productModel.getProductAdminOpeningFee());
 
-            String productAdminType = productModel.getProductAdminOpeningFeeType() == null ? product.getProductAdminOpeningFeeType() : productModel.getProductAdminOpeningFeeType();
+            String productAdminType = productModel.getProductAdminOpeningFeeType() == null ? product.getBiayaAdmBukaType() : productModel.getProductAdminOpeningFeeType();
             if(productAdminType.equalsIgnoreCase("Persen")) {
-                product.setProductAdminOpeningFee(productModel.getProductAdminOpeningFee() / 100);
+                product.setBiayaAdmBukaVal(productModel.getProductAdminOpeningFee() / 100);
             }
 
             if(productAdminType.equalsIgnoreCase("Nominal")) {
-                product.setProductAdminOpeningFee(productModel.getProductAdminOpeningFee());
+                product.setBiayaAdmBukaVal(productModel.getProductAdminOpeningFee());
             }
         }
 
         if(productModel.getProductAdminClosingFee() != null) {
             productValidator.validateProductAdminClosingFee(productModel.getProductAdminClosingFee());
 
-            String productAdminType = productModel.getProductAdminClosingFee() == null ? product.getProductAdminClosingFeeType() : productModel.getProductAdminClosingFeeType();
+            String productAdminType = productModel.getProductAdminClosingFee() == null ? product.getBiayaAdmTutupType() : productModel.getProductAdminClosingFeeType();
             if(productAdminType.equalsIgnoreCase("Persen")) {
-                product.setProductAdminClosingFee(productModel.getProductAdminClosingFee() / 100);
+                product.setBiayaAdmTutupVal(productModel.getProductAdminClosingFee() / 100);
             }
 
             if(productAdminType.equalsIgnoreCase("Nominal")) {
-                product.setProductAdminClosingFee(productModel.getProductAdminClosingFee());
+                product.setBiayaAdmTutupVal(productModel.getProductAdminClosingFee());
             }
         }
 
         if(productModel.getProductBiayaJasaPeny() != null) {
             productValidator.validateProductBiayaPenyimpanan(productModel.getProductBiayaJasaPeny());
-            product.setProductBiayaJasaPeny(productModel.getProductBiayaJasaPeny());
+            product.setBiayaJasaPenyRate(productModel.getProductBiayaJasaPeny());
         }
 
         if(productModel.getProductBiayaJasaPenyPeriode() != null) {
             Integer jangkaWaktu = productModel.getProductJangkaWaktu() == null ? product.getProductJangkaWaktu() :  productModel.getProductJangkaWaktu();
             productValidator.validateProductBiayaPenyimpananPeriode(productModel.getProductBiayaJasaPenyPeriode(), jangkaWaktu, product.getProductType());
-            product.setProductBiayaJasaPenyPeriode(productModel.getProductBiayaJasaPenyPeriode());
+            product.setBiayaJasaPenyPer(productModel.getProductBiayaJasaPenyPeriode());
         }
 
         if(productModel.getProductBiayaDenda() != null) {
             productValidator.validateProductBiayaDenda(productModel.getProductBiayaDenda());
-            product.setProductBiayaDenda(productModel.getProductBiayaDenda());
+            product.setBiayaDendaKeterlambatanRate(productModel.getProductBiayaDenda());
         }
 
         if(productModel.getProductBiayaDendaPeriode() != null) {
             productValidator.validateProductBiayaDendaPeriode(productModel.getProductBiayaDendaPeriode());
-            product.setProductBiayaDendaPeriode(productModel.getProductBiayaDendaPeriode());
+            product.setBiayaDendaKeterlambatanPer(productModel.getProductBiayaDendaPeriode());
         }
 
         product.setUpdatedDate(new Timestamp(System.currentTimeMillis()));

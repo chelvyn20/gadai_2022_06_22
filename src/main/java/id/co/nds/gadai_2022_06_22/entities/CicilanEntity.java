@@ -1,24 +1,28 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import id.co.nds.gadai_2022_06_22.embedded.CicilanId;
+
 @Entity
 @Table(name = "TX_CICILAN")
-public class CicilanEntity {
+@IdClass(CicilanId.class)
+public class CicilanEntity implements Serializable{
     @Id
-    @GenericGenerator(name = "transaksi_no_seq", strategy = "id.co.nds.gadai_2022_06_22.generators.TransactionNoGenerator")
-    @GeneratedValue(generator = "transaksi_no_seq")
     @Column(name = "no_transaksi")
     private String noTransaksi;
 
+    @Id
     @Column(name = "cicilan_ke")
     private Integer cicilanKe;
 
@@ -42,6 +46,14 @@ public class CicilanEntity {
 
     @Column(name = "created_date")
     private Timestamp createdDate;
+
+    public CicilanEntity() {
+    }
+
+    public CicilanEntity(String noTransaksi, Integer cicilanKe) {
+        this.noTransaksi = noTransaksi;
+        this.cicilanKe = cicilanKe;
+    }
 
     public String getNoTransaksi() {
         return noTransaksi;

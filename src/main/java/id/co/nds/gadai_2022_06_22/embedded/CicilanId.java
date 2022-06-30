@@ -3,30 +3,30 @@ package id.co.nds.gadai_2022_06_22.embedded;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class TransactionId implements Serializable {
+public class CicilanId implements Serializable {
     private String noTransaksi;
-    private Integer noUrut;
+    private Integer cicilanKe;
 
-    public TransactionId() {
+    public CicilanId() {
     }
 
-    public TransactionId(String noTransaksi, Integer noUrut) {
+    public CicilanId(String noTransaksi, Integer cicilanKe) {
         this.noTransaksi = noTransaksi;
-        this.noUrut = noUrut;
+        this.cicilanKe = cicilanKe;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransactionId that = (TransactionId) o;
+        CicilanId that = (CicilanId) o;
         return noTransaksi.equals(that.noTransaksi) &&
-        noUrut.equals(that.noUrut);
+        cicilanKe.equals(that.cicilanKe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(noTransaksi, noUrut);
+        return Objects.hash(noTransaksi, cicilanKe);
     }
 
     public String getNoTransaksi() {
@@ -37,11 +37,11 @@ public class TransactionId implements Serializable {
         this.noTransaksi = noTransaksi;
     }
 
-    public Integer getNoUrut() {
-        return noUrut;
+    public Integer getCicilanKe() {
+        return cicilanKe;
     }
 
-    public void setNoUrut(Integer noUrut) {
-        this.noUrut = noUrut;
+    public void setCicilanKe(Integer cicilanKe) {
+        this.cicilanKe = cicilanKe;
     }
 }

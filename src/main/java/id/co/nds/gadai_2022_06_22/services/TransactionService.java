@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import id.co.nds.gadai_2022_06_22.entities.BarangEntity;
+import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
 import id.co.nds.gadai_2022_06_22.entities.CustomerEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
@@ -21,6 +22,7 @@ import id.co.nds.gadai_2022_06_22.models.CicilanTetapModel;
 import id.co.nds.gadai_2022_06_22.models.CustomerModel;
 import id.co.nds.gadai_2022_06_22.models.ProductModel;
 import id.co.nds.gadai_2022_06_22.repos.BarangRepo;
+import id.co.nds.gadai_2022_06_22.repos.CicilanRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanTetapRepo;
 import id.co.nds.gadai_2022_06_22.repos.CustomerRepo;
 import id.co.nds.gadai_2022_06_22.repos.ProductRepo;
@@ -31,26 +33,31 @@ import id.co.nds.gadai_2022_06_22.validators.BarangValidator;
 import id.co.nds.gadai_2022_06_22.validators.CicilanTetapValidator;
 import id.co.nds.gadai_2022_06_22.validators.CustomerValidator;
 import id.co.nds.gadai_2022_06_22.validators.ProductValidator;
+import id.co.nds.gadai_2022_06_22.validators.UserValidator;
 
 @Service
-public class TransactionService implements Serializable{
+public class TransactionService implements Serializable {
     @Autowired
     private CicilanTetapRepo cicilanTetapRepo;
 
     @Autowired
-    private ProductService productService;
+    private CicilanRepo cicilanRepo;
 
     @Autowired
     private BarangRepo barangRepo;
 
     @Autowired
     private CustomerRepo customerRepo;
-    
+
     @Autowired
     private ProductRepo productRepo;
 
+    @Autowired
+    private ProductService productService;
+
     CicilanTetapValidator cicilanTetapValidator = new CicilanTetapValidator();
     CustomerValidator customerValidator = new CustomerValidator();
+    UserValidator userValidator = new UserValidator();
     ProductValidator productValidator = new ProductValidator();
     BarangValidator barangValidator = new BarangValidator();
 
@@ -61,12 +68,13 @@ public class TransactionService implements Serializable{
         return transCicTetap;
     }
 
-    public CicilanTetapEntity doGetDetailCicTetap(String noTransaksi) throws ClientException, NotFoundException{
-        cicilanTetapValidator.nullCheckTransaksiNo(noTransaksi);
-        cicilanTetapValidator.validateTransaksiNo(noTransaksi);
+    public CicilanTetapEntity doGetDetailCicTetap(CicilanTetapModel cicilanTetapModel)
+            throws ClientException, NotFoundException {
+        cicilanTetapValidator.nullCheckTransaksiNo(cicilanTetapModel.getNoTransaksi());
+        cicilanTetapValidator.validateTransaksiNo(cicilanTetapModel.getNoTransaksi());
 
-
-        CicilanTetapEntity transaksi = cicilanTetapRepo.findById(noTransaksi).orElse(null);
+        CicilanTetapEntity transaksi = cicilanTetapRepo
+                .getCicilanTetapTransactionByNoTransaksi(cicilanTetapModel.getNoTransaksi());
         cicilanTetapValidator.nullCheckObject(transaksi);
 
         return transaksi;
@@ -101,15 +109,9 @@ public class TransactionService implements Serializable{
         return response;
     }
 
-    public CicilanTetapEntity doHitungTrxCicTetap(CicilanTetapModel cicilanTetapModel) throws ClientException {
-        customerValidator.nullCheckCustLimitTxn(cicilanTetapModel.getNilaiPencairanPelanggan());
-        customerValidator.validatetLimitTxn(cicilanTetapModel.getNilaiPencairanPelanggan());
-
-        return null;
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-    public CicilanTetapEntity doSaveTrxCicTetap(CicilanTetapModel cicilanTetapModel) throws ClientException, NotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+    public CicilanTetapEntity doHitungTrxCicTetap(CicilanTetapModel cicilanTetapModel)
+            throws ClientException, NotFoundException {
         customerValidator.nullCheckCustId(cicilanTetapModel.getCustId());
         customerValidator.validateCustId(cicilanTetapModel.getCustId());
 
@@ -124,30 +126,29 @@ public class TransactionService implements Serializable{
         cicilanTetapValidator.nullCheckDiskonAdmBuka(cicilanTetapModel.getDiskonAdmBuka());
         cicilanTetapValidator.validateDiskonAdmBuka(cicilanTetapModel.getDiskonAdmBuka());
 
-       
-
         CicilanTetapEntity cicilanTetap = new CicilanTetapEntity();
+        cicilanTetap.setNoTransaksi(cicilanTetapModel.getNoTransaksi());
         cicilanTetap.setCustId(cicilanTetapModel.getCustId());
         cicilanTetap.setProductId(cicilanTetapModel.getProductId());
         cicilanTetap.setNilaiPencairanPelanggan(cicilanTetapModel.getNilaiPencairanPelanggan());
         cicilanTetap.setDiskonAdmBuka(cicilanTetapModel.getDiskonAdmBuka());
         cicilanTetap.setTxLtv(product.getProductLtv());
-        cicilanTetap.setBiayaAdmBuka(product.getProductAdminOpeningFee());
-        cicilanTetap.setBiayaAdmBukaAkhir(product.getProductAdminOpeningFee() - (product.getProductAdminOpeningFee() * cicilanTetapModel.getDiskonAdmBuka() / 100));
-        cicilanTetap.setTotalNilaiPinj(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getProductAdminOpeningFee() - (product.getProductAdminOpeningFee() * cicilanTetapModel.getDiskonAdmBuka() / 100)));
+        cicilanTetap.setBiayaAdmBuka(product.getBiayaAdmBukaVal());
+        cicilanTetap.setBiayaAdmBukaAkhir(product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100));
+        cicilanTetap.setTotalNilaiPinj(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100)));
         cicilanTetap.setTglTx(new Timestamp(System.currentTimeMillis()));
         cicilanTetap.setTglJatuhTempo(Timestamp.valueOf(LocalDateTime.now().plusMonths(product.getProductJangkaWaktu())));
-        cicilanTetap.setTxBiayaJasaPeny(product.getProductBiayaJasaPeny());
-        cicilanTetap.setTxBiayaJasaPenyPer(product.getProductBiayaJasaPenyPeriode());
-        cicilanTetap.setTotalBiayaJasaPeny(product.getProductJangkaWaktu() / product.getProductBiayaJasaPenyPeriode() * product.getProductBiayaJasaPenyPeriode().doubleValue());
-        cicilanTetap.setTxBiayaAdmTutup(product.getProductAdminClosingFee());
-        cicilanTetap.setTotalPengem(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getProductAdminOpeningFee() - (product.getProductAdminOpeningFee() * cicilanTetapModel.getDiskonAdmBuka() / 100))
-         + product.getProductJangkaWaktu() / product.getProductBiayaJasaPenyPeriode() * product.getProductBiayaJasaPenyPeriode().doubleValue() 
-         + product.getProductAdminClosingFee());
+        cicilanTetap.setTxBiayaJasaPeny(product.getBiayaJasaPenyRate());
+        cicilanTetap.setTxBiayaJasaPenyPer(product.getBiayaJasaPenyPer());
+        cicilanTetap.setTotalBiayaJasaPeny(product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyPer().doubleValue());
+        cicilanTetap.setTxBiayaAdmTutup(product.getBiayaAdmTutupVal());
+        cicilanTetap.setTotalPengem(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100))
+         + product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyPer().doubleValue() 
+         + product.getBiayaAdmTutupVal());
 
         cicilanTetap.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         cicilanTetapRepo.save(cicilanTetap);
-         
+
         Double totalNilaiTak = (double) 0;
         List<BarangEntity> daftarBarang = new ArrayList<>();
         Integer jumlahBarang = cicilanTetapModel.getDaftarBarangGadai().size();
@@ -162,13 +163,13 @@ public class TransactionService implements Serializable{
            barangValidator.validateProductPrice(cicilanTetapModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
            
            BarangEntity barang = new BarangEntity();
-           barang.setNoUrut(i+1);
-           barang.setNamaBarang(cicilanTetapModel.getDaftarBarangGadai().get(i).getNamaBarang());
-           barang.setKondisi(cicilanTetapModel.getDaftarBarangGadai().get(i).getKondisi());
-           barang.setJumlah(cicilanTetapModel.getDaftarBarangGadai().get(i).getJumlah());
-           barang.setHargaPerSatuan(cicilanTetapModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
-           barang.setNoTransaksi(cicilanTetap.getNoTransaksi());
-           
+            barang.setNoUrut(i + 1);
+            barang.setNamaBarang(cicilanTetapModel.getDaftarBarangGadai().get(i).getNamaBarang());
+            barang.setKondisi(cicilanTetapModel.getDaftarBarangGadai().get(i).getKondisi());
+            barang.setJumlah(cicilanTetapModel.getDaftarBarangGadai().get(i).getJumlah());
+            barang.setHargaPerSatuan(cicilanTetapModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
+            barang.setNoTransaksi(cicilanTetap.getNoTransaksi());
+
            totalNilaiTak = totalNilaiTak + ((cicilanTetapModel.getDaftarBarangGadai().get(i).getHargaPerSatuan() * cicilanTetapModel.getDaftarBarangGadai().get(i).getJumlah()));
            barangRepo.save(barang);
            daftarBarang.add(barang);
@@ -179,6 +180,32 @@ public class TransactionService implements Serializable{
         cicilanTetap.setDaftarBarang(daftarBarang);
 
         return cicilanTetapRepo.save(cicilanTetap);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+    public CicilanTetapEntity doSaveTrxCicTetap(CicilanTetapModel cicilanTetapModel) throws ClientException, NotFoundException {
+        CicilanTetapEntity hitung = doHitungTrxCicTetap(cicilanTetapModel);
+        customerValidator.validatetLimitTxn(cicilanTetapModel.getNilaiPencairanPelanggan());
+        userValidator.validateUserTransactionLimit(cicilanTetapModel.getNilaiPencairanPelanggan());
+
+        if (cicilanTetapModel.getNilaiPencairanPelanggan() < 1000000) {
+            throw new ClientException("Minimal pencairan adalah 1.000.000");
+        }
+
+        ProductEntity product = productService.doGetDetailProduct(cicilanTetapModel.getProductId());
+
+        Integer jumlahCicilan = product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer();
+        for (Integer i = 0; i < jumlahCicilan; i++) {
+            CicilanEntity cicilan = new CicilanEntity(hitung.getNoTransaksi(), i+1);
+            cicilan.setTxPokok(hitung.getTotalNilaiPinj() / product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer());
+            cicilan.setTxBunga(hitung.getTotalNilaiPinj() / product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyRate()/100);
+            cicilan.setTxStatus("aktif");
+            cicilan.setTanggalAktif(hitung.getTglTx());
+            cicilan.setTanggalJatuhTempo(hitung.getTglJatuhTempo());
+            cicilanRepo.save(cicilan);
+        }
+
+        return hitung;
     }
 
 }

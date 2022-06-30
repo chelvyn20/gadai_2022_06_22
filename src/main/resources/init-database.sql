@@ -145,12 +145,12 @@ CREATE TABLE public.ms_product
     product_ltv numeric(5,2) NOT NULL,
     product_tenor numeric(3) NOT NULL,
     biaya_adm_buka_type character varying(7) NOT NULL,
-    biaya_adm_buka_val numeric(5,2) NOT NULL,
+    biaya_adm_buka_val numeric(10,2) NOT NULL,
     biaya_adm_tutup_type character varying(7) NOT NULL,
-    biaya_adm_tutup_val numeric(5,2) NOT NULL,
-    biaya_js_peny_rate numeric(5,2) NOT NULL,
+    biaya_adm_tutup_val numeric(10,2) NOT NULL,
+    biaya_js_peny_rate numeric(10,2) NOT NULL,
     biaya_js_peny_per numeric(3) NOT NULL,
-    biaya_denda_keterlambatan_rate numeric(5,2) NOT NULL,
+    biaya_denda_keterlambatan_rate numeric(10,2) NOT NULL,
     biaya_denda_keterlambatan_per numeric(3) NOT NULL,
     created_date timestamp without time zone NOT NULL,
     created_by character varying(50) NOT NULL,
@@ -210,21 +210,21 @@ ALTER TABLE IF EXISTS public.TX_TRANSAKSI_CICILAN_TETAP
 
 CREATE TABLE IF NOT EXISTS public.TX_TRANSAKSI_BARANG
 (
-    no_urut numeric varying COLLATE pg_catalog."default" NOT NULL,
+    no_urut numeric NOT NULL,
     no_transaksi character varying COLLATE pg_catalog."default" NOT NULL,
     nama_barang character varying(30) COLLATE pg_catalog."default",
     kondisi character varying(150) COLLATE pg_catalog."default",
     jumlah numeric(3,0),
     harga_per_satuan numeric(10,2),
     CONSTRAINT TX_TRANSAKSI_BARANG_pkey PRIMARY KEY (no_urut, no_transaksi)
-)
+);
 
 
 -- Table: public.TX_CICILAN
 
 -- DROP TABLE IF EXISTS public."TX_CICILAN";
 
-CREATE TABLE IF NOT EXISTS public."TX_CICILAN"
+CREATE TABLE IF NOT EXISTS public.TX_CICILAN
 (
     no_transaksi character varying COLLATE pg_catalog."default" NOT NULL,
     cicilan_ke numeric,
@@ -235,10 +235,10 @@ CREATE TABLE IF NOT EXISTS public."TX_CICILAN"
     tanggal_jatuh_tempo date,
     tanggal_bayar date,
     created_date timestamp without time zone,
-    CONSTRAINT "TX_CICILAN_pkey" PRIMARY KEY (no_transaksi)
+    CONSTRAINT TX_CICILAN_pkey PRIMARY KEY (cicilan_ke, no_transaksi)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."TX_CICILAN"
+ALTER TABLE IF EXISTS public.TX_CICILAN
     OWNER to postgres;

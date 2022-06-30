@@ -35,7 +35,7 @@ public class CicilanTetapValidator {
     }
 
     public void validateTransaksiNo(String noTransaksi) throws ClientException {
-        if(noTransaksi.length() <= 11) {
+        if(noTransaksi.length() >= 11) {
             throw new ClientException("No Transaksi tidak valid");
         }
     }
