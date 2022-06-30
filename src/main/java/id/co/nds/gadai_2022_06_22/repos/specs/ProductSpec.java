@@ -43,7 +43,7 @@ public class ProductSpec implements Specification<ProductEntity>{
         }
 
         if(productModel.getProductAdminClosingFee() != null && productModel.getProductBiayaJasaPenyBefore() > 0 && productModel.getProductBiayaJasaPenyAfter() > 0) {
-            p.getExpressions().add(criteriaBuilder.equal(root.get("productBiayaJasaPeny"), productModel.getProductBiayaJasaPenyBefore()
+            p.getExpressions().add(criteriaBuilder.equal(root.get("biayaJasaPenyRate"), productModel.getProductBiayaJasaPenyBefore()
             + productModel.getProductBiayaJasaPenyAfter()));
         }
 

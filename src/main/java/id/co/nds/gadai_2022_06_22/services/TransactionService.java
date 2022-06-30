@@ -136,7 +136,7 @@ public class TransactionService implements Serializable {
         cicilanTetap.setBiayaAdmBuka(product.getBiayaAdmBukaVal());
         cicilanTetap.setBiayaAdmBukaAkhir(product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100));
         cicilanTetap.setTotalNilaiPinj(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100)));
-        cicilanTetap.setTglTx(new Timestamp(System.currentTimeMillis()));
+        cicilanTetap.setTglTx(LocalDateTime.now());
         cicilanTetap.setTglJatuhTempo(Timestamp.valueOf(LocalDateTime.now().plusMonths(product.getProductJangkaWaktu())));
         cicilanTetap.setTxBiayaJasaPeny(product.getBiayaJasaPenyRate());
         cicilanTetap.setTxBiayaJasaPenyPer(product.getBiayaJasaPenyPer());
@@ -195,16 +195,20 @@ public class TransactionService implements Serializable {
         ProductEntity product = productService.doGetDetailProduct(cicilanTetapModel.getProductId());
 
         Integer jumlahCicilan = product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer();
+        Integer periodeCicilan = product.getProductJangkaWaktu() / jumlahCicilan;
         for (Integer i = 0; i < jumlahCicilan; i++) {
             CicilanEntity cicilan = new CicilanEntity(hitung.getNoTransaksi(), i+1);
             cicilan.setTxPokok(hitung.getTotalNilaiPinj() / product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer());
             cicilan.setTxBunga(hitung.getTotalNilaiPinj() / product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyRate()/100);
-            cicilan.setTxStatus("aktif");
-            cicilan.setTanggalAktif(hitung.getTglTx());
-            cicilan.setTanggalJatuhTempo(hitung.getTglJatuhTempo());
+            cicilan.setTxStatus("Belum Aktif");
+            if (LocalDateTime.now().isAfter(hitung.getTglTx().plusMonths(i*periodeCicilan))) {
+                cicilan.setTxStatus("Aktif");
+            } 
+            cicilan.setTanggalAktif(hitung.getTglTx().plusMonths(i*periodeCicilan) );
+            cicilan.setTanggalJatuhTempo(hitung.getTglTx().plusMonths((i+1)*periodeCicilan).minusDays(1));
+            cicilan.setCreatedDate(new Timestamp(System.currentTimeMillis()));
             cicilanRepo.save(cicilan);
         }
-
         return hitung;
     }
 

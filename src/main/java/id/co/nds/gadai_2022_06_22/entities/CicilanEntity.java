@@ -2,6 +2,7 @@ package id.co.nds.gadai_2022_06_22.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,13 +37,13 @@ public class CicilanEntity implements Serializable{
     private String txStatus;
 
     @Column(name = "tanggal_aktif")
-    private Timestamp tanggalAktif;
+    private LocalDateTime tanggalAktif;
 
     @Column(name = "tanggal_jatuh_tempo")
-    private Timestamp tanggalJatuhTempo;
+    private LocalDateTime tanggalJatuhTempo;
 
     @Column(name = "tanggal_bayar")
-    private Timestamp tanggalBayar;
+    private LocalDateTime tanggalBayar;
 
     @Column(name = "created_date")
     private Timestamp createdDate;
@@ -95,27 +96,27 @@ public class CicilanEntity implements Serializable{
         this.txStatus = txStatus;
     }
 
-    public Timestamp getTanggalAktif() {
+    public LocalDateTime getTanggalAktif() {
         return tanggalAktif;
     }
 
-    public void setTanggalAktif(Timestamp tanggalAktif) {
+    public void setTanggalAktif(LocalDateTime tanggalAktif) {
         this.tanggalAktif = tanggalAktif;
     }
 
-    public Timestamp getTanggalJatuhTempo() {
+    public LocalDateTime getTanggalJatuhTempo() {
         return tanggalJatuhTempo;
     }
 
-    public void setTanggalJatuhTempo(Timestamp tanggalJatuhTempo) {
+    public void setTanggalJatuhTempo(LocalDateTime tanggalJatuhTempo) {
         this.tanggalJatuhTempo = tanggalJatuhTempo;
     }
 
-    public Timestamp getTanggalBayar() {
+    public LocalDateTime getTanggalBayar() {
         return tanggalBayar;
     }
 
-    public void setTanggalBayar(Timestamp tanggalBayar) {
+    public void setTanggalBayar(LocalDateTime tanggalBayar) {
         this.tanggalBayar = tanggalBayar;
     }
 

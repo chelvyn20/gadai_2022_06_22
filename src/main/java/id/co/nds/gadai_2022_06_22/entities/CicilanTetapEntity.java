@@ -1,6 +1,7 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -50,7 +51,7 @@ public class CicilanTetapEntity {
     private Double totalNilaiPinj;
 
     @Column(name = "tanggal_tx")
-    private Timestamp tglTx;
+    private LocalDateTime tglTx;
 
     @Column(name = "tanggal_jatuh_tempo")
     private Timestamp tglJatuhTempo;
@@ -161,12 +162,12 @@ public class CicilanTetapEntity {
         this.totalNilaiPinj = totalNilaiPinj;
     }
 
-    public Timestamp getTglTx() {
+    public LocalDateTime getTglTx() {
         return tglTx;
     }
 
-    public void setTglTx(Timestamp tglTx) {
-        this.tglTx = tglTx;
+    public void setTglTx(LocalDateTime localDateTime) {
+        this.tglTx = localDateTime;
     }
 
     public Timestamp getTglJatuhTempo() {
