@@ -19,5 +19,11 @@ public interface ProductRepo extends JpaRepository<ProductEntity,String>, JpaSpe
 
     @Query(value = "SELECT * FROM ms_product AS p WHERE product_status = '"  + GlobalConstant.REC_STATUS_ACTIVE
     + "' AND LOWER(product_tipe) = 'konsinyasi cicilan tetap'",nativeQuery = true)
-    List<ProductEntity> findAllProduct();
+    List<ProductEntity> findAllProductCiTetap();
+
+    @Query(value = "SELECT COUNT (*) FROM ms_product AS p WHERE product_status = '"  + GlobalConstant.REC_STATUS_ACTIVE
+    + "' AND LOWER(product_tipe) = 'konsinyasi cicilan tetap' AND (product_id) = (:product_id)",nativeQuery = true)
+    long countProductIdCiTetap(@Param("product_id")String id);
+
+   
 }

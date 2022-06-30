@@ -1,6 +1,5 @@
 package id.co.nds.gadai_2022_06_22.validators;
 
-import org.apache.commons.lang3.StringUtils;
 
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
@@ -95,8 +94,8 @@ public class TrxValidator {
     }
 
     public void validateDiskonAdminBuka(Double dana) throws ClientException{
-        if(dana<0){
-            throw new ClientException( "Nilai Pencairan pelanggan tidak valid");
+        if(dana<0|| dana>100){
+            throw new ClientException( "Diskon admin buka Pencairan pelanggan tidak valid (0-100%)");
         }
     }
 

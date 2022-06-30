@@ -24,6 +24,10 @@ public interface CustomerRepo extends JpaRepository<CustomerEntity,String>, JpaS
     + "' AND cust_hp = :cust_hp" , nativeQuery =  true)
     long countByCallNumber(@Param("cust_hp") String callNumber);
 
+    @Query(value = "SELECT COUNT (*) FROM ms_customer WHERE cust_status = '"  + GlobalConstant.REC_STATUS_ACTIVE
+    + "' AND cust_id = :cust_id",nativeQuery = true)
+    long countById(@Param("cust_id")String id);
+
     
 }
 

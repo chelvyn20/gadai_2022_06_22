@@ -7,6 +7,7 @@ public class daftarBarangGadai {
     private String kondisi;
     private Integer jumlahBarang;
     private Double hargaPerSatuan;
+    
     public Integer getNoUrut() {
         return noUrut;
     }

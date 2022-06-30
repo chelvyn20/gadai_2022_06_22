@@ -1,7 +1,6 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,19 +16,18 @@ import org.hibernate.annotations.GenericGenerator;
 import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeBarangId;
 
 @Entity
-@Table(name = "tx_transaksi_barang;")
+@Table(name = "tx_transaksi_barang")
 @IdClass(CompositeBarangId.class)
 public class BarangEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="no_urut")
     private Integer noUrut;
     
     @Id
-    @GenericGenerator(name = "no_transaksi_seq",
-    strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
-    @GeneratedValue(generator = "no_transaksi_seq")
+    // @GenericGenerator(name = "no_transaksi_seq",
+    // strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
+    // @GeneratedValue(generator = "no_transaksi_seq")
     @JoinColumn(name="no_transaksi", referencedColumnName =  "no_transaksi")
     @Column(name="no_transaksi")
     private String noTransaksi;
@@ -37,38 +35,14 @@ public class BarangEntity implements Serializable {
     @Column(name="nama_barang")
     private String namaBarang;
 
-    @Column(name="desc_barang")
+    @Column(name="kondisi")
     private String kondisiBarang;
 
-    @Column(name="jmlh_barang")
+    @Column(name="jumlah")
     private Integer jmlhBarang;
 
-    @Column(name="harga_barang")
+    @Column(name="harga_per_satuan")
     private Double hargaBarang;
-
-    @Column(name="total_harga_barang")
-    private Double totalHargaBarang;
-
-    @Column(name="created_date")
-    private Timestamp createdDate;
-    
-    @Column(name="updated_date")
-    private Timestamp updatedDate;
-
-    @Column(name="deleted_date")
-    private Timestamp deletedDate;
-
-    @Column(name="creator_id")
-    private Integer creatorId;
-
-    @Column(name="updater_id")
-    private Integer updaterId;
-
-    @Column(name="deleter_id")
-    private Integer deleterId;
-
-    @Column(name="status_barang")
-    private String statusBarang;
 
     public Integer getNoUrut() {
         return noUrut;
@@ -118,70 +92,8 @@ public class BarangEntity implements Serializable {
         this.hargaBarang = hargaBarang;
     }
 
-    public Double getTotalHargaBarang() {
-        return totalHargaBarang;
-    }
-
-    public void setTotalHargaBarang(Double totalHargaBarang) {
-        this.totalHargaBarang = totalHargaBarang;
-    }
-
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public Timestamp getDeletedDate() {
-        return deletedDate;
-    }
-
-    public void setDeletedDate(Timestamp deletedDate) {
-        this.deletedDate = deletedDate;
-    }
-
-    public Integer getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
-    }
-
-    public Integer getUpdaterId() {
-        return updaterId;
-    }
-
-    public void setUpdaterId(Integer updaterId) {
-        this.updaterId = updaterId;
-    }
-
-    public Integer getDeleterId() {
-        return deleterId;
-    }
-
-    public void setDeleterId(Integer deleterId) {
-        this.deleterId = deleterId;
-    }
-
-    public String getStatusBarang() {
-        return statusBarang;
-    }
-
-    public void setStatusBarang(String statusBarang) {
-        this.statusBarang = statusBarang;
-    }
-
+  
+   
     
    
 }

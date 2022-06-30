@@ -4,16 +4,16 @@ import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 
 public class BarangValidator {
-    public void nullChekcNoBarang(Integer noBrg) throws ClientException{
+    public void notNullChekNoUrut(Integer noBrg) throws ClientException{
         if(noBrg==null){
             throw new ClientException( "Nomor barang tidak boleh kosong");
 
         }
     }
     
-    public void notnullChekcNoBarang(Integer noBrg ) throws ClientException {
-        if(noBrg!=null){
-            throw new ClientException( "Nomor barang dibuat secara otomatis, jangan masukkan!");
+    public void notNullChekTransId(String nomor ) throws ClientException {
+        if(nomor!=null){
+            throw new ClientException( "Nomor Transaksi dibuat secara otomatis, jangan masukkan!");
 
         }
     }

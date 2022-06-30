@@ -32,29 +32,29 @@ public class TrxController {
     private TrxService trxService;
 
     
-    // @PostMapping(value = "/add")
-    // public ResponseEntity<ResponseModel>doSaveTrxCicTetap(@RequestBody TrxModel trxModel){
-    //     try {
-    //         //request
-    //         CicilanTetapEntity cicilan = trxService.add(trxModel);
+    @PostMapping(value = "/add")
+    public ResponseEntity<ResponseModel>doSaveTrxCicTetap(@RequestBody TrxModel trxModel){
+        try {
+            //request
+            CicilanTetapEntity cicilan = trxService.save(trxModel);
 
-    //         //response
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg( "Sukses Input Data Cicilan Baru");
-    //         response.setData(cicilan);
-    //         return ResponseEntity.ok(response);
+            //response
+            ResponseModel response = new ResponseModel();
+            response.setMsg( "Sukses Input Data Cicilan Baru");
+            response.setData(cicilan);
+            return ResponseEntity.ok(response);
 
-    //     } catch(ClientException e){
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg(e.getMessage());
-    //         return ResponseEntity.badRequest().body(response);
-    //     }catch(Exception e){
-    //         ResponseModel response =new ResponseModel();
-    //         response.setMsg("Terjadi Kesahalan Pada Server");
-    //         e.printStackTrace();
-    //         return ResponseEntity.internalServerError().body(response);
-    //     }
-    // } 
+        } catch(ClientException e){
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }catch(Exception e){
+            ResponseModel response =new ResponseModel();
+            response.setMsg("Terjadi Kesahalan Pada Server");
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(response);
+        }
+    } 
  
 
     @GetMapping(value = "/get/search")
@@ -81,10 +81,10 @@ public class TrxController {
 
 
     @GetMapping(value = "/get/{id}")
-    public ResponseEntity<ResponseModel>doGetDetailCicTetap(@RequestBody String id)throws ClientException, NotFoundException {
+    public ResponseEntity<ResponseModel>doGetDetailCicTetap(@PathVariable String id){
         try {
             //request
-            CicilanTetapEntity cicilan = trxService.findByNoTrans(id);
+            List<CicilanTetapEntity> cicilan = trxService.findByNoTrans(id);
             
             //response
             ResponseModel response = new ResponseModel();
@@ -133,10 +133,10 @@ public class TrxController {
     } 
 
     @GetMapping(value = "/get/produk")
-    public ResponseEntity<ResponseModel>doGetListProduk(@RequestBody ProductModel productModel) {
+    public ResponseEntity<ResponseModel>doGetListProduk() {
         try {
             //request
-            List<ProductEntity> product = trxService.findAllProduct(productModel);
+            List<ProductEntity> product = trxService.findAllProduct();
 
             //response
             ResponseModel response = new ResponseModel();

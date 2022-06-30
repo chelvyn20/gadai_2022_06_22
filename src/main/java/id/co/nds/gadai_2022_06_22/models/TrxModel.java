@@ -19,7 +19,8 @@ public class TrxModel extends CustomerModel{
     private String statusTrans;
     private Date trxDateBegin;
     private Date trxDateEnd;
-    private List<daftarBarangGadai> barang = new ArrayList<>();
+    private List<daftarBarangGadai> daftarBarangGadai;
+    
     public String getNoTransaksi() {
         return noTransaksi;
     }
@@ -80,11 +81,11 @@ public class TrxModel extends CustomerModel{
     public void setTrxDateEnd(Date trxDateEnd) {
         this.trxDateEnd = trxDateEnd;
     }
-    public List<daftarBarangGadai> getBarang() {
-        return barang;
+    public List<daftarBarangGadai> getDaftarBarangGadai() {
+        return daftarBarangGadai;
     }
-    public void setBarang(List<daftarBarangGadai> barang) {
-        this.barang = barang;
+    public void setDaftarBarangGadai(List<daftarBarangGadai> barang) {
+        this.daftarBarangGadai = barang;
     }
     
    

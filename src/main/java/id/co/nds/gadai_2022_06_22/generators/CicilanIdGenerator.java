@@ -17,7 +17,7 @@ public class CicilanIdGenerator implements IdentifierGenerator{
         Connection connection = ssci.connection();
 
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS seq FROM ms_cicilan");
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS seq FROM tx_transaksi_cicilan_tetap");
             ResultSet rs =ps.executeQuery();
             if(rs.next()){
                 int seq = rs.getInt( "seq")+1;

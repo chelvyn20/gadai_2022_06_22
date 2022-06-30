@@ -27,20 +27,14 @@ public class CicilanEntity {
     @Column(name="cicilan_ke")
     private String cicilanKe;
 
-    @Column(name="total_pinjaman")
-    private Double totalPinjaman;
-
     @Column(name="tx_pokok")
     private Double txPokok;
 
     @Column(name="tx_bunga")
     private Double txBunga;
 
-    @Column(name="trx_date")
-    private Timestamp txrDate;
-
-    @Column(name="actor_id")
-    private Integer actorId;
+    @Column(name="tx_status")
+    private String statusTrans;
 
     @Column(name="tanggal_aktif")
     private Date tglAktif;
@@ -51,8 +45,8 @@ public class CicilanEntity {
     @Column(name="tanggal_bayar")
     private Date tglBayar;
 
-    @Column(name="status_trans")
-    private String statusTrans;
+    @Column(name="created_date")
+    private Timestamp txrDate;
 
     public String getNoTransaksi() {
         return noTransaksi;
@@ -68,14 +62,6 @@ public class CicilanEntity {
 
     public void setCicilanKe(String cicilanKe) {
         this.cicilanKe = cicilanKe;
-    }
-
-    public Double getTotalPinjaman() {
-        return totalPinjaman;
-    }
-
-    public void setTotalPinjaman(Double totalPinjaman) {
-        this.totalPinjaman = totalPinjaman;
     }
 
     public Double getTxPokok() {
@@ -94,20 +80,12 @@ public class CicilanEntity {
         this.txBunga = txBunga;
     }
 
-    public Timestamp getTxrDate() {
-        return txrDate;
+    public String getStatusTrans() {
+        return statusTrans;
     }
 
-    public void setTxrDate(Timestamp txrDate) {
-        this.txrDate = txrDate;
-    }
-
-    public Integer getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(Integer actorId) {
-        this.actorId = actorId;
+    public void setStatusTrans(String statusTrans) {
+        this.statusTrans = statusTrans;
     }
 
     public Date getTglAktif() {
@@ -134,14 +112,13 @@ public class CicilanEntity {
         this.tglBayar = tglBayar;
     }
 
-    public String getStatusTrans() {
-        return statusTrans;
+    public Timestamp getTxrDate() {
+        return txrDate;
     }
 
-    public void setStatusTrans(String statusTrans) {
-        this.statusTrans = statusTrans;
+    public void setTxrDate(Timestamp txrDate) {
+        this.txrDate = txrDate;
     }
 
-   
-   
+  
 }

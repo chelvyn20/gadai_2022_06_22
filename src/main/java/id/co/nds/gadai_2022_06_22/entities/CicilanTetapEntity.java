@@ -1,7 +1,7 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,69 +20,65 @@ public class CicilanTetapEntity {
     @GenericGenerator(name = "no_transaksi_seq",
     strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
     @GeneratedValue(generator = "no_transaksi_seq")
-
     @Column(name="no_transaksi")
     private String noTransaksi;
 
     @OneToMany(targetEntity = BarangEntity.class, mappedBy = "noTransaksi" )
     private List<BarangEntity>daftarBarang;
 
-    @Column(name="total_nilai_taksiran")
+    @Column(name="total_nilai_tak")
     private Double totalNilaiTaksiran;
 
-    @Column(name="nilai_pencairan_pelanggan")
+    @Column(name="nilai_pencairan_pel")
     private Double nilaiPencairanPelanggan;
 
     @Column(name="diskon_adm_buka")
-    private Double diskonAmdBuka;
+    private Double diskonAdmBuka;
 
     @Column(name="tx_ltv")
     private Double txLtv;
 
-    @Column(name="max_nilai_pinjam")
+    @Column(name="max_nilai_pinj")
     private Double maxNilaiPinjam;
 
     @Column(name="biaya_adm_buka")
     private Double biayaAdmBuka;
 
-    @Column(name="biaya_adm_buka_akhir")
+    @Column(name="biaya_adm_buka_ak")
     private Double biayaAdmBukaAkhir;
 
-    @Column(name="total_nilai_pinjaman")
+    @Column(name="total_nilai_pinj")
     private Double totalNilaiPinjaman;
 
     @Column(name="tanggal_tx")
-    private Date tanggalTx;
+    private LocalDate tanggalTx;
 
     @Column(name="tanggal_jatuh_tempo")
-    private Date tglJatuhTempo;
+    private LocalDate tglJatuhTempo;
 
-    @Column(name="biaya_jasa_penyimpanan")
+    @Column(name="tx_biaya_jasa_peny")
     private Double biayaJasaPenyimpanan;
 
-    @Column(name="biaya_jasa_peny_periode")
+    @Column(name="tx_biaya_jasa_peny_per")
     private Double biayaJasaPenyPeriode;
 
     @Column(name="total_biaya_jasa_peny")
     private Double totalBiayaJasaPeny;
 
-    @Column(name="biaya_adm_tutup")
+    @Column(name="tx_biaya_adm_tutup")
     private Double biayaAdmTutup;
 
-    @Column(name="total_pengembalian")
+    @Column(name="total_pengem")
     private Double totalPengembalian;
 
     @Column(name="product_id")
     private String productId;
 
-    @Column(name="cust_id")
+    @Column(name="customer_id")
     private String custId;
 
     @Column(name="created_date")
     private Timestamp createdDate;
-
-    @Column(name="actor_id")
-    private Integer actorId;
 
     public String getNoTransaksi() {
         return noTransaksi;
@@ -90,6 +86,14 @@ public class CicilanTetapEntity {
 
     public void setNoTransaksi(String noTransaksi) {
         this.noTransaksi = noTransaksi;
+    }
+
+    public List<BarangEntity> getDaftarBarang() {
+        return daftarBarang;
+    }
+
+    public void setDaftarBarang(List<BarangEntity> daftarBarang) {
+        this.daftarBarang = daftarBarang;
     }
 
     public Double getTotalNilaiTaksiran() {
@@ -108,12 +112,12 @@ public class CicilanTetapEntity {
         this.nilaiPencairanPelanggan = nilaiPencairanPelanggan;
     }
 
-    public Double getDiskonAmdBuka() {
-        return diskonAmdBuka;
+    public Double getDiskonAdmBuka() {
+        return diskonAdmBuka;
     }
 
-    public void setDiskonAmdBuka(Double diskonAmdBuka) {
-        this.diskonAmdBuka = diskonAmdBuka;
+    public void setDiskonAdmBuka(Double diskonAdmBuka) {
+        this.diskonAdmBuka = diskonAdmBuka;
     }
 
     public Double getTxLtv() {
@@ -156,19 +160,19 @@ public class CicilanTetapEntity {
         this.totalNilaiPinjaman = totalNilaiPinjaman;
     }
 
-    public Date getTanggalTx() {
+    public LocalDate getTanggalTx() {
         return tanggalTx;
     }
 
-    public void setTanggalTx(Date tanggalTx) {
+    public void setTanggalTx(LocalDate tanggalTx) {
         this.tanggalTx = tanggalTx;
     }
 
-    public Date getTglJatuhTempo() {
+    public LocalDate getTglJatuhTempo() {
         return tglJatuhTempo;
     }
 
-    public void setTglJatuhTempo(Date tglJatuhTempo) {
+    public void setTglJatuhTempo(LocalDate tglJatuhTempo) {
         this.tglJatuhTempo = tglJatuhTempo;
     }
 
@@ -236,11 +240,5 @@ public class CicilanTetapEntity {
         this.createdDate = createdDate;
     }
 
-    public Integer getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(Integer actorId) {
-        this.actorId = actorId;
-    }
+    
 }
