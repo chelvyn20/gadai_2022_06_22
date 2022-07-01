@@ -15,6 +15,7 @@ import id.co.nds.gadai_2022_06_22.entities.BarangEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
 import id.co.nds.gadai_2022_06_22.entities.CustomerEntity;
+import id.co.nds.gadai_2022_06_22.entities.DendaKeterlambatanEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
@@ -25,6 +26,7 @@ import id.co.nds.gadai_2022_06_22.repos.BarangRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanTetapRepo;
 import id.co.nds.gadai_2022_06_22.repos.CustomerRepo;
+import id.co.nds.gadai_2022_06_22.repos.DendaKeterlambatanRepo;
 import id.co.nds.gadai_2022_06_22.repos.ProductRepo;
 import id.co.nds.gadai_2022_06_22.repos.specs.CustomerSpec;
 import id.co.nds.gadai_2022_06_22.repos.specs.ProductSpec;
@@ -51,6 +53,9 @@ public class TransactionService implements Serializable {
 
     @Autowired
     private ProductRepo productRepo;
+
+    @Autowired
+    private DendaKeterlambatanRepo dendaKeterlambatanRepo;
 
     @Autowired
     private ProductService productService;
@@ -210,6 +215,51 @@ public class TransactionService implements Serializable {
             cicilanRepo.save(cicilan);
         }
         return hitung;
+    }
+
+    public List<CicilanEntity> checkTransactionStatus() {
+        List<CicilanEntity> listCicilan = new ArrayList<>();
+        cicilanRepo.findAll().forEach(listCicilan::add);
+
+        for(Integer i = 0; i < listCicilan.size(); i++) {
+            if (LocalDateTime.now().isBefore(listCicilan.get(i).getTanggalAktif())) {
+                listCicilan.get(i).setTxStatus("BELUM AKTIF");
+            } 
+
+            if (LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalAktif()) && LocalDateTime.now().isBefore(listCicilan.get(i).getTanggalJatuhTempo()) ) {
+                listCicilan.get(i).setTxStatus("AKTIF");
+            } 
+
+            if (LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalAktif()) && LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalJatuhTempo()) ) {
+                listCicilan.get(i).setTxStatus("TERLAMBAT");
+            } 
+
+            // if ( listCicilan.get(i).getTanggalBayar() != null ) {
+            //     listCicilan.get(i).setTxStatus("DIBAYAR");
+            // }
+
+            cicilanRepo.save(listCicilan.get(i));
+        }
+
+        return listCicilan;
+    }
+
+    public List<DendaKeterlambatanEntity> calculateDendaKeterlambatan() {
+        List<CicilanEntity> listCicilan = new ArrayList<>();
+        cicilanRepo.findAll().forEach(listCicilan::add);
+
+        for(Integer i = 0; i < listCicilan.size(); i++) {
+            if (listCicilan.get(i).getTxStatus().equalsIgnoreCase("TERLAMBAT")) {
+                DendaKeterlambatanEntity denda = new DendaKeterlambatanEntity();
+                denda.setNoTransaksi(listCicilan.get(i).getNoTransaksi());
+                denda.setCicilanKe(listCicilan.get(i).getCicilanKe());
+                denda.setTglDenda(LocalDateTime.now());
+                denda.setBiayaDenda(listCicilan.get(i).getTxPokok() * 0.0123);
+                dendaKeterlambatanRepo.save(denda);
+            }
+        }
+
+        return null;
     }
 
 }
