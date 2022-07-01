@@ -1,6 +1,7 @@
 package id.co.nds.gadai_2022_06_22.services;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,10 +66,27 @@ public class TrxService implements Serializable {
     
 
     public List<CicilanTetapEntity> findTrxByCriteria(TrxModel trxModel){
-        List<CicilanTetapEntity> cicilan = new ArrayList<>();
+        List<CicilanTetapEntity> transaksi = new ArrayList<>();
+        
         TrxSpec trxSpec = new TrxSpec(trxModel);
-        cicilanTetapRepo.findAll(trxSpec).forEach(cicilan::add);
-        return cicilan;
+        cicilanTetapRepo.findAll(trxSpec).forEach(transaksi::add);
+        ArrayList param = new ArrayList();
+        for(int i=0; i < transaksi.size(); i++){
+            CustomerEntity customer = customerRepo.findById(transaksi.get(i).getCustId()).orElse( null);
+            ProductEntity product = productRepo.findById(transaksi.get(i).getProductId()).orElse( null);
+            List<CicilanEntity> cicilan = cicilanRepo.findAll();
+
+            param.add("noTransaksi: " + transaksi.get(i).getNoTransaksi());
+            param.add("tglTransaksi: " + transaksi.get(i).getTanggalTx());
+            param.add("custId: " + transaksi.get(i).getCustId());
+            param.add("custKtp: " + customer.getCustKtp());
+            param.add("custName: " + customer.getCustName());
+            param.add("productName: " + product.getProductName());
+            param.add("tglJatuhTempo: " + transaksi.get(i).getTglJatuhTempo());
+            param.add("statusTransaksi: " + cicilan.get(i).getStatusTrans());
+        }
+        return param;
+    
     }
 
     public List<CicilanTetapEntity> findByNoTrans(String nomor) throws ClientException, NotFoundException{
@@ -76,12 +94,13 @@ public class TrxService implements Serializable {
         trxValidator.nullChekcNoTrans(nomor);
         trxValidator.validateNoTrans(nomor);
         CicilanTetapEntity trx = cicilanTetapRepo.findById(nomor).orElse( null);
+        trxValidator.nullChekcObject(trx);
         CustomerEntity customer = customerRepo.findById(trx.getCustId()).orElse( null);
         ProductEntity product = productRepo.findById(trx.getProductId()).orElse( null);
         List<BarangEntity> barang = new ArrayList<>();
         barangRepo.findBarangByNoTrx(nomor).forEach(barang::add);
        
-        trxValidator.nullChekcObject(nomor);
+        
         ArrayList param = new ArrayList();
        
         param.add("custId: " + trx.getCustId());
@@ -90,12 +109,12 @@ public class TrxService implements Serializable {
         param.add("trxDate: " + trx.getTanggalTx());
         param.add("productName: " + product.getProductName());
         param.add("productDesc: " + product.getProductDesc());
-        param.add("daftarBarangGadai: "  );
-        for (int i=0; i<barang.size();i++){
-            param.add("               " + barang.get(i));
+        param.add("daftarBarangGadai: " );
+        
+        for(Object object : barang){
+            param.add(object);
         }
        
-        
         return param;
        
     }
@@ -127,9 +146,21 @@ public class TrxService implements Serializable {
         return param;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public CicilanTetapEntity count(TrxModel trxModel) throws ClientException{
+
         trxValidator.nullChekcProductId(trxModel.getProductId());
         trxValidator.validateProductId(trxModel.getProductId());
+
+        Long count = productRepo.countProductIdCiTetap((trxModel.getProductId()));
+        if(count<1){
+            throw new ClientException("Id product tidak ditemukan");
+  
+        } 
+        else if(count > 1){
+            throw new ClientException("ga mungkin");
+        }
+        
         trxValidator.nullChekcNilaicairanPelanggan(trxModel.getNilaiPencairanPelanggan());
         trxValidator.validateNilaicairanPelanggan(trxModel.getNilaiPencairanPelanggan());
         trxValidator.nullChekcTotalNilaiTaksiran(trxModel.getTotalNilaiTaksiran());
@@ -138,8 +169,13 @@ public class TrxService implements Serializable {
         ProductEntity product = productRepo.findById(trxModel.getProductId()).orElse( null);
         CicilanTetapEntity transaksi =new CicilanTetapEntity();
 
+        transaksi.setProductId(trxModel.getProductId());
+        transaksi.setNilaiPencairanPelanggan(trxModel.getNilaiPencairanPelanggan());
+        transaksi.setDiskonAdmBuka(trxModel.getDiskonAdmBuka());
+            
+
         if (trxModel.getDiskonAdmBuka()==null){
-            transaksi.setBiayaAdmBuka(0.00);
+            transaksi.setDiskonAdmBuka(0.00);
         }
         else{
             trxValidator.validateDiskonAdminBuka(trxModel.getDiskonAdmBuka());
@@ -155,7 +191,7 @@ public class TrxService implements Serializable {
         else if( product.getProductBiayaAdminBukaTipe().trim().equalsIgnoreCase("nominal")){
             biayaBuka = product.getProductBiayaAdminBuka();
         }
-        transaksi.setBiayaAdmTutup(biayaBuka);
+        transaksi.setBiayaAdmBuka(biayaBuka);
         
         Double biayaAdmBukaAkhir = biayaBuka - (biayaBuka-trxModel.getDiskonAdmBuka()/100);
         transaksi.setBiayaAdmBukaAkhir(biayaAdmBukaAkhir);
@@ -182,30 +218,21 @@ public class TrxService implements Serializable {
             biayaTutup = product.getProductBiayaAdminTutup();
         }
         transaksi.setBiayaAdmTutup(biayaTutup);
-     
-
         transaksi.setTotalPengembalian(totalPinjaman + totalJasaPeny + biayaTutup );
-       
-
+        transaksi.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        
         return transaksi;
     } 
-    
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+    public CicilanTetapEntity tabelCicilan(TrxModel trxModel) throws ClientException{
 
+        return null;
+    }
+    
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public CicilanTetapEntity save(TrxModel trxModel) throws ClientException{
         
         trxValidator.notnullChekcNoTrans(trxModel.getNoTransaksi());
-        trxValidator.nullChekcProductId(trxModel.getProductId());
-        trxValidator.validateProductId(trxModel.getProductId());
-
-        Long count = productRepo.countProductIdCiTetap((trxModel.getProductId()));
-        if(count<1){
-            throw new ClientException("Id product tidak ditemukan");
-  
-        } 
-        else if(count > 1){
-            throw new ClientException("ga mungkin");
-        }
         trxValidator.nullChekcCustId(trxModel.getCustId());
         trxValidator.validateCustId(trxModel.getCustId());
 
@@ -214,17 +241,26 @@ public class TrxService implements Serializable {
             throw new ClientException("Id customer tidak ditemukan");
   
         }
-
         else if(countId > 1){
             throw new ClientException("ga mungkin !!!");
         }
 
         trxValidator.nullChekcNilaicairanPelanggan(trxModel.getNilaiPencairanPelanggan());
         trxValidator.validateNilaicairanPelanggan(trxModel.getNilaiPencairanPelanggan());
+
+        CustomerEntity customer = customerRepo.findById(trxModel.getCustId()).orElse( null);
+        if(trxModel.getNilaiPencairanPelanggan() > customer.getCustLimitTxn()){
+            throw new ClientException("Nilai Pencairan Pelanggan Harus lebih kecil atau sama dengan limit transaksi pelanggan. "+
+            "(limitTrx untuk pelanggan dengan id: " + trxModel.getCustId()+ " adalah " + customer.getCustLimitTxn());
+        }
+
         trxValidator.validateTotalNilaiTaksiran(trxModel.getTotalNilaiTaksiran());
         trxValidator.validateDiskonAdminBuka(trxModel.getDiskonAdmBuka());
 
-        Double totalNilaiTaksiran = 0.00; 
+       if(trxModel.getDaftarBarangGadai().size()<1){
+            throw new ClientException("Barang yang akan di Gadaikan tidak boleh kosong");
+       }
+       
         for(Integer i = 0; i < trxModel.getDaftarBarangGadai().size(); i++) {
             barangValidator.notNullChekTransId(trxModel.getDaftarBarangGadai().get(i).getNoTransaksi());
             barangValidator.nullCheckBarangName(trxModel.getDaftarBarangGadai().get(i).getNamaBarang());
@@ -236,15 +272,14 @@ public class TrxService implements Serializable {
             barangValidator.nullCheckBarangPrice(trxModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
             barangValidator.validateBarangPrice(trxModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
 
-            totalNilaiTaksiran += (trxModel.getDaftarBarangGadai().get(i).getHargaPerSatuan() * trxModel.getDaftarBarangGadai().get(i).getJumlahBarang());
-
         }
 
         CicilanTetapEntity cicilanTetap = new CicilanTetapEntity();
+        cicilanTetap = count(trxModel);
         cicilanTetap.setCustId(trxModel.getCustId());
-        cicilanTetap.setProductId(trxModel.getProductId());
-        cicilanTetapRepo.save(cicilanTetap);
-                
+        cicilanTetap = cicilanTetapRepo.save(cicilanTetap);
+        
+        Double totalNilaiTaksiran = 0.00; 
         List<BarangEntity> daftarBarang = new ArrayList<>();
         for(int i = 0; i < trxModel.getDaftarBarangGadai().size(); i++) {
             BarangEntity barang = new BarangEntity();
@@ -254,19 +289,45 @@ public class TrxService implements Serializable {
             barang.setKondisiBarang(trxModel.getDaftarBarangGadai().get(i).getKondisi());
             barang.setJmlhBarang(trxModel.getDaftarBarangGadai().get(i).getJumlahBarang());
             barang.setHargaBarang(trxModel.getDaftarBarangGadai().get(i).getHargaPerSatuan());
-            
+            totalNilaiTaksiran += (trxModel.getDaftarBarangGadai().get(i).getHargaPerSatuan() * trxModel.getDaftarBarangGadai().get(i).getJumlahBarang());
            
             daftarBarang.add(barang);
-            
 
         }
-        cicilanTetap.setNilaiPencairanPelanggan(trxModel.getNilaiPencairanPelanggan());
-        cicilanTetap.setDiskonAdmBuka(trxModel.getDiskonAdmBuka());
+        barangRepo.saveAll(daftarBarang);
         cicilanTetap.setTotalNilaiTaksiran(totalNilaiTaksiran);
         cicilanTetap.setDaftarBarang(daftarBarang);
-        barangRepo.saveAll(daftarBarang);
 
-        cicilanTetap = count(trxModel);
+        ProductEntity product = productRepo.findById(trxModel.getProductId()).orElse(null);
+        int totalCil = product.getProductJangkaWaktu()/product.getProductBiayaPenyPeriode();
+        Double pokok = cicilanTetap.getTotalNilaiPinjaman() / totalCil;
+        Double bunga = product.getProductBiayaPeny() *pokok;
+        List<CicilanEntity> tabelCicilan = new ArrayList<>();
+        for(int i = 0; i <totalCil; i++){
+            CicilanEntity cicilan = new CicilanEntity();
+            cicilan.setNoTransaksi(cicilanTetap.getNoTransaksi());
+            cicilan.setCicilanKe(i+1);
+            cicilan.setTxPokok(pokok);
+            cicilan.setTxBunga(bunga);
+            cicilan.setStatusTrans(GlobalConstant.REC_STATUS_NONACTIVE);
+            if(i==0){
+                cicilan.setStatusTrans(GlobalConstant.REC_STATUS_ACTIVE);
+            }
+            if (LocalDate.now().isAfter(cicilanTetap.getTanggalTx().plusMonths(i*product.getProductBiayaPenyPeriode()))) {
+                cicilan.setStatusTrans(GlobalConstant.REC_STATUS_ACTIVE);
+            } 
+            
+            cicilan.setTglAktif(cicilanTetap.getTanggalTx().plusMonths(i*product.getProductBiayaPenyPeriode()) );
+            LocalDate tglJthTempo = cicilanTetap.getTanggalTx().plusMonths((i+1)*product.getProductBiayaPenyPeriode()).minusDays(1);
+            cicilan.setTglJatuhTempo(tglJthTempo);
+            cicilan.setTxrDate(new Timestamp(System.currentTimeMillis()));
+            if(LocalDate.now().isAfter(tglJthTempo) && cicilan.getStatusTrans()!="lUNAS"){
+                cicilan.setStatusTrans(GlobalConstant.TERLAMBAT_BAYAR);
+            }
+            tabelCicilan.add(cicilan);
+        }
+        cicilanRepo.saveAll(tabelCicilan);
+       
         
         return cicilanTetapRepo.save(cicilanTetap);
         

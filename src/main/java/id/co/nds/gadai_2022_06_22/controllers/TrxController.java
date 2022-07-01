@@ -154,29 +154,29 @@ public class TrxController {
     } 
 
 
-    // @PostMapping(value = "/count")
-    // public ResponseEntity<ResponseModel>doHitungTrxCicTetap(@RequestBody TrxModel trxModel){
-    //     try {
-    //         //request
-    //         CicilanTetapEntity trx = trxService.count(trxModel);
+    @GetMapping(value = "/count")
+    public ResponseEntity<ResponseModel>doHitungTrxCicTetap(@RequestBody TrxModel trxModel){
+        try {
+            //request
+            CicilanTetapEntity trx = trxService.count(trxModel);
 
-    //         //response
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg( "Sukses Input Data Cicilan Baru");
-    //         response.setData(trx);
-    //         return ResponseEntity.ok(response);
+            //response
+            ResponseModel response = new ResponseModel();
+            response.setMsg( "Sukses Input Data Cicilan Baru");
+            response.setData(trx);
+            return ResponseEntity.ok(response);
 
-    //     } catch(ClientException e){
-    //         ResponseModel response = new ResponseModel();
-    //         response.setMsg(e.getMessage());
-    //         return ResponseEntity.badRequest().body(response);
-    //     }catch(Exception e){
-    //         ResponseModel response =new ResponseModel();
-    //         response.setMsg("Terjadi Kesahalan Pada Server");
-    //         e.printStackTrace();
-    //         return ResponseEntity.internalServerError().body(response);
-    //     }
-    // } 
+        } catch(ClientException e){
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }catch(Exception e){
+            ResponseModel response =new ResponseModel();
+            response.setMsg("Terjadi Kesahalan Pada Server");
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(response);
+        }
+    } 
 
 
 }

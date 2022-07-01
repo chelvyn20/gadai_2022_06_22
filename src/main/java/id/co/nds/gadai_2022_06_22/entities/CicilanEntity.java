@@ -1,31 +1,32 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
-import java.sql.Date;
+
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeCicilanId;
 
 @Entity
 @Table(name = "tx_cicilan")
+@IdClass(CompositeCicilanId.class)
 public class CicilanEntity {
     
     @Id
-    @GenericGenerator(name = "no_transaksi_seq",
-    strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
-    @GeneratedValue(generator = "no_transaksi_seq")
-
+    // @GenericGenerator(name = "no_transaksi_seq",
+    // strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
+    // @GeneratedValue(generator = "no_transaksi_seq")
     @Column(name="no_transaksi")
     private String noTransaksi;
 
+    @Id
     @Column(name="cicilan_ke")
-    private String cicilanKe;
+    private Integer cicilanKe;
 
     @Column(name="tx_pokok")
     private Double txPokok;
@@ -37,13 +38,13 @@ public class CicilanEntity {
     private String statusTrans;
 
     @Column(name="tanggal_aktif")
-    private Date tglAktif;
+    private LocalDate tglAktif;
 
     @Column(name="tanggal_jatuh_tempo")
-    private Date tglJatuhTempo;
+    private LocalDate tglJatuhTempo;
 
     @Column(name="tanggal_bayar")
-    private Date tglBayar;
+    private LocalDate tglBayar;
 
     @Column(name="created_date")
     private Timestamp txrDate;
@@ -56,11 +57,11 @@ public class CicilanEntity {
         this.noTransaksi = noTransaksi;
     }
 
-    public String getCicilanKe() {
+    public Integer getCicilanKe() {
         return cicilanKe;
     }
 
-    public void setCicilanKe(String cicilanKe) {
+    public void setCicilanKe(Integer cicilanKe) {
         this.cicilanKe = cicilanKe;
     }
 
@@ -88,27 +89,27 @@ public class CicilanEntity {
         this.statusTrans = statusTrans;
     }
 
-    public Date getTglAktif() {
+    public LocalDate getTglAktif() {
         return tglAktif;
     }
 
-    public void setTglAktif(Date tglAktif) {
+    public void setTglAktif(LocalDate tglAktif) {
         this.tglAktif = tglAktif;
     }
 
-    public Date getTglJatuhTempo() {
+    public LocalDate getTglJatuhTempo() {
         return tglJatuhTempo;
     }
 
-    public void setTglJatuhTempo(Date tglJatuhTempo) {
+    public void setTglJatuhTempo(LocalDate tglJatuhTempo) {
         this.tglJatuhTempo = tglJatuhTempo;
     }
 
-    public Date getTglBayar() {
+    public LocalDate getTglBayar() {
         return tglBayar;
     }
 
-    public void setTglBayar(Date tglBayar) {
+    public void setTglBayar(LocalDate tglBayar) {
         this.tglBayar = tglBayar;
     }
 
@@ -120,5 +121,5 @@ public class CicilanEntity {
         this.txrDate = txrDate;
     }
 
-  
+   
 }

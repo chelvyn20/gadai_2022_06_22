@@ -2,7 +2,7 @@ package id.co.nds.gadai_2022_06_22.models;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import java.util.List;
 
 

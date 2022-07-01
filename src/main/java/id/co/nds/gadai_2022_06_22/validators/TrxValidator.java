@@ -88,8 +88,8 @@ public class TrxValidator {
     }
 
     public void validateNilaicairanPelanggan(Double dana) throws ClientException{
-        if(dana<=0){
-            throw new ClientException( "Nilai Pencairan pelanggan tidak valid");
+        if(dana< 1000000.00){
+            throw new ClientException( "Nilai Pencairan pelanggan harus lebih besar atau sama dengan Rp.1.000.000,00");
         }
     }
 

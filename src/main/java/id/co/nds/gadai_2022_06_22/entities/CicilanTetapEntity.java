@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeCicilanId;
+
 @Entity
 @Table(name = "tx_transaksi_cicilan_tetap")
 public class CicilanTetapEntity {
@@ -238,6 +240,9 @@ public class CicilanTetapEntity {
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public void setProductBiayaAdminBuka(Double biayaBuka) {
     }
 
     
