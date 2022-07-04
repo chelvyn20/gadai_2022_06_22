@@ -1,5 +1,6 @@
 package id.co.nds.gadai_2022_06_22.schedulers;
 
+
 import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 
@@ -7,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -15,7 +15,8 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
-import id.co.nds.gadai_2022_06_22.repos.DendaRepo;
+import id.co.nds.gadai_2022_06_22.repos.ParamRepo;
+import id.co.nds.gadai_2022_06_22.services.TrxService;
 
 
 
@@ -23,7 +24,10 @@ import id.co.nds.gadai_2022_06_22.repos.DendaRepo;
 public class DbParamScheduler implements SchedulingConfigurer {
 
     @Autowired
-    private DendaRepo dendaRepo;
+    private ParamRepo paramRepo;
+
+    @Autowired
+    TrxService trxService;
 
     private static final String PARAM_KEY = "CRON_10_Seconds";
 
@@ -75,7 +79,10 @@ public class DbParamScheduler implements SchedulingConfigurer {
             /*
              * here, put the business logic.
              */
-
+            trxService.checkStatusCicilan();
+            trxService.hitungDenda();
+            
+            
             // call serviceGantiStatusCicilanAktif
             // call serviceGantiStatusCicJatuhTempo
             // call serviceGantiStatusCicTerlambat
@@ -101,10 +108,10 @@ public class DbParamScheduler implements SchedulingConfigurer {
     private void reloadParamScheduler() {
 
         if (cronVal.trim().equalsIgnoreCase("")) {
-            cronVal = dendaRepo.findById(PARAM_KEY).orElse(null).getDendaId();
+            cronVal = paramRepo.findById(PARAM_KEY).orElse(null).getParamValue();
         } else {
             String newCronFromDb = "";
-            newCronFromDb = dendaRepo.findById(PARAM_KEY).orElse(null).getDendaId();
+            newCronFromDb = paramRepo.findById(PARAM_KEY).orElse(null).getParamValue();
 
             if (!stopScheduler && !newCronFromDb.equalsIgnoreCase(cronVal)) {
                 cronVal = newCronFromDb;

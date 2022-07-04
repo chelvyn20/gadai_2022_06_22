@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
 import id.co.nds.gadai_2022_06_22.entities.CustomerEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
@@ -21,7 +20,6 @@ import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 import id.co.nds.gadai_2022_06_22.models.TrxModel;
 import id.co.nds.gadai_2022_06_22.services.TrxService;
 import id.co.nds.gadai_2022_06_22.models.CustomerModel;
-import id.co.nds.gadai_2022_06_22.models.ProductModel;
 import id.co.nds.gadai_2022_06_22.models.ResponseModel;
 
 

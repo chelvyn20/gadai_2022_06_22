@@ -13,7 +13,7 @@
             <PatternLayout pattern="${log-pattern}" />
         </File>
 
-        <RollingFile name="RollingFile" fileName="${log-path}/nds-catalogue-all.log" filePattern="${log-path}/nds-catalogue-all-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFile" fileName="${log-path}/nds-gadai_2022_06_22-all.log" filePattern="${log-path}/nds-gadai_2022_06_22-all-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${log-pattern}" />
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -22,7 +22,7 @@
             </Policies>
             <DefaultRolloverStrategy max="90" />
         </RollingFile>
-        <RollingFile name="sch1RollingFile" fileName="${log-path}/nds-catalogue-sch1.log" filePattern="${log-path}/nds-catalogue-sch1-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="sch1RollingFile" fileName="${log-path}/nds-gadai_2022_06_22-sch1.log" filePattern="${log-path}/nds-gadai_2022_06_22-sch1-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${log-pattern}" />
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -31,7 +31,7 @@
             </Policies>
             <DefaultRolloverStrategy max="90" />
         </RollingFile>
-        <RollingFile name="sch2RollingFile" fileName="${log-path}/nds-catalogue-sch2.log" filePattern="${log-path}/nds-catalogue-sch2-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="sch2RollingFile" fileName="${log-path}/nds-gadai_2022_06_22-sch2.log" filePattern="${log-path}/nds-gadai_2022_06_22-sch2-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${log-pattern}" />
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -40,7 +40,7 @@
             </Policies>
             <DefaultRolloverStrategy max="90" />
         </RollingFile>
-        <RollingFile name="sch3RollingFile" fileName="${log-path}/nds-catalogue-sch3.log" filePattern="${log-path}/nds-catalogue-sch3-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="sch3RollingFile" fileName="${log-path}/nds-gadai_2022_06_22-sch3.log" filePattern="${log-path}/nds-gadai_2022_06_22-sch3-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${log-pattern}" />
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -49,14 +49,14 @@
             </Policies>
             <DefaultRolloverStrategy max="90" />
         </RollingFile>
-        <RollingFile name="sch4RollingFile" fileName="${log-path}/nds-catalogue-sch4.log" filePattern="${log-path}/nds-catalogue-sch4-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="sch4RollingFile" fileName="${log-path}/nds-gadai_2022_06_22-sch4.log" filePattern="${log-path}/nds-gadai_2022_06_22-sch4-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${log-pattern}" />
             <Policies>
                 <OnStartupTriggeringPolicy />
                 <TimeBasedTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="0.01 MB" />
+                <SizeBasedTriggeringPolicy size="2 MB" />
             </Policies>
-            <DefaultRolloverStrategy max="3" />
+            <DefaultRolloverStrategy max="90" />
         </RollingFile>
     </appenders>
 
@@ -65,16 +65,16 @@
             <AppenderRef ref="Console" />
             <AppenderRef ref="RollingFile" />
         </Root>
-        <Logger name="id.co.nds.catalogue.schedulers.FixedRateScheduler" level="debug">
+        <Logger name="id.co.nds.gadai_2022_06_22.schedulers.FixedRateScheduler" level="debug">
             <AppenderRef ref="sch1RollingFile" />
         </Logger>
-        <Logger name="id.co.nds.catalogue.schedulers.FixedDelayScheduler" level="debug">
+        <Logger name="id.co.nds.gadai_2022_06_22.schedulers.FixedDelayScheduler" level="debug">
             <AppenderRef ref="sch2RollingFile" />
         </Logger>
-        <Logger name="id.co.nds.catalogue.schedulers.CronScheduler" level="debug">
+        <Logger name="id.co.nds.gadai_2022_06_22.schedulers.CronScheduler" level="debug">
             <AppenderRef ref="sch3RollingFile" />
         </Logger>
-        <Logger name="id.co.nds.catalogue.schedulers.DbParamScheduler" level="debug">
+        <Logger name="id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler" level="debug">
             <AppenderRef ref="sch4RollingFile" />
         </Logger>
     </loggers>

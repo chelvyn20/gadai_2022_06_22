@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,21 +15,21 @@ import id.co.nds.gadai_2022_06_22.entities.BarangEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
 import id.co.nds.gadai_2022_06_22.entities.CustomerEntity;
+import id.co.nds.gadai_2022_06_22.entities.DendaEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
 import id.co.nds.gadai_2022_06_22.globals.GlobalConstant;
 import id.co.nds.gadai_2022_06_22.models.CustomerModel;
-import id.co.nds.gadai_2022_06_22.models.ProductModel;
 import id.co.nds.gadai_2022_06_22.models.TrxModel;
 import id.co.nds.gadai_2022_06_22.repos.BarangRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanTetapRepo;
 import id.co.nds.gadai_2022_06_22.repos.CustomerRepo;
+import id.co.nds.gadai_2022_06_22.repos.DendaRepo;
 import id.co.nds.gadai_2022_06_22.repos.ProductRepo;
 import id.co.nds.gadai_2022_06_22.repos.specs.TrxSpec;
 import id.co.nds.gadai_2022_06_22.repos.specs.CustomerSpec;
-import id.co.nds.gadai_2022_06_22.repos.specs.ProductSpec;
 import id.co.nds.gadai_2022_06_22.validators.BarangValidator;
 import id.co.nds.gadai_2022_06_22.validators.CustomerValidator;
 import id.co.nds.gadai_2022_06_22.validators.ProductValidator;
@@ -52,10 +50,10 @@ public class TrxService implements Serializable {
     private ProductRepo productRepo;
 
     @Autowired
-    private ProductService productService;
+    private BarangRepo barangRepo;
 
     @Autowired
-    private BarangRepo barangRepo;
+    private DendaRepo dendaRepo;
 
    
     CustomerValidator customerValidator = new CustomerValidator();
@@ -309,21 +307,19 @@ public class TrxService implements Serializable {
             cicilan.setCicilanKe(i+1);
             cicilan.setTxPokok(pokok);
             cicilan.setTxBunga(bunga);
-            cicilan.setStatusTrans(GlobalConstant.REC_STATUS_NONACTIVE);
+            cicilan.setStatusTrans(GlobalConstant.STATUS_T_AKTIF);
             if(i==0){
-                cicilan.setStatusTrans(GlobalConstant.REC_STATUS_ACTIVE);
+                cicilan.setStatusTrans(GlobalConstant.STATUS_AKTIF);
             }
             if (LocalDate.now().isAfter(cicilanTetap.getTanggalTx().plusMonths(i*product.getProductBiayaPenyPeriode()))) {
-                cicilan.setStatusTrans(GlobalConstant.REC_STATUS_ACTIVE);
+                cicilan.setStatusTrans(GlobalConstant.STATUS_AKTIF);
             } 
             
             cicilan.setTglAktif(cicilanTetap.getTanggalTx().plusMonths(i*product.getProductBiayaPenyPeriode()) );
             LocalDate tglJthTempo = cicilanTetap.getTanggalTx().plusMonths((i+1)*product.getProductBiayaPenyPeriode()).minusDays(1);
             cicilan.setTglJatuhTempo(tglJthTempo);
             cicilan.setTxrDate(new Timestamp(System.currentTimeMillis()));
-            if(LocalDate.now().isAfter(tglJthTempo) && cicilan.getStatusTrans()!="lUNAS"){
-                cicilan.setStatusTrans(GlobalConstant.TERLAMBAT_BAYAR);
-            }
+            
             tabelCicilan.add(cicilan);
         }
         cicilanRepo.saveAll(tabelCicilan);
@@ -333,6 +329,53 @@ public class TrxService implements Serializable {
         
     } 
 
+    public List<CicilanEntity> checkStatusCicilan() {
+        List<CicilanEntity> cicilan = new ArrayList<>();
+        cicilanRepo.findAll().forEach(cicilan::add);
+
+        for(Integer i = 0; i < cicilan.size(); i++) {
+            if (LocalDate.now().isBefore(cicilan.get(i).getTglAktif())) {
+                cicilan.get(i).setStatusTrans(GlobalConstant.STATUS_T_AKTIF);
+            } 
+
+            else if (LocalDate.now().isAfter(cicilan.get(i).getTglAktif()) && LocalDate.now().isBefore(cicilan.get(i).getTglJatuhTempo()) ) {
+                cicilan.get(i).setStatusTrans(GlobalConstant.STATUS_AKTIF);
+            } 
+
+            else if (LocalDate.now().isAfter(cicilan.get(i).getTglAktif()) && LocalDate.now().isAfter(cicilan.get(i).getTglJatuhTempo()) ) {
+                cicilan.get(i).setStatusTrans(GlobalConstant.STATUS_TERLAMBAT);
+            } 
+
+            else if ( cicilan.get(i).getTglBayar() != null ) {
+                cicilan.get(i).setStatusTrans(GlobalConstant.STATUS_LUNAS);
+            }
+
+            
+        }
+        cicilanRepo.saveAll(cicilan);
+
+        return cicilan;
+    }
+
     
+
+    public List<DendaEntity> hitungDenda() {
+        List<CicilanEntity> cicilan = new ArrayList<>();
+        cicilanRepo.findAll().forEach(cicilan::add);
+
+        for(Integer i = 0; i < cicilan.size(); i++) {
+            if (cicilan.get(i).getStatusTrans().equalsIgnoreCase(GlobalConstant.STATUS_TERLAMBAT)) {
+                DendaEntity denda = new DendaEntity();
+                denda.setNoTransaksi(cicilan.get(i).getNoTransaksi());
+                denda.setCicilanKe(cicilan.get(i).getCicilanKe());
+                denda.setTglDenda(LocalDate.now());
+                denda.setBiayaDenda(cicilan.get(i).getTxPokok() * 0.0123);
+                dendaRepo.save(denda);
+            }
+        }
+
+        return null;
+    }
+
 
 }

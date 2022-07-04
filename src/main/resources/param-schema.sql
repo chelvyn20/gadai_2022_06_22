@@ -1,27 +1,23 @@
-DROP TABLE IF EXISTS tx_denda_keterlambatan;
+DROP TABLE IF EXISTS ms_param;
 
-
-CREATE TABLE tx_denda_keterlambatan(
-    denda_id VARCHAR (5) PRIMARY KEY NOT NULL,
-    no_transaksi VARCHAR (20) NOT NULL,
-    cicilan_ke INT4 NOT NULL,
-    tgl_denda DATE NOT NULL,
-    biaya_denda NUMERIC NOT NULL,
-    tgl_pembayaran_denda DATE NULL,
-    no_pembayaran NUMERIC NULL,
-   
+CREATE TABLE ms_param(
+    param_key VARCHAR (15) NOT NULL,
+    param_value VARCHAR (50) NOT NULL,
+    created_date TIMESTAMP NOT NULL DEFAULT NOW(),
+    creator_id INT4 NOT NULL DEFAULT 0::INT4 ,
+    updated_date TIMESTAMP  NULL,
+    updater_id INT4 NULL,
+    deleted_date TIMESTAMP NULL,
+    deleter_id INT4 NULL,
+    rec_status VARCHAR(1) NULL DEFAULT 'N'::VARCHAR
 )WITH(
     OIDS = FALSE
 );
 
-SELECT * FROM tx_denda_keterlambatan;
+SELECT * FROM ms_param;
 
 INSERT INTO ms_param(param_key, param_value)
-VALUES('CRON_10_Seconds', '*/10 * * * * ?');
-
-UPDATE tx_denda_keterlambatan
-SET param_value ='0/5 * * * * ?'
-WHERE param_key = 'CRON_10_Seconds';
+VALUES('CRON_1_Day', '0 0 0 * * ?');
 
 
 

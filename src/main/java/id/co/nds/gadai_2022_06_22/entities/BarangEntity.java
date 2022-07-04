@@ -4,14 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeBarangId;
 
@@ -20,14 +16,10 @@ import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeBarangId;
 @IdClass(CompositeBarangId.class)
 public class BarangEntity implements Serializable {
     @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="no_urut")
     private Integer noUrut;
     
     @Id
-    // @GenericGenerator(name = "no_transaksi_seq",
-    // strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
-    // @GeneratedValue(generator = "no_transaksi_seq")
     @JoinColumn(name="no_transaksi", referencedColumnName =  "no_transaksi")
     @Column(name="no_transaksi")
     private String noTransaksi;

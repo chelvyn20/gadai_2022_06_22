@@ -18,9 +18,6 @@ import id.co.nds.gadai_2022_06_22.entities.compositeId.CompositeCicilanId;
 public class CicilanEntity {
     
     @Id
-    // @GenericGenerator(name = "no_transaksi_seq",
-    // strategy = "id.co.nds.gadai_2022_06_22.generators.CicilanIdGenerator")
-    // @GeneratedValue(generator = "no_transaksi_seq")
     @Column(name="no_transaksi")
     private String noTransaksi;
 

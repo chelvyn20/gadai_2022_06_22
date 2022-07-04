@@ -16,7 +16,7 @@ import id.co.nds.gadai_2022_06_22.models.TrxModel;
 
 
 
-public class TrxSpec implements Specification<CicilanTetapEntity>{
+public class TrxSpec implements Specification<CicilanTetapEntity> {
     private TrxModel trxModel;
 
     public TrxSpec(TrxModel trxModel){
