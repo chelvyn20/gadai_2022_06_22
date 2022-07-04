@@ -10,11 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "ms_user")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "user_id_seq",
+    strategy = "id.co.nds.gadai_2022_06_22.generators.UserIdGenerator")
+    @GeneratedValue(generator = "user_id_seq")
     @Column(name = "user_id")
     private String userId;
 
@@ -22,22 +26,16 @@ public class UserEntity {
     private String userName;
 
     @Column(name = "user_phone")
-    private String userNoHp;
+    private String userPhone;
 
     @Column(name = "user_notes")
-    private String userDesc;
+    private String userNotes;
 
     @Column(name = "max_limit")
-    private Double userTxnLimit;
+    private Double userMaxLimit;
 
     @Column(name = "register_date")
-    private LocalDate entryDate;
-    
-    // @Column(name = "created_input_detail")
-    // private String createdInputDetail;
-
-    // @Column(name = "updated_input_detail")
-    // private String updatedInputDetail;
+    private LocalDate userRegisterDate;
 
     @Column(name = "created_date")
     private Timestamp createdDate;
@@ -76,53 +74,37 @@ public class UserEntity {
         this.userName = userName;
     }
 
-    public String getUserNoHp() {
-        return userNoHp;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setUserNoHp(String userNoHp) {
-        this.userNoHp = userNoHp;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public String getUserDesc() {
-        return userDesc;
+    public String getUserNotes() {
+        return userNotes;
     }
 
-    public void setUserDesc(String userDesc) {
-        this.userDesc = userDesc;
+    public void setUserNotes(String userNotes) {
+        this.userNotes = userNotes;
     }
 
-    public Double getUserTxnLimit() {
-        return userTxnLimit;
+    public Double getUserMaxLimit() {
+        return userMaxLimit;
     }
 
-    public void setUserTxnLimit(Double userTxnLimit) {
-        this.userTxnLimit = userTxnLimit;
+    public void setUserMaxLimit(Double userMaxLimit) {
+        this.userMaxLimit = userMaxLimit;
     }
 
-    public LocalDate getEntryDate() {
-        return entryDate;
+    public LocalDate getUserRegisterDate() {
+        return userRegisterDate;
     }
 
-    public void setEntryDate(LocalDate entryDate) {
-        this.entryDate = entryDate;
+    public void setUserRegisterDate(LocalDate userRegisterDate) {
+        this.userRegisterDate = userRegisterDate;
     }
-
-    // public String getCreatedInputDetail() {
-    //     return createdInputDetail;
-    // }
-
-    // public void setCreatedInputDetail(String createdInputDetail) {
-    //     this.createdInputDetail = createdInputDetail;
-    // }
-
-    // public String getUpdatedInputDetail() {
-    //     return updatedInputDetail;
-    // }
-
-    // public void setUpdatedInputDetail(String updatedInputDetail) {
-    //     this.updatedInputDetail = updatedInputDetail;
-    // }
 
     public Timestamp getCreatedDate() {
         return createdDate;

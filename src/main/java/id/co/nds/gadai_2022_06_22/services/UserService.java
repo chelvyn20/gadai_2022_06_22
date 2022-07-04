@@ -28,8 +28,6 @@ public class UserService implements Serializable{
 
     public UserEntity doInsert(UserModel userModel) throws ClientException, Exception{
         userValidator.notNullCheckUserId(userModel.getUserId());
-        userValidator.nullCheckUserId(userModel.getUserId());
-        userValidator.validateUserId(userModel.getUserId());
 
         Long countUserId = userRepo.countByUserId(userModel.getUserId());
 
@@ -39,32 +37,31 @@ public class UserService implements Serializable{
 
         userValidator.nullCheckUserName(userModel.getUserName());
         userValidator.validateUserName(userModel.getUserName());
-        userValidator.nullCheckUserPhoneNumber(userModel.getUserNoHp());
-        userValidator.validatePhoneNumber(userModel.getUserNoHp());
+        userValidator.nullCheckUserPhoneNumber(userModel.getUserPhone());
+        userValidator.validatePhoneNumber(userModel.getUserPhone());
 
-        Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserNoHp());
+        Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserPhone());
 
         if(countPhoneNumber > 0) {
             throw new ClientException("Nomor Hp telah terdaftar");
         }
 
-        userValidator.nullCheckUserMaxTransaction(userModel.getUserTxnLimit());
-        userValidator.validateUserTransactionLimit(userModel.getUserTxnLimit());
-        userValidator.nullCheckUserEntryDate(userModel.getEntryDate());    
-        userValidator.validateEntryDate(userModel.getEntryDate());  
+        userValidator.nullCheckUserMaxLimit(userModel.getUserMaxLimit());
+        userValidator.validateUserTransactionLimit(userModel.getUserMaxLimit());
+        userValidator.nullCheckUserEntryDate(userModel.getUserRegisterDate());    
+        userValidator.validateEntryDate(userModel.getUserRegisterDate());  
 
         UserEntity user = new UserEntity();
         user.setUserId(userModel.getUserId());
         user.setUserName(userModel.getUserName());
-        user.setUserNoHp(userModel.getUserNoHp());
-        user.setUserDesc(userModel.getUserDesc());
-        user.setUserTxnLimit(userModel.getUserTxnLimit());
+        user.setUserPhone(userModel.getUserPhone());
+        user.setUserNotes(userModel.getUserNotes());
+        user.setUserMaxLimit(userModel.getUserMaxLimit());
         user.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         user.setCreatedBy(userModel.getCreatedBy() == null ? 0 : userModel.getCreatedBy());
         DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
-        LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
-        user.setEntryDate(entryDate);
-        // user.setCreatedInputDetail(userModel.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
+        LocalDate entryDate = LocalDate.parse(userModel.getUserRegisterDate(), formatedDate);
+        user.setUserRegisterDate(entryDate);
         user.setRecStatus(GlobalConstant.REC_STATUS_ACTIVE);
         
         return userRepo.save(user);
@@ -85,38 +82,36 @@ public class UserService implements Serializable{
             user.setUserName(userModel.getUserName());
         }
 
-        if(userModel.getUserNoHp() != null) {
-            userValidator.validatePhoneNumber(userModel.getUserNoHp());
-            Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserNoHp());
+        if(userModel.getUserPhone() != null) {
+            userValidator.validatePhoneNumber(userModel.getUserPhone());
+            Long countPhoneNumber = userRepo.countByPhoneNumber(userModel.getUserPhone());
 
             if(countPhoneNumber > 0) {
                 throw new ClientException("Nomor Hp telah terdaftar");
             }
 
-            user.setUserNoHp(userModel.getUserNoHp());
+            user.setUserPhone(userModel.getUserPhone());
         }
 
-        if(userModel.getUserDesc() != null) {
-            userValidator.validateUserDesc(userModel.getUserDesc());
-            user.setUserDesc(userModel.getUserDesc());
+        if(userModel.getUserNotes() != null) {
+            userValidator.validateUserNotes(userModel.getUserNotes());
+            user.setUserNotes(userModel.getUserNotes());
         }
 
-        if(userModel.getUserTxnLimit() != null) {
-            userValidator.validateUserTransactionLimit(userModel.getUserTxnLimit());
-            user.setUserTxnLimit(userModel.getUserTxnLimit());
+        if(userModel.getUserMaxLimit() != null) {
+            userValidator.validateUserTransactionLimit(userModel.getUserMaxLimit());
+            user.setUserMaxLimit(userModel.getUserMaxLimit());
         }
 
-        if(userModel.getEntryDate() != null) {
+        if(userModel.getUserRegisterDate() != null) {
             DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyyMMdd");
-            LocalDate entryDate = LocalDate.parse(userModel.getEntryDate(), formatedDate);
-            userValidator.validateEntryDate(userModel.getEntryDate());
-            user.setEntryDate(entryDate);
+            LocalDate entryDate = LocalDate.parse(userModel.getUserRegisterDate(), formatedDate);
+            userValidator.validateEntryDate(userModel.getUserRegisterDate());
+            user.setUserRegisterDate(entryDate);
         }      
 
         user.setUpdatedDate(new Timestamp(System.currentTimeMillis()));
         user.setUpdatedBy(userModel.getUpdatedBy() == null ? 0 : userModel.getUpdatedBy());
-        // user.setUpdatedInputDetail(user.getUserId() + "-" + userModel.getUserName() + "/" + new Timestamp(System.currentTimeMillis()));
-
         return userRepo.save(user);
     }
 

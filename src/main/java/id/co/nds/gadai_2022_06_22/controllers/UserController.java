@@ -3,6 +3,7 @@ package id.co.nds.gadai_2022_06_22.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -114,7 +115,7 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<ResponseModel> doGetDetailUser(@RequestParam String userId) throws ClientException, NotFoundException{
+    public ResponseEntity<ResponseModel> doGetDetailUser(@RequestParam String userId) throws NotFoundException{
         try {
             UserEntity user = userService.doGetDetailUser(userId);
 
@@ -122,6 +123,10 @@ public class UserController {
             response.setMsg("User ditemukan");
             response.setData(user);
             return ResponseEntity.ok(response);
+        } catch(NotFoundException e){
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         } catch (Exception e) {
             ResponseModel response = new ResponseModel();
             response.setMsg("Terjadi kesalahan pada server");

@@ -24,23 +24,19 @@ public class UserSpec implements Specification<UserEntity>{
         Predicate p = criteriaBuilder.and();
 
         if(userModel.getUserId() != null && userModel.getUserId().length() > 0 ) {
-            p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("userId")), "%" 
-            + userModel.getUserId().toLowerCase() + "%"));
+            p.getExpressions().add(criteriaBuilder.equal(root.get("userId"), userModel.getUserId().toLowerCase()));
         }
 
         if(userModel.getUserName() != null && userModel.getUserName().length() > 0) {
-            p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("userName")), "%" 
-            + userModel.getUserName().toLowerCase() + "%"));
+            p.getExpressions().add(criteriaBuilder.equal(criteriaBuilder.lower(root.get("userName")), userModel.getUserName()));
         }
 
-        if(userModel.getUserDesc() != null && userModel.getUserDesc().length() > 0) {
-            p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("userDesc")), "%" 
-            + userModel.getUserDesc().toLowerCase() + "%"));
+        if(userModel.getUserNotes() != null && userModel.getUserNotes().length() > 0) {
+            p.getExpressions().add(criteriaBuilder.equal(criteriaBuilder.lower(root.get("userNotes")), userModel.getUserNotes()));
         }
 
-        if(userModel.getUserNoHp() != null && userModel.getUserNoHp().length() > 0) {
-            p.getExpressions().add(criteriaBuilder.like(criteriaBuilder.lower(root.get("userNoHp")), "%" 
-            + userModel.getUserNoHp().toLowerCase() + "%"));
+        if(userModel.getUserPhone() != null && userModel.getUserPhone().length() > 0) {
+            p.getExpressions().add(criteriaBuilder.equal(root.get("userPhone"), userModel.getUserPhone().toLowerCase()));
         }
         
         if(userModel.getCreatedBy() != null) {
@@ -49,12 +45,12 @@ public class UserSpec implements Specification<UserEntity>{
 
         if(userModel.getRecStatus() != null && 
         (userModel.getRecStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_ACTIVE) 
-        || userModel.getRecStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE))) {
+        && userModel.getRecStatus().trim().equalsIgnoreCase(GlobalConstant.REC_STATUS_NON_ACTIVE))) {
             p.getExpressions().add(criteriaBuilder.equal(criteriaBuilder.upper(root.get("recStatus")), 
             userModel.getRecStatus().toUpperCase()));
         }
 
-        query.orderBy(criteriaBuilder.asc(root.get("id")));
+        query.orderBy(criteriaBuilder.asc(root.get("userId")));
 
         return p;
     }

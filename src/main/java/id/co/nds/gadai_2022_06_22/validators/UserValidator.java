@@ -19,26 +19,26 @@ public class UserValidator {
         }
     }
 
-    public void nullCheckUserName(String name) throws ClientException {
-        if(name == null) {
+    public void nullCheckUserName(String userName) throws ClientException {
+        if(userName == null) {
             throw new ClientException("Nama perlu diisi");
         }
     }
 
-    public void nullCheckUserPhoneNumber(String phoneNumber) throws ClientException {
-        if(phoneNumber == null) {
+    public void nullCheckUserPhoneNumber(String userPhone) throws ClientException {
+        if(userPhone == null) {
             throw new ClientException("No hp perlu diisi");
         }
     }
 
-    public void nullCheckUserMaxTransaction(Double userMaxTransaction) throws ClientException {
-        if(userMaxTransaction == null) {
+    public void nullCheckUserMaxLimit(Double userMaxLimit) throws ClientException {
+        if(userMaxLimit == null) {
             throw new ClientException("Maksimal Limit Transaksi User perlu diisi");
         }
     }
 
-    public void nullCheckUserEntryDate(String entryDate) throws ClientException {
-        if(entryDate == null) {
+    public void nullCheckUserEntryDate(String userRegisterDate) throws ClientException {
+        if(userRegisterDate == null) {
             throw new ClientException("Tanggal masuk perlu diisi");
         }
     }
@@ -49,20 +49,14 @@ public class UserValidator {
         }
     }
 
-    public void validateId(Integer id) throws ClientException {
-        if(id <= 0) {
-            throw new ClientException("Input id tidak valid");
-        }
-    }
-
     public void validateUserId(String userId) throws ClientException {
         if(userId.length() > 15) {
             throw new ClientException("User id tidak boleh melebihi 15 huruf");
         }
     }
 
-    public void validateUserName(String name) throws ClientException {
-        if(name.trim().equalsIgnoreCase("")) {
+    public void validateUserName(String userName) throws ClientException {
+        if(userName.trim().equalsIgnoreCase("")) {
             throw new ClientException("Nama tidak boleh kosong");
         }
     }
@@ -76,32 +70,32 @@ public class UserValidator {
         }  
       }
 
-    public void validatePhoneNumber(String phoneNumber) throws ClientException {
+    public void validatePhoneNumber(String userPhone) throws ClientException {
 
-        if(!isNumeric(phoneNumber)) {
+        if(!isNumeric(userPhone)) {
             throw new ClientException("Nomor Hp harus berisikan angka");
         }
 
-        if(!phoneNumber.startsWith("0") || phoneNumber.length() < 9 || phoneNumber.length() > 12) {
+        if(!userPhone.startsWith("0") || userPhone.length() < 9 || userPhone.length() > 12) {
             throw new ClientException("Nomor Hp dimulai dari angka 0 dan berisikan 9 - 12 digit");
         }
     }
 
-    public void validateUserTransactionLimit(Double userTxnLimit) throws ClientException {
-        if(userTxnLimit < 500000 || userTxnLimit > 1000000) {
+    public void validateUserTransactionLimit(Double userMaxLimit) throws ClientException {
+        if(userMaxLimit < 500000 || userMaxLimit > 1000000) {
             throw new ClientException("Minimal limit 500.000 dan Maksimal limit 1.000.000");
         }
     }
 
-    public void validateUserDesc(String desc) throws ClientException {
-        if(desc.length() > 50) {
+    public void validateUserNotes(String userNotes) throws ClientException {
+        if(userNotes.length() > 50) {
             throw new ClientException("Deskripsi user tidak boleh melebihi 50 huruf.");
         }
     }
 
-    public void validateEntryDate(String entryDate) throws ClientException {
+    public void validateEntryDate(String userRegisterDate) throws ClientException {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
-        LocalDate formatedDate = LocalDate.parse(entryDate, dateFormat);
+        LocalDate formatedDate = LocalDate.parse(userRegisterDate, dateFormat);
 
         LocalDate now = LocalDate.now();
 
