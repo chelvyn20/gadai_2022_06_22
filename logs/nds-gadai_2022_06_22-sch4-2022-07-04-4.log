@@ -1,0 +1,253 @@
+2022-07-04 16:44:15.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:15.002 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:15.003 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 1
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.544 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:15.581 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:20.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:20.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:20.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 2
+2022-07-04 16:44:20.143 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.145 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:20.186 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:25.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:25.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:25.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 3
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.120 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.120 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.120 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:25.158 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:30.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:30.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:30.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 4
+2022-07-04 16:44:30.143 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:30.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.145 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.145 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.145 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.146 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.146 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.146 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.146 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:30.192 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:35.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:35.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:35.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 5
+2022-07-04 16:44:35.137 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:35.137 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.137 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.139 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.139 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.139 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:35.184 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 6
+2022-07-04 16:44:40.113 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:40.113 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.113 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.113 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.114 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:40.139 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:45.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:45.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:45.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 7
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.100 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.101 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.101 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.101 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:45.161 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:50.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:50.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:50.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 8
+2022-07-04 16:44:50.085 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:50.109 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:44:55.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:44:55.002 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:44:55.002 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 9
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:44:55.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:00.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:00.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:00.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 10
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.092 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:00.111 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:05.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:05.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:05.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 11
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.119 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:05.134 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:10.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:10.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:10.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 12
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.089 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:10.111 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:15.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:15.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:15.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 13
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.057 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:15.082 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:20.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:20.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:20.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 14
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.102 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:20.120 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:25.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:25.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:25.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 15
+2022-07-04 16:45:25.053 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:25.053 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.053 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.053 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.053 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.054 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.054 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.054 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.054 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.054 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:25.068 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:30.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:30.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:30.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 16
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.086 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:30.099 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:35.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:35.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:35.000 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 17
+2022-07-04 16:45:35.138 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:35.141 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.141 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.141 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.142 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.142 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.142 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.142 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.144 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:35.163 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##2] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] DEBUG id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - scheduleCron: run scheduler with configuration -> {0/5 * * * * ?}...
+2022-07-04 16:45:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - executing task......
+2022-07-04 16:45:40.001 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - task 18
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.083 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.084 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.084 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.084 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - Transaksi no: YYMM0000001status: TIDAK AKTIF
+2022-07-04 16:45:40.098 [DbParamaterScheduler-ThreadPoolTaskSchedule - ##1] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - finish executing task......
+2022-07-04 16:45:41.883 [SpringApplicationShutdownHook] INFO  id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler - ###ShuttingDown Scheduler..

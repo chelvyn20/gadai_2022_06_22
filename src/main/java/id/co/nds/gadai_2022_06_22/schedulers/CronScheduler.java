@@ -22,7 +22,7 @@ public class CronScheduler {
 
     Integer counterB = 0;
 
-  // @Scheduled(cron = "0 0/3 * * * ?")
+ // @Scheduled(cron = "0 0 0 * * ?")
     public void cronScheduler() throws Exception{
         Integer counterA =0;
         logger.debug("Start FixedRateScheduller at " + Calendar.getInstance().getTime());
@@ -32,7 +32,10 @@ public class CronScheduler {
         counterB++;
 
         List<CicilanEntity> cicilan = trxService.checkStatusCicilan();
-        logger.info("Transaksi no." + counterB + ": " + cicilan.get(counterB).getNoTransaksi());
+        for (int i =0; i<cicilan.size(); i++){
+          logger.info("Transaksi no-"+ counterB +": "+ cicilan.get(i).getNoTransaksi() + "status: " + cicilan.get(i).getStatusTrans());
+      }
+    
         
     }
 

@@ -1,6 +1,7 @@
 package id.co.nds.gadai_2022_06_22.schedulers;
 
 
+import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 
@@ -15,6 +16,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
+import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.repos.ParamRepo;
 import id.co.nds.gadai_2022_06_22.services.TrxService;
 
@@ -29,7 +31,7 @@ public class DbParamScheduler implements SchedulingConfigurer {
     @Autowired
     TrxService trxService;
 
-    private static final String PARAM_KEY = "CRON_10_Seconds";
+    private static final String PARAM_KEY = "CRON_1_Day";
 
     Integer counter = 0;
 
@@ -79,8 +81,14 @@ public class DbParamScheduler implements SchedulingConfigurer {
             /*
              * here, put the business logic.
              */
+            
+            // List<CicilanEntity> cicilan = trxService.checkStatusCicilan();
+            // for (int i =0; i<cicilan.size(); i++){
+            //     logger.debug("Transaksi no: "+ cicilan.get(i).getNoTransaksi() + "status: " + cicilan.get(i).getStatusTrans());
+            // }
             trxService.checkStatusCicilan();
             trxService.hitungDenda();
+    
             
             
             // call serviceGantiStatusCicilanAktif
