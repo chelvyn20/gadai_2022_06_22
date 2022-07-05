@@ -20,22 +20,22 @@ import id.co.nds.gadai_2022_06_22.models.CicilanTetapModel;
 import id.co.nds.gadai_2022_06_22.models.CustomerModel;
 import id.co.nds.gadai_2022_06_22.models.ProductModel;
 import id.co.nds.gadai_2022_06_22.models.ResponseModel;
-import id.co.nds.gadai_2022_06_22.services.ProductService;
+import id.co.nds.gadai_2022_06_22.services.CicilanTetapService;
 import id.co.nds.gadai_2022_06_22.services.TransactionService;
 
 @RestController
 @RequestMapping(value = "/transaction")
 public class TransactionController {
     @Autowired
-    TransactionService transactionService;
+    private TransactionService transactionService;
 
     @Autowired
-    ProductService productService;
+    private CicilanTetapService cicilanTetapService;
 
     @GetMapping(value = "/search/transcictetap")
     public ResponseEntity<ResponseModel> doSearchTransCicTetap(@RequestBody CicilanTetapModel cicilanTetapModel) {
         try {
-            List<CicilanTetapEntity> transCicTetap = transactionService.doSearchTransCicTetap(cicilanTetapModel);
+            List<CicilanTetapEntity> transCicTetap = cicilanTetapService.doSearchTransCicTetap(cicilanTetapModel);
             ResponseModel response = new ResponseModel();
             response.setMsg("Data Transaksi Cicilan Tetap:");
             response.setData(transCicTetap);
@@ -52,7 +52,7 @@ public class TransactionController {
     @GetMapping(value = "/get/detailcictetap")
     public ResponseEntity<ResponseModel> doGetDetailCicTetap(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException, NotFoundException {
         try {
-            CicilanTetapEntity transCicTetap = transactionService.doGetDetailCicTetap(cicilanTetapModel);
+            CicilanTetapEntity transCicTetap = cicilanTetapService.doGetDetailCicTetap(cicilanTetapModel);
             ResponseModel response = new ResponseModel();
             response.setMsg("Detail Transaksi Cicilan Tetap:");
             response.setData(transCicTetap);

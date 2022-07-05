@@ -16,6 +16,7 @@ import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
 import id.co.nds.gadai_2022_06_22.repos.ParamRepo;
+import id.co.nds.gadai_2022_06_22.services.CicilanService;
 import id.co.nds.gadai_2022_06_22.services.TransactionService;
 
 
@@ -27,6 +28,9 @@ public class DbParamScheduler implements SchedulingConfigurer {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private CicilanService cicilanService;
 
     private static final String PARAM_KEY = "CRON_1_Day";
 
@@ -79,7 +83,7 @@ public class DbParamScheduler implements SchedulingConfigurer {
              * here, put the business logic.
              */
 
-            transactionService.checkTransactionStatus();
+            cicilanService.checkTransactionStatus();
             transactionService.calculateDendaKeterlambatan();
             // call serviceGantiStatusCicilanAktif
             // call serviceGantiStatusCicJatuhTempo

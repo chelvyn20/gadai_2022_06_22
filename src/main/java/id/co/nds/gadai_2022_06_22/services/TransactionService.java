@@ -30,7 +30,6 @@ import id.co.nds.gadai_2022_06_22.repos.DendaKeterlambatanRepo;
 import id.co.nds.gadai_2022_06_22.repos.ProductRepo;
 import id.co.nds.gadai_2022_06_22.repos.specs.CustomerSpec;
 import id.co.nds.gadai_2022_06_22.repos.specs.ProductSpec;
-import id.co.nds.gadai_2022_06_22.repos.specs.TransCicTetapSpec;
 import id.co.nds.gadai_2022_06_22.validators.BarangValidator;
 import id.co.nds.gadai_2022_06_22.validators.CicilanTetapValidator;
 import id.co.nds.gadai_2022_06_22.validators.CustomerValidator;
@@ -66,24 +65,6 @@ public class TransactionService implements Serializable {
     ProductValidator productValidator = new ProductValidator();
     BarangValidator barangValidator = new BarangValidator();
 
-    public List<CicilanTetapEntity> doSearchTransCicTetap(CicilanTetapModel cicilanTetapModel) {
-        List<CicilanTetapEntity> transCicTetap = new ArrayList<>();
-        TransCicTetapSpec transCicTetapSpec = new TransCicTetapSpec(cicilanTetapModel);
-        cicilanTetapRepo.findAll(transCicTetapSpec).forEach(transCicTetap::add);
-        return transCicTetap;
-    }
-
-    public CicilanTetapEntity doGetDetailCicTetap(CicilanTetapModel cicilanTetapModel)
-            throws ClientException, NotFoundException {
-        cicilanTetapValidator.nullCheckTransaksiNo(cicilanTetapModel.getNoTransaksi());
-        cicilanTetapValidator.validateTransaksiNo(cicilanTetapModel.getNoTransaksi());
-
-        CicilanTetapEntity transaksi = cicilanTetapRepo
-                .getCicilanTetapTransactionByNoTransaksi(cicilanTetapModel.getNoTransaksi());
-        cicilanTetapValidator.nullCheckObject(transaksi);
-
-        return transaksi;
-    }
 
     public List<CustomerEntity> doSearchPelanggan(CustomerModel customerModel) {
         List<CustomerEntity> customer = new ArrayList<>();
