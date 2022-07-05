@@ -54,7 +54,7 @@ public class CicilanTetapEntity {
     private LocalDateTime tglTx;
 
     @Column(name = "tanggal_jatuh_tempo")
-    private Timestamp tglJatuhTempo;
+    private LocalDateTime tglJatuhTempo;
 
     @Column(name = "tx_biaya_jasa_peny")
     private Double txBiayaJasaPeny;
@@ -170,11 +170,11 @@ public class CicilanTetapEntity {
         this.tglTx = localDateTime;
     }
 
-    public Timestamp getTglJatuhTempo() {
+    public LocalDateTime getTglJatuhTempo() {
         return tglJatuhTempo;
     }
 
-    public void setTglJatuhTempo(Timestamp tglJatuhTempo) {
+    public void setTglJatuhTempo(LocalDateTime tglJatuhTempo) {
         this.tglJatuhTempo = tglJatuhTempo;
     }
 

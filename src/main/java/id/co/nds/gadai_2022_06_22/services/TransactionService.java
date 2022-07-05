@@ -66,18 +66,15 @@ public class TransactionService implements Serializable {
     BarangValidator barangValidator = new BarangValidator();
 
 
-    public List<CustomerEntity> doSearchPelanggan(CustomerModel customerModel) {
+    public CustomerModel doSearchPelanggan(CustomerModel customerModel) {
         List<CustomerEntity> customer = new ArrayList<>();
         CustomerSpec specs = new CustomerSpec(customerModel);
         customerRepo.findAll(specs).forEach(customer::add);
-        ArrayList response = new ArrayList<>();
-        for (CustomerEntity customerEntity : customer) {
-            response.add("custId: " + customer.get(0).getCustId());
-            response.add("custKtp: " + customer.get(0).getCustKtp());
-            response.add("custHp: " + customer.get(0).getCustHp());
-            response.add("custName: " + customer.get(0).getCustName());
-        }
-
+        CustomerModel response = new CustomerModel();
+        response.setCustId(customer.get(0).getCustId());
+        response.setCustKtp(customer.get(0).getCustKtp());
+        response.setCustHp(customer.get(0).getCustHp());
+        response.setCustName(customer.get(0).getCustName());
         return response;
     }
 
@@ -123,7 +120,7 @@ public class TransactionService implements Serializable {
         cicilanTetap.setBiayaAdmBukaAkhir(product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100));
         cicilanTetap.setTotalNilaiPinj(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100)));
         cicilanTetap.setTglTx(LocalDateTime.now());
-        cicilanTetap.setTglJatuhTempo(Timestamp.valueOf(LocalDateTime.now().plusMonths(product.getProductJangkaWaktu())));
+        cicilanTetap.setTglJatuhTempo(LocalDateTime.now().plusMonths(product.getProductJangkaWaktu()));
         cicilanTetap.setTxBiayaJasaPeny(product.getBiayaJasaPenyRate());
         cicilanTetap.setTxBiayaJasaPenyPer(product.getBiayaJasaPenyPer());
         cicilanTetap.setTotalBiayaJasaPeny(product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyPer().doubleValue());

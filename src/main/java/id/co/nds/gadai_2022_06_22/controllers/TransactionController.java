@@ -78,7 +78,7 @@ public class TransactionController {
     @GetMapping(value = "/get/customer")
     public ResponseEntity<ResponseModel> doSearchPelanggan(@RequestBody CustomerModel customerModel) {
         try {
-            List<CustomerEntity> customer = transactionService.doSearchPelanggan(customerModel);
+            CustomerModel customer = transactionService.doSearchPelanggan(customerModel);
 
             ResponseModel response = new ResponseModel();
             response.setMsg("Data customer:");
