@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
@@ -43,12 +45,49 @@ public class PembayaranCicilanController {
             return ResponseEntity.internalServerError().body(response);
         }
     }
+    
+    @GetMapping(value = "/get/detail")
+    public ResponseEntity<ResponseModel> doGetDetailTagihanCic(@RequestParam String noTransaksi) throws ClientException {
+        try {
+            CicilanTetapEntity bayarCicTetap = pembayaranCicilanService.doGetDetailTagihanCic(noTransaksi);
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Detail Tagihan Cicilan Tetap:");
+            response.setData(bayarCicTetap);
+            return ResponseEntity.ok(response);
+        } catch (ClientException e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
 
-    public void doGetDetailTagihanCic() {
+            return ResponseEntity.badRequest().body(response);
+        } catch (Exception e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Terjadi kesalahan pada server");
+            e.printStackTrace();
 
+            return ResponseEntity.internalServerError().body(response);
+        }
     }
 
-    public void doUpdatePembayaran() {
-        
+    @PostMapping(value = "/pembayaran")
+    public ResponseEntity<ResponseModel> doUpdatePembayaran(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException {
+        try {
+            List<CicilanTetapEntity> bayarCicTetap = pembayaranCicilanService.doUpdatePembayaran(cicilanTetapModel);
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Detail Tagihan Cicilan Tetap:");
+            response.setData(bayarCicTetap);
+            return ResponseEntity.ok(response);
+        } catch (ClientException e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg(e.getMessage());
+
+            return ResponseEntity.badRequest().body(response);
+        } catch (Exception e) {
+            ResponseModel response = new ResponseModel();
+            response.setMsg("Terjadi kesalahan pada server");
+            e.printStackTrace();
+
+            return ResponseEntity.internalServerError().body(response);
+        }
     }
+
 }

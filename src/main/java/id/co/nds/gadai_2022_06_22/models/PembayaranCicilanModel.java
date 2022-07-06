@@ -8,6 +8,7 @@ public class PembayaranCicilanModel {
     private String custId;
     private String custKtp;
     private String custName;
+    private String productName;
     private Integer cicilanKe;
     private Double totalTagihan;
     private String statusCicilan;
@@ -43,6 +44,12 @@ public class PembayaranCicilanModel {
     }
     public void setCustName(String custName) {
         this.custName = custName;
+    }
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
     public Integer getCicilanKe() {
         return cicilanKe;

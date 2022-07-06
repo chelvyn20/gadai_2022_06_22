@@ -12,9 +12,9 @@ import id.co.nds.gadai_2022_06_22.entities.DendaKeterlambatanEntity;
 
 @Repository
 public interface DendaKeterlambatanRepo extends JpaRepository<DendaKeterlambatanEntity, String>, JpaSpecificationExecutor<DendaKeterlambatanEntity> {
-    @Query(value = "SELECT * FROM TX_DENDA_KETERLAMBATAN WHERE UPPER(no_transaksi) = UPPER(':no_transaksi') AND cicilan_ke = :cicilan_ke", nativeQuery = true)
+    @Query(value = "SELECT * FROM TX_DENDA_KETERLAMBATAN WHERE UPPER(no_transaksi) = UPPER(:no_transaksi) AND cicilan_ke = :cicilan_ke", nativeQuery = true)
     List<DendaKeterlambatanEntity> findByNoTransaksiCicilanKe(@Param("no_transaksi") String noTransaksi, @Param("cicilan_ke") Integer cicilanKe);
 
-    @Query(value = "SELECT COUNT(*) FROM TX_DENDA_KETERLAMBATAN WHERE UPPER(no_transaksi) = UPPER(':no_transaksi') AND cicilan_ke = :cicilan_ke", nativeQuery = true)
-    Integer getCountDendaKeterlambatan(@Param("no_transaksi") String noTransaksi, @Param("cicilan_ke") Integer cicilanKe);
+    @Query(value = "SELECT COUNT(*) FROM TX_DENDA_KETERLAMBATAN WHERE UPPER(no_transaksi) = UPPER(:no_transaksi) AND cicilan_ke = :cicilan_ke", nativeQuery = true)
+    long getCountDendaKeterlambatan(@Param("no_transaksi") String noTransaksi, @Param("cicilan_ke") Integer cicilanKe);
 }

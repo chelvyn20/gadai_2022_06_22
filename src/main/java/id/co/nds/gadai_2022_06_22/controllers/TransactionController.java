@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
-import id.co.nds.gadai_2022_06_22.entities.CustomerEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
