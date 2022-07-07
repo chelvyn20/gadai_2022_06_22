@@ -8,12 +8,20 @@ public class PembayaranCicilanModel {
     private String custId;
     private String custKtp;
     private String custName;
+    private String productId;
     private String productName;
+    private String productDesc;
     private Integer cicilanKe;
     private Double totalTagihan;
     private String statusCicilan;
     private LocalDateTime tanggalAktifCicilan;
     private LocalDateTime tanggalJatuhTempoCicilan;
+    private Double totalNilaiPinjaman;
+    private Integer tenor;
+    private Double totalKewajiban;
+    private Double totalDenda;
+    private Double totalPembayaran;
+    private Double sisaKewajiban;
 
     public String getNoTransaksi() {
         return noTransaksi;
@@ -80,5 +88,53 @@ public class PembayaranCicilanModel {
     }
     public void setTanggalJatuhTempoCicilan(LocalDateTime tanggalJatuhTempoCicilan) {
         this.tanggalJatuhTempoCicilan = tanggalJatuhTempoCicilan;
+    }
+    public String getProductId() {
+        return productId;
+    }
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    public String getProductDesc() {
+        return productDesc;
+    }
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
+    }
+    public Double getTotalNilaiPinjaman() {
+        return totalNilaiPinjaman;
+    }
+    public void setTotalNilaiPinjaman(Double totalNilaiPinjaman) {
+        this.totalNilaiPinjaman = totalNilaiPinjaman;
+    }
+    public Integer getTenor() {
+        return tenor;
+    }
+    public void setTenor(Integer tenor) {
+        this.tenor = tenor;
+    }
+    public Double getTotalKewajiban() {
+        return totalKewajiban;
+    }
+    public void setTotalKewajiban(Double totalKewajiban) {
+        this.totalKewajiban = totalKewajiban;
+    }
+    public Double getTotalDenda() {
+        return totalDenda;
+    }
+    public void setTotalDenda(Double totalDenda) {
+        this.totalDenda = totalDenda;
+    }
+    public Double getTotalPembayaran() {
+        return totalPembayaran;
+    }
+    public void setTotalPembayaran(Double totalPembayaran) {
+        this.totalPembayaran = totalPembayaran;
+    }
+    public Double getSisaKewajiban() {
+        return sisaKewajiban;
+    }
+    public void setSisaKewajiban(Double sisaKewajiban) {
+        this.sisaKewajiban = sisaKewajiban;
     }
 }

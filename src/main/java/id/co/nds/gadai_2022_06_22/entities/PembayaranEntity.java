@@ -36,7 +36,7 @@ public class PembayaranEntity {
     private Double totalTagihan;
 
     @Column(name = "pembulatan")
-    private Double pembulatan;
+    private Long pembulatan;
 
     @Column(name = "jumlah_pembayaran")
     private Double jumlahPembayaran;
@@ -110,11 +110,11 @@ public class PembayaranEntity {
         this.totalTagihan = totalTagihan;
     }
 
-    public Double getPembulatan() {
+    public Long getPembulatan() {
         return pembulatan;
     }
 
-    public void setPembulatan(Double pembulatan) {
+    public void setPembulatan(Long pembulatan) {
         this.pembulatan = pembulatan;
     }
 

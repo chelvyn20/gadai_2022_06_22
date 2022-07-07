@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
+import id.co.nds.gadai_2022_06_22.entities.PembayaranEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.models.CicilanTetapModel;
 import id.co.nds.gadai_2022_06_22.models.PembayaranCicilanModel;
@@ -47,9 +48,9 @@ public class PembayaranCicilanController {
     }
     
     @GetMapping(value = "/get/detail")
-    public ResponseEntity<ResponseModel> doGetDetailTagihanCic(@RequestParam String noTransaksi) throws ClientException {
+    public ResponseEntity<ResponseModel> doGetDetailTagihanCic(@RequestParam String noTransaksi, @RequestParam Integer cicilanKe) throws ClientException {
         try {
-            CicilanTetapEntity bayarCicTetap = pembayaranCicilanService.doGetDetailTagihanCic(noTransaksi);
+            PembayaranCicilanModel bayarCicTetap = pembayaranCicilanService.doGetDetailTagihanCic(noTransaksi, cicilanKe);
             ResponseModel response = new ResponseModel();
             response.setMsg("Detail Tagihan Cicilan Tetap:");
             response.setData(bayarCicTetap);
@@ -69,9 +70,9 @@ public class PembayaranCicilanController {
     }
 
     @PostMapping(value = "/pembayaran")
-    public ResponseEntity<ResponseModel> doUpdatePembayaran(@RequestBody CicilanTetapModel cicilanTetapModel) throws ClientException {
+    public ResponseEntity<ResponseModel> doUpdatePembayaran(@RequestParam String noTransaksi, @RequestParam Integer cicilanKe) throws ClientException {
         try {
-            List<CicilanTetapEntity> bayarCicTetap = pembayaranCicilanService.doUpdatePembayaran(cicilanTetapModel);
+            PembayaranEntity bayarCicTetap = pembayaranCicilanService.doUpdatePembayaran(noTransaksi, cicilanKe);
             ResponseModel response = new ResponseModel();
             response.setMsg("Detail Tagihan Cicilan Tetap:");
             response.setData(bayarCicTetap);
