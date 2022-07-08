@@ -194,6 +194,7 @@ CREATE TABLE IF NOT EXISTS public."tx_transaksi_cicilan_tetap"
     total_pengem numeric,
     customer_id character varying COLLATE pg_catalog."default",
     product_id character varying COLLATE pg_catalog."default",
+    tx_status character varying COLLATE pg_catalog."default",
     created_date timestamp without time zone,
     CONSTRAINT "tx_transaksi_cicilan_tetap_pkey" PRIMARY KEY (no_transaksi)
 )

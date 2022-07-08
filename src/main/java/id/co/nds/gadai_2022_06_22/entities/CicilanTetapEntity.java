@@ -77,6 +77,9 @@ public class CicilanTetapEntity {
     @Column(name="customer_id")
     private String custId;
 
+    @Column(name="tx_status")
+    private String statusTrans;
+
     @Column(name="created_date")
     private Timestamp createdDate;
 
@@ -232,6 +235,14 @@ public class CicilanTetapEntity {
         this.custId = custId;
     }
 
+    public String getStatusTrans() {
+        return statusTrans;
+    }
+
+    public void setStatusTrans(String statusTrans) {
+        this.statusTrans = statusTrans;
+    }
+
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -240,8 +251,5 @@ public class CicilanTetapEntity {
         this.createdDate = createdDate;
     }
 
-    public void setProductBiayaAdminBuka(Double biayaBuka) {
-    }
-
-    
+   
 }

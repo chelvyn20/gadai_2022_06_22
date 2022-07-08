@@ -6,6 +6,8 @@ public class PaymentModel extends CustomerModel{
     private String noTransaksi;
     private Integer selectedNoCic;
     private Integer actorId;
+    private double jumlahPembayaran;
+    private String metodeBayar;
     private Date cicDateBegin;
     private Date cicDateEnd;
     
@@ -27,6 +29,18 @@ public class PaymentModel extends CustomerModel{
     public void setActorId(Integer actorId) {
         this.actorId = actorId;
     }
+    public double getJumlahPembayaran() {
+        return jumlahPembayaran;
+    }
+    public void setJumlahPembayaran(double jumlahPembayaran) {
+        this.jumlahPembayaran = jumlahPembayaran;
+    }
+    public String getMetodeBayar() {
+        return metodeBayar;
+    }
+    public void setMetodeBayar(String metodeBayar) {
+        this.metodeBayar = metodeBayar;
+    }
     public Date getCicDateBegin() {
         return cicDateBegin;
     }
@@ -40,4 +54,5 @@ public class PaymentModel extends CustomerModel{
         this.cicDateEnd = cicDateEnd;
     }
     
+   
 }

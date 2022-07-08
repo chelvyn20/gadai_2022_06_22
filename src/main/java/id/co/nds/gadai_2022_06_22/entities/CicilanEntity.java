@@ -25,6 +25,9 @@ public class CicilanEntity {
     @Column(name="cicilan_ke")
     private Integer cicilanKe;
 
+    @Column(name="no_pembayaran")
+    private String noPembayaran;
+
     @Column(name="tx_pokok")
     private Double txPokok;
 
@@ -60,6 +63,14 @@ public class CicilanEntity {
 
     public void setCicilanKe(Integer cicilanKe) {
         this.cicilanKe = cicilanKe;
+    }
+
+    public String getNoPembayaran() {
+        return noPembayaran;
+    }
+
+    public void setNoPembayaran(String noPembayaran) {
+        this.noPembayaran = noPembayaran;
     }
 
     public Double getTxPokok() {

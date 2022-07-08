@@ -31,7 +31,7 @@ public class PaymentEntity {
     private Double totalTagihanDenda;
 
     @Column(name="biaya_adm_tutup")
-    private String biayaAdmTutup;
+    private Double biayaAdmTutup;
 
     @Column(name="total_tagihan")
     private Double totalTagihan;
@@ -40,7 +40,7 @@ public class PaymentEntity {
     private Double pembulatan;
 
     @Column(name="jumlah_pembayaran")
-    private String jumlahPembayaran;
+    private Double jumlahPembayaran;
 
     @Column(name="metode_bayar")
     private String metodeBayar;
@@ -77,11 +77,11 @@ public class PaymentEntity {
         this.totalTagihanDenda = totalTagihanDenda;
     }
 
-    public String getBiayaAdmTutup() {
+    public Double getBiayaAdmTutup() {
         return biayaAdmTutup;
     }
 
-    public void setBiayaAdmTutup(String biayaAdmTutup) {
+    public void setBiayaAdmTutup(Double biayaAdmTutup) {
         this.biayaAdmTutup = biayaAdmTutup;
     }
 
@@ -101,11 +101,11 @@ public class PaymentEntity {
         this.pembulatan = pembulatan;
     }
 
-    public String getJumlahPembayaran() {
+    public Double getJumlahPembayaran() {
         return jumlahPembayaran;
     }
 
-    public void setJumlahPembayaran(String jumlahPembayaran) {
+    public void setJumlahPembayaran(Double jumlahPembayaran) {
         this.jumlahPembayaran = jumlahPembayaran;
     }
 
