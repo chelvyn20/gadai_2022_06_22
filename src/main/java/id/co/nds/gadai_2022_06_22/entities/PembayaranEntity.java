@@ -1,7 +1,5 @@
 package id.co.nds.gadai_2022_06_22.entities;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,31 +34,13 @@ public class PembayaranEntity {
     private Double totalTagihan;
 
     @Column(name = "pembulatan")
-    private Long pembulatan;
+    private Double pembulatan;
 
     @Column(name = "jumlah_pembayaran")
     private Double jumlahPembayaran;
 
     @Column(name = "metode_bayar")
     private String metodeBayar;
-    
-    @Column(name = "created_date")
-    private Timestamp createdDate;
-
-    @Column(name = "updated_date")
-    private Timestamp updatedDate;
-
-    @Column(name = "deleted_date")
-    private Timestamp deletedDate;
-
-    @Column(name = "created_by")
-    private Integer createdBy;
-
-    @Column(name = "updated_by")
-    private Integer updatedBy;
-
-    @Column(name = "deleted_by")
-    private Integer deletedBy;
 
     public String getNoPembayaran() {
         return noPembayaran;
@@ -110,11 +90,11 @@ public class PembayaranEntity {
         this.totalTagihan = totalTagihan;
     }
 
-    public Long getPembulatan() {
+    public Double getPembulatan() {
         return pembulatan;
     }
 
-    public void setPembulatan(Long pembulatan) {
+    public void setPembulatan(Double pembulatan) {
         this.pembulatan = pembulatan;
     }
 
@@ -134,51 +114,4 @@ public class PembayaranEntity {
         this.metodeBayar = metodeBayar;
     }
 
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public Timestamp getDeletedDate() {
-        return deletedDate;
-    }
-
-    public void setDeletedDate(Timestamp deletedDate) {
-        this.deletedDate = deletedDate;
-    }
-
-    public Integer getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Integer createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Integer getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(Integer updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public Integer getDeletedBy() {
-        return deletedBy;
-    }
-
-    public void setDeletedBy(Integer deletedBy) {
-        this.deletedBy = deletedBy;
-    }
 }

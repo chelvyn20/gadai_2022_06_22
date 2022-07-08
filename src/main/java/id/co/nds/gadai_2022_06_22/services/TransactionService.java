@@ -128,7 +128,7 @@ public class TransactionService implements Serializable {
         cicilanTetap.setTotalPengem(cicilanTetapModel.getNilaiPencairanPelanggan() + (product.getBiayaAdmBukaVal() - (product.getBiayaAdmBukaVal() * cicilanTetapModel.getDiskonAdmBuka() / 100))
          + product.getProductJangkaWaktu() / product.getBiayaJasaPenyPer() * product.getBiayaJasaPenyPer().doubleValue() 
          + product.getBiayaAdmTutupVal());
-
+        cicilanTetap.setTxStatus("AKTIF");
         cicilanTetap.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         cicilanTetapRepo.save(cicilanTetap);
 
@@ -193,33 +193,6 @@ public class TransactionService implements Serializable {
             cicilanRepo.save(cicilan);
         }
         return hitung;
-    }
-
-    public List<CicilanEntity> checkTransactionStatus() {
-        List<CicilanEntity> listCicilan = new ArrayList<>();
-        cicilanRepo.findAll().forEach(listCicilan::add);
-
-        for(Integer i = 0; i < listCicilan.size(); i++) {
-            if (LocalDateTime.now().isBefore(listCicilan.get(i).getTanggalAktif())) {
-                listCicilan.get(i).setTxStatus("BELUM AKTIF");
-            } 
-
-            if (LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalAktif()) && LocalDateTime.now().isBefore(listCicilan.get(i).getTanggalJatuhTempo()) ) {
-                listCicilan.get(i).setTxStatus("AKTIF");
-            } 
-
-            if (LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalAktif()) && LocalDateTime.now().isAfter(listCicilan.get(i).getTanggalJatuhTempo()) ) {
-                listCicilan.get(i).setTxStatus("TERLAMBAT");
-            } 
-
-            // if ( listCicilan.get(i).getTanggalBayar() != null ) {
-            //     listCicilan.get(i).setTxStatus("DIBAYAR");
-            // }
-
-            cicilanRepo.save(listCicilan.get(i));
-        }
-
-        return listCicilan;
     }
 
     public List<DendaKeterlambatanEntity> calculateDendaKeterlambatan() {

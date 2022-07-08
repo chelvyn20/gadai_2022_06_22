@@ -11,6 +11,7 @@ public class CicilanModel {
     private Timestamp tanggalAktif;
     private Timestamp tanggalJatuhTempo;
     private Timestamp tanggalBayar;
+    private String noPembayaran;
     private Timestamp createdDate;
     
     public String getNoTransaksi() {
@@ -60,6 +61,12 @@ public class CicilanModel {
     }
     public void setTanggalBayar(Timestamp tanggalBayar) {
         this.tanggalBayar = tanggalBayar;
+    }
+    public String getNoPembayaran() {
+        return noPembayaran;
+    }
+    public void setNoPembayaran(String noPembayaran) {
+        this.noPembayaran = noPembayaran;
     }
     public Timestamp getCreatedDate() {
         return createdDate;

@@ -191,6 +191,7 @@ CREATE TABLE IF NOT EXISTS public.TX_TRANSAKSI_CICILAN_TETAP
     tx_biaya_jasa_peny_per numeric,
     total_biaya_jasa_peny numeric,
     tx_biaya_adm_tutup numeric,
+    tx_status character varying COLLATE pg_catalog."default",
     total_pengem numeric,
     customer_id character varying COLLATE pg_catalog."default",
     product_id character varying COLLATE pg_catalog."default",
@@ -234,6 +235,7 @@ CREATE TABLE IF NOT EXISTS public.TX_CICILAN
     tanggal_aktif date,
     tanggal_jatuh_tempo date,
     tanggal_bayar date,
+    no_pembayaran character varying COLLATE pg_catalog."default",
     created_date timestamp without time zone,
     CONSTRAINT TX_CICILAN_pkey PRIMARY KEY (cicilan_ke, no_transaksi)
 )

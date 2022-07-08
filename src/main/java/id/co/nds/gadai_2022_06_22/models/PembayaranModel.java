@@ -1,7 +1,5 @@
 package id.co.nds.gadai_2022_06_22.models;
 
-import java.sql.Timestamp;
-
 public class PembayaranModel {
     private String noPembayaran;
     private String noTransaksi;
@@ -12,12 +10,6 @@ public class PembayaranModel {
     private Double pembulatan;
     private Double jumlahPembayaran;
     private String metodeBayar;
-    private Timestamp createdDate;
-    private Timestamp updatedDate;
-    private Timestamp deletedDate;
-    private Integer createdBy;
-    private Integer updatedBy;
-    private Integer deletedBy;
     
     public String getNoPembayaran() {
         return noPembayaran;
@@ -73,40 +65,5 @@ public class PembayaranModel {
     public void setMetodeBayar(String metodeBayar) {
         this.metodeBayar = metodeBayar;
     }
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-    public Timestamp getDeletedDate() {
-        return deletedDate;
-    }
-    public void setDeletedDate(Timestamp deletedDate) {
-        this.deletedDate = deletedDate;
-    }
-    public Integer getCreatedBy() {
-        return createdBy;
-    }
-    public void setCreatedBy(Integer createdBy) {
-        this.createdBy = createdBy;
-    }
-    public Integer getUpdatedBy() {
-        return updatedBy;
-    }
-    public void setUpdatedBy(Integer updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-    public Integer getDeletedBy() {
-        return deletedBy;
-    }
-    public void setDeletedBy(Integer deletedBy) {
-        this.deletedBy = deletedBy;
-    }
+   
 }

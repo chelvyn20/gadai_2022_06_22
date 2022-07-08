@@ -23,6 +23,7 @@ public class CicilanTetapModel extends BarangModel {
     private Double totalBiayaJasaPeny;
     private Double txBiayaAdmTutup;
     private Double totalPengem;
+    private String txStatus;
     private String custId;
     private String productId;
     private Timestamp createdDate;
@@ -128,6 +129,12 @@ public class CicilanTetapModel extends BarangModel {
     }
     public void setTotalPengem(Double totalPengem) {
         this.totalPengem = totalPengem;
+    }
+    public String getTxStatus() {
+        return txStatus;
+    }
+    public void setTxStatus(String txStatus) {
+        this.txStatus = txStatus;
     }
     public String getCustId() {
         return custId;

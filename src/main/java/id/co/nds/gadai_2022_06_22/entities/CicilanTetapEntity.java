@@ -71,6 +71,9 @@ public class CicilanTetapEntity {
     @Column(name = "total_pengem")
     private Double totalPengem;
 
+    @Column(name = "tx_status")
+    private String txStatus;
+
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @Column(name = "customer_id")
     private String custId;
@@ -216,6 +219,14 @@ public class CicilanTetapEntity {
 
     public void setTotalPengem(Double totalPengem) {
         this.totalPengem = totalPengem;
+    }
+
+    public String getTxStatus() {
+        return txStatus;
+    }
+
+    public void setTxStatus(String txStatus) {
+        this.txStatus = txStatus;
     }
 
     public String getCustId() {

@@ -1,10 +1,13 @@
 package id.co.nds.gadai_2022_06_22.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
@@ -14,8 +17,8 @@ import id.co.nds.gadai_2022_06_22.entities.PembayaranEntity;
 import id.co.nds.gadai_2022_06_22.entities.ProductEntity;
 import id.co.nds.gadai_2022_06_22.exceptions.ClientException;
 import id.co.nds.gadai_2022_06_22.exceptions.NotFoundException;
-import id.co.nds.gadai_2022_06_22.models.CicilanModel;
 import id.co.nds.gadai_2022_06_22.models.CicilanTetapModel;
+import id.co.nds.gadai_2022_06_22.models.CustomerPaymentModel;
 import id.co.nds.gadai_2022_06_22.models.PembayaranCicilanModel;
 import id.co.nds.gadai_2022_06_22.repos.CicilanRepo;
 import id.co.nds.gadai_2022_06_22.repos.CicilanTetapRepo;
@@ -43,9 +46,6 @@ public class PembayaranCicilanService {
 
     @Autowired
     private CicilanTetapService cicilanTetapService;
-
-    @Autowired
-    private TransactionService transactionService;
 
     @Autowired
     private CustomerService customerService;
@@ -109,31 +109,63 @@ public class PembayaranCicilanService {
         model.setProductName(product.getProductDesc());
         model.setTotalKewajiban((cicilan.get(0).getTxPokok() + cicilan.get(0).getTxBunga()) * jumlahDenda);
         model.setTotalDenda(jumlahDenda * denda.get(0).getBiayaDenda());
-        // PembayaranEntity pembayaran = 
-        // model.setTotalPembayaran(totalPembayaran);
+        PembayaranEntity pembayaran = pembayaranRepo.getPembayaranDetailByNoTransaksi(noTransaksi);
+        if(pembayaran != null) {
+            model.setTotalPembayaran(pembayaran.getJumlahPembayaran());
+        } else {
+            model.setTotalPembayaran((double) 0);
+        }
         model.setSisaKewajiban((((cicilan.get(0).getTxPokok() + cicilan.get(0).getTxBunga()) * jumlahDenda) 
-        + (jumlahDenda * denda.get(0).getBiayaDenda())) );
+        + (jumlahDenda * denda.get(0).getBiayaDenda())));
 
         return model;
     }
 
-    public PembayaranEntity doUpdatePembayaran(String noTransaksi, Integer cicilanKe) throws ClientException, NotFoundException {
-        CicilanTetapEntity tetap = cicilanTetapRepo.findById(noTransaksi).orElse(null);
-        List<CicilanEntity> cicilan = cicilanRepo.getPembayaranCicTetap(noTransaksi);
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+    public List<PembayaranEntity> doUpdatePembayaran(CustomerPaymentModel customerPaymentModel) throws ClientException, NotFoundException {
+        CicilanTetapEntity tetap = cicilanTetapRepo.findById(customerPaymentModel.getNoTransaksi()).orElse(null);
+        List<CicilanEntity> cicilan = cicilanRepo.getPembayaranCicTetap(customerPaymentModel.getNoTransaksi());
         ProductEntity product = productRepo.getActiveProductByProductId(tetap.getProductId());
-        PembayaranEntity pembayaran = new PembayaranEntity();
-        pembayaran.setNoTransaksi(noTransaksi);
-        PembayaranCicilanModel detailPembayaran = doGetDetailTagihanCic(noTransaksi, cicilanKe);
-        pembayaran.setTotalTagihanCicilan(cicilan.get(cicilanKe).getTxPokok() + cicilan.get(cicilanKe).getTxBunga());
-        pembayaran.setTotalTagihanDenda(detailPembayaran.getTotalDenda());
-        pembayaran.setBiayaAdmTutup(product.getBiayaAdmTutupVal());
-        pembayaran.setTotalTagihan((cicilan.get(cicilanKe).getTxPokok() + cicilan.get(cicilanKe).getTxBunga()) + (detailPembayaran.getTotalDenda()) +
-        (product.getBiayaAdmTutupVal()) - (cicilan.get(0).getTxBunga() + detailPembayaran.getTotalDenda()));
-        pembayaran.setPembulatan(Math.round((cicilan.get(cicilanKe).getTxPokok() + cicilan.get(cicilanKe).getTxBunga()) + (detailPembayaran.getTotalDenda()) +
-        (product.getBiayaAdmTutupVal()) - (cicilan.get(0).getTxBunga() + detailPembayaran.getTotalDenda())));
-        pembayaran.setJumlahPembayaran();
-        pembayaran.setMetodeBayar();
+        List<PembayaranEntity> daftarPembayaran = new ArrayList<>();
 
-        return pembayaran;
+        for(Integer i = 0; i < customerPaymentModel.getSelectedCicilanKe().size(); i++) {
+            PembayaranEntity pembayaran = new PembayaranEntity();
+            pembayaran.setNoTransaksi(customerPaymentModel.getNoTransaksi());
+            PembayaranCicilanModel detailPembayaran = doGetDetailTagihanCic(customerPaymentModel.getNoTransaksi(), customerPaymentModel.getSelectedCicilanKe().get(i));
+            pembayaran.setTotalTagihanCicilan(cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxPokok() + cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxBunga());
+            pembayaran.setTotalTagihanDenda(detailPembayaran.getTotalDenda());
+            pembayaran.setBiayaAdmTutup(product.getBiayaAdmTutupVal());
+            pembayaran.setTotalTagihan((cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxPokok() + cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxBunga()) + (detailPembayaran.getTotalDenda()) +
+            (product.getBiayaAdmTutupVal()) - (cicilan.get(0).getTxBunga() + detailPembayaran.getTotalDenda()));
+            pembayaran.setPembulatan(Math.floor((cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxPokok() + cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).getTxBunga()) + (detailPembayaran.getTotalDenda()) +
+            (product.getBiayaAdmTutupVal()) - (cicilan.get(0).getTxBunga() + detailPembayaran.getTotalDenda())));
+            pembayaran.setJumlahPembayaran(customerPaymentModel.getJumlahPembayaran());
+            pembayaran.setMetodeBayar(customerPaymentModel.getMetodeBayar());
+            pembayaranRepo.save(pembayaran);
+            daftarPembayaran.add(pembayaran);
+    
+            cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).setTxStatus("DIBAYAR");
+            cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).setTanggalBayar(LocalDateTime.now());
+            cicilan.get(customerPaymentModel.getSelectedCicilanKe().get(i)).setNoPembayaran(pembayaran.getNoPembayaran());
+
+            List<DendaKeterlambatanEntity> denda = dendaKeterlambatanRepo.findByNoTransaksiCicilanKe(customerPaymentModel.getNoTransaksi(), customerPaymentModel.getSelectedCicilanKe().get(i));
+            for(Integer j = 0; j < denda.size(); j++) {
+                denda.get(j).setNoPembayaran(pembayaran.getNoPembayaran());
+                denda.get(j).setTglPembayaranDenda(LocalDateTime.now());
+            }
+        }
+
+        Integer count = 0;
+        for(Integer i = 0; i < cicilan.size(); i++) {
+            if(cicilan.get(i).getTxStatus() == "DIBAYAR") {
+                count++;
+            }
+        }
+
+        if(count == cicilan.size()) {
+            tetap.setTxStatus("LUNAS");
+        }
+        
+        return daftarPembayaran;
     }
 }

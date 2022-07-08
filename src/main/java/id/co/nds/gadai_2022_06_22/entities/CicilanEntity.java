@@ -42,6 +42,9 @@ public class CicilanEntity implements Serializable{
     @Column(name = "tanggal_bayar")
     private LocalDateTime tanggalBayar;
 
+    @Column(name = "no_pembayaran")
+    private String noPembayaran;
+
     @Column(name = "created_date")
     private Timestamp createdDate;
 
@@ -115,6 +118,14 @@ public class CicilanEntity implements Serializable{
 
     public void setTanggalBayar(LocalDateTime tanggalBayar) {
         this.tanggalBayar = tanggalBayar;
+    }
+
+    public String getNoPembayaran() {
+        return noPembayaran;
+    }
+
+    public void setNoPembayaran(String noPembayaran) {
+        this.noPembayaran = noPembayaran;
     }
 
     public Timestamp getCreatedDate() {
