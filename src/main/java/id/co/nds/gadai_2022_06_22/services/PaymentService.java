@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import id.co.nds.gadai_2022_06_22.entities.CicilanEntity;
 import id.co.nds.gadai_2022_06_22.entities.CicilanTetapEntity;
@@ -27,7 +30,7 @@ import id.co.nds.gadai_2022_06_22.validators.PaymentValidator;
 import id.co.nds.gadai_2022_06_22.validators.TrxValidator;
 
 
-
+@Service
 public class PaymentService {
     @Autowired
     private CicilanRepo cicilanRepo;
@@ -47,11 +50,9 @@ public class PaymentService {
     @Autowired
     private DendaRepo dendaRepo;
 
-    // CustomerValidator customerValidator = new CustomerValidator();
-    // ProductValidator productValidator = new ProductValidator();
+   
     PaymentValidator paymentValidator = new PaymentValidator();
     TrxValidator trxValidator = new TrxValidator();  
-
 
     public List<CicilanTetapEntity> findPaymentByCriteria(PaymentModel paymentModel){
         List<PaymentEntity> payment = new ArrayList<>();
@@ -147,7 +148,7 @@ public class PaymentService {
         trxValidator.nullChekcObject(cicilanTetap);
         return cicilanTetap;
     }
-
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public CicilanTetapEntity edit (PaymentModel paymentModel)
     throws ClientException,NotFoundException{
        //validation

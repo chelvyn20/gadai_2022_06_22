@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler;
+//import id.co.nds.gadai_2022_06_22.schedulers.DbParamScheduler;
 
 
 @SpringBootApplication
@@ -28,7 +28,7 @@ public class Gadai20220622Application {
         logger.info("Stopping Configuration for System....");
 
         logger.info("Stopping custom DB scheduler....");
-      	DbParamScheduler.shutdownScheduler();
+      //	DbParamScheduler.shutdownScheduler();
 
         logger.info("");
         logger.info("Finish Stopping Configuration for System....");

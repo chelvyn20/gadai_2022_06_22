@@ -328,7 +328,7 @@ public class TrxService implements Serializable {
         return cicilanTetapRepo.save(cicilanTetap);
         
     } 
-
+    
     public List<CicilanEntity> checkStatusCicilan() {
         List<CicilanEntity> cicilan = new ArrayList<>();
         cicilanRepo.findAll().forEach(cicilan::add);
@@ -357,8 +357,7 @@ public class TrxService implements Serializable {
         return cicilan;
     }
 
-    
-
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public List<DendaEntity> hitungDenda() {
         List<CicilanEntity> cicilan = new ArrayList<>();
         cicilanRepo.findAll().forEach(cicilan::add);

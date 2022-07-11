@@ -22,7 +22,7 @@ public class CronScheduler {
 
     Integer counterB = 0;
 
- // @Scheduled(cron = "0 0 0 * * ?")
+  @Scheduled(cron = "0 0 0 * * ?")
     public void cronScheduler() throws Exception{
         Integer counterA =0;
         logger.debug("Start FixedRateScheduller at " + Calendar.getInstance().getTime());
